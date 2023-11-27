@@ -1,0 +1,29 @@
+.whole__navbar {
+  display: flex;
+  width: 100vw;
+  justify-content: space-between;
+  padding: 10px 30px;
+
+  align-items: center;
+  flex-direction: row;
+  background-color: aqua;
+}
+.navbar__links {
+  display: flex;
+  gap: 10px;
+}
+.navbar__links a.active {
+  color: black;
+  border-bottom: 2px solid black;
+}
+.dropdown-menus {
+  background-color: rgb(196, 196, 196);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: black;
+  width: 20vw;
+  padding: 5px 8px;
+  z-index: 10;
+}
