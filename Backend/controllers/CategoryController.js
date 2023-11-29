@@ -28,7 +28,7 @@ const createCategoryController = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).send({
-      succcess: false,
+      success: false,
       error,
       message: "Error in category ",
     });
@@ -46,14 +46,14 @@ const updateCategoryController = async (req, res) => {
     );
 
     res.status(200).send({
-      succcess: true,
+      success: true,
       message: "Category updated Successfully",
       category,
     });
   } catch (error) {
     console.log(error);
     res.status(500).send({
-      succcess: false,
+      success: false,
       error,
       message: "error while updating category",
     });
@@ -72,7 +72,7 @@ const categoryController = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).send({
-      succcess: false,
+      success: false,
       error,
       message: "error while getting all categories",
     });

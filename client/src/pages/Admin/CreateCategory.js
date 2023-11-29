@@ -5,11 +5,17 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import CategoryForm from "../../components/Form/CategoryForm";
 import { useSelector } from "react-redux";
+import Modal from "../../components/Modal/Modal";
+import "./Admin.css";
 
 const CreateCategory = () => {
   const [categories, setCategories] = useState(null);
   const [name, setName] = useState("");
   const token = useSelector((state) => state.auth.token);
+  const [modal, setModal] = useState(false);
+  const [updatedName, setUpdatedName] = useState("");
+  const [selected, setSeleted] = useState(null);
+  const [deleteModal, setDeleteModal] = useState(false);
   // console.log(token);
 
   //get all category
@@ -20,7 +26,7 @@ const CreateCategory = () => {
       );
       // console.log(data);
       if (data.success) {
-        setCategories(data.category);
+        setCategories(data?.category);
       }
       // console.log(data.category);
     } catch (error) {
@@ -58,8 +64,116 @@ const CreateCategory = () => {
     getAllCategory();
   }, []);
 
+  const handleEdit = (ele) => {
+    setModal(true);
+    setUpdatedName(ele?.name);
+    setSeleted(ele._id);
+  };
+
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.put(
+        `${process.env.REACT_APP_API}/api/v1/category/update-category/${selected}`,
+        {
+          name: updatedName,
+        },
+        {
+          headers: {
+            authorization: token,
+          },
+          "Content-Type": "application/json",
+        }
+      );
+
+      if (data.success) {
+        toast.success(data.message);
+        setSeleted(null);
+        setUpdatedName("");
+        setModal(false);
+        getAllCategory();
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error("something went wrong");
+    }
+  };
+
+  const handleDelete = (ele) => {
+    setDeleteModal(true);
+    setSeleted(ele._id);
+  };
+
+  const handleDeleteCall = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.delete(
+        `${process.env.REACT_APP_API}/api/v1/category/delete-category/${selected}`,
+        {
+          headers: {
+            authorization: token,
+          },
+          "Content-Type": "application/json",
+        }
+      );
+      if (data.success) {
+        toast.success(data.message);
+        setSeleted(null);
+        setDeleteModal(false);
+        getAllCategory();
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error("something went wrong");
+    }
+  };
+
   return (
     <>
+      {modal && (
+        <Modal
+          heading={<>Edit Category</>}
+          setClose={setModal}
+          body={
+            <>
+              <CategoryForm
+                value={updatedName}
+                setValue={setUpdatedName}
+                handleSubmit={handleUpdate}
+              />
+            </>
+          }
+        />
+      )}
+      {deleteModal && (
+        <Modal
+          heading={<>Delete Category</>}
+          setClose={setDeleteModal}
+          body={
+            <>
+              <div>Are you sure to delete the Category?</div>
+            </>
+          }
+          footer={
+            <>
+              <div className="modal__button__container">
+                <button
+                  className="btn btn-danger"
+                  onClick={() => setDeleteModal(false)}
+                >
+                  No
+                </button>
+                <button className="btn btn-primary" onClick={handleDeleteCall}>
+                  Yes
+                </button>
+              </div>
+            </>
+          }
+        />
+      )}
+
       <Layout title={"Dashboard - Create Category"}>
         <div className="row">
           <div className="col-md-3">
@@ -90,8 +204,16 @@ const CreateCategory = () => {
                         <td>{ele?.name}</td>
                         <td>
                           {" "}
-                          <button className="btn btn-primary ml-2">Edit</button>
-                          <button className="btn btn-danger ml-2">
+                          <button
+                            className="btn btn-primary ml-2"
+                            onClick={() => handleEdit(ele)}
+                          >
+                            Edit
+                          </button>
+                          <button
+                            className="btn btn-danger ml-2"
+                            onClick={() => handleDelete(ele)}
+                          >
                             Delete
                           </button>
                         </td>

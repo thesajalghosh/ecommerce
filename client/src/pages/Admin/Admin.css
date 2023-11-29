@@ -1,0 +1,6 @@
+.modal__button__container {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}

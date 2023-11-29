@@ -1,0 +1,23 @@
+.modal__container__whole {
+  position: absolute;
+  z-index: 5;
+  background-color: rgba(80, 79, 79, 0.754);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal__container {
+  background-color: white;
+  height: auto;
+  width: 80vw;
+  display: flex;
+  justify-content: center;
+  border-radius: 7px;
+  flex-direction: column;
+  padding: 20px 10px;
+}
+.modal__heading {
+  padding: 20px 0px;
+}
