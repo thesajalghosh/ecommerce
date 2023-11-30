@@ -20,6 +20,7 @@ import CreateProduct from "./pages/Admin/CreateProduct";
 import Users from "./pages/Admin/Users";
 import Order from "./pages/user/Order";
 import Profile from "./pages/user/Profile";
+import Products from "./pages/Admin/Products";
 
 function App() {
   // const user = useSelector((state) => state.auth.token);
@@ -38,6 +39,7 @@ function App() {
           <Route path="admin" element={<AdminDasboard />} />
           <Route path="admin/create-category" element={<CreateCategory />} />
           <Route path="admin/create-product" element={<CreateProduct />} />
+          <Route path="admin/product" element={<Products />} />
           <Route path="admin/users" element={<Users />} />
         </Route>
         <Route path="/contact" element={<Contact />} />

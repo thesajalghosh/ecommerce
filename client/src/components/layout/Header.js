@@ -18,7 +18,7 @@ const Header = () => {
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
-  console.log(user);
+  // console.log(user);
   return (
     <>
       <div className="whole__navbar">
