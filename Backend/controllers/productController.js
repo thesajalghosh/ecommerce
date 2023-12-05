@@ -135,7 +135,7 @@ const getProductController = async (req, res) => {
 const getSingleProductController = async (req, res) => {
   try {
     const product = await productModel
-      .find({ slug: req.params.slug })
+      .find({ _id: req.params.pid })
       .select("-photo")
       .populate("category");
     res.status(200).send({
