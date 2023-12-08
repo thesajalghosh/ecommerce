@@ -9,6 +9,7 @@ import "./index.css";
 const Products = () => {
   const [product, setProduct] = useState(null);
   const navigate = useNavigate();
+  const [category, setCategories] = useState([]);
 
   const getAllProduct = async () => {
     try {

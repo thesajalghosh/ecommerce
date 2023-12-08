@@ -57,6 +57,7 @@ const updateProductController = async (req, res) => {
     const { name, description, price, category, quantity } = req.fields;
     console.log(name, description, price, category, quantity, "field");
     const { photo } = req.files;
+    console.log(photo, "files");
 
     //validation
     switch (true) {

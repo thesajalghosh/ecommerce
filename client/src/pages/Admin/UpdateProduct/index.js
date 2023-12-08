@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import AdminMenu from "../../../components/layout/AdminMenu";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
 const UpdateProduct = () => {
   const [product, setProduct] = useState({});
@@ -11,6 +12,9 @@ const UpdateProduct = () => {
   const [categories, setCategories] = useState(null);
   const [photo, setPhoto] = useState(null);
   const navigate = useNavigate();
+  const token = useSelector((state) => state.auth.token);
+
+  console.log(pid);
 
   const getAllCategory = async () => {
     try {
@@ -38,11 +42,22 @@ const UpdateProduct = () => {
     }
   };
 
+  const getProductPhoto = async () => {
+    const { data } = await axios.get(
+      `${process.env.REACT_APP_API}/api/v1/product/product-photo/${pid}`
+    );
+    console.log(data);
+    setPhoto(data);
+  };
+
   console.log(product);
 
   const handleSelect = (e) => {
-    console.log(e);
-    setProduct((prev) => ({ ...prev, category: e.target.value }));
+    const selectedCategory = categories.filter(
+      (ele) => ele._id === e.target.value
+    );
+    console.log(selectedCategory[0]);
+    setProduct((prev) => ({ ...prev, category: selectedCategory[0]._id }));
   };
   const handlePhoto = (e) => {
     setPhoto(e.target.files[0]);
@@ -74,9 +89,17 @@ const UpdateProduct = () => {
       productData.append("category", product.category);
       photo && productData.append("photo", photo);
 
-      const { data } = axios.put(
-        `/api/v1/product/update-product/${pid}`,
-        productData
+      console.log(productData);
+
+      const { data } = await axios.put(
+        `${process.env.REACT_APP_API}/api/v1/product/update-product/${pid}`,
+        productData,
+        {
+          headers: {
+            authorization: token,
+          },
+          "Content-Type": "application/json",
+        }
       );
 
       if (data?.success) {
@@ -94,9 +117,25 @@ const UpdateProduct = () => {
   useEffect(() => {
     getAllCategory();
     productApi();
+    getProductPhoto();
   }, []);
 
   console.log(product);
+  const handleDeleteProduct = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await axios.delete(
+        `${process.env.REACT_APP_API}/api/v1/product/delete-product/${pid}`
+      );
+      if (data.success) {
+        toast.success("Product deleted successfull");
+        navigate(-1);
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("some thing went wrong in delete");
+    }
+  };
 
   return (
     <>
@@ -139,7 +178,7 @@ const UpdateProduct = () => {
                 {photo ? (
                   <div className="text-center">
                     <img
-                      src={URL.createObjectURL(photo)}
+                      src={photo}
                       alt="product photo"
                       className="img img-responsive"
                     />
@@ -201,6 +240,12 @@ const UpdateProduct = () => {
                   onClick={handleUpdateProduct}
                 >
                   Update Product
+                </button>
+                <button
+                  className="btn btn-primary"
+                  onClick={handleDeleteProduct}
+                >
+                  Delete Product
                 </button>
               </div>
             </div>
