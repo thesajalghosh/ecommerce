@@ -10,7 +10,7 @@ const HomePage = () => {
   const [products, setProducts] = useState([]);
   const [categoryies, setCategories] = useState([]);
   const [checked, setChecked] = useState([]);
-  const [priceChecked, setPriceChecked] = useState([]);
+  const [radio, setRadio] = useState([]);
 
   const getAllProduct = async () => {
     try {
@@ -58,12 +58,42 @@ const HomePage = () => {
     }
     setChecked(all);
   };
-  const handelPriceFilter = () => {};
+
+  const productFilter = async () => {
+    try {
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_API}/api/v1/product/product-filter`,
+        { checked, radio }
+      );
+      console.log(data.products);
+      setProducts(data?.products);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handlePrice = (e) => {
+    const vari = e.target.value;
+    const arr = vari.split(",");
+    const setArr = [];
+    setArr[0] = Number(arr[0]);
+    setArr[1] = Number(arr[1]);
+    console.log(setArr);
+    setRadio(setArr);
+  };
 
   useEffect(() => {
-    getAllProduct();
     getAllCategory();
-  }, []);
+    if (!checked.length && !radio.length) {
+      getAllProduct();
+    }
+  }, [checked.length, radio.length]);
+
+  useEffect(() => {
+    if (checked.length > 0 || radio.length > 0) productFilter();
+  }, [checked, radio]);
+
+  console.log(checked, radio);
 
   return (
     <Layout title={"All Products - Best Offers"}>
@@ -91,14 +121,12 @@ const HomePage = () => {
             <div className="filter__by__category__container">
               {Prices.map((ele) => (
                 <>
-                  <div className="filter__every__input">
-                    <input
-                      type="radio"
-                      name="price__radio"
-                      onChange={(e) =>
-                        handelPriceFilter(e.target.checked, ele._id)
-                      }
-                    />
+                  <div
+                    className="filter__every__input"
+                    key={ele._id}
+                    onChange={handlePrice}
+                  >
+                    <input type="radio" name="price__radio" value={ele.array} />
                     <label>{ele.name}</label>
                   </div>
                 </>
@@ -129,7 +157,7 @@ const HomePage = () => {
                     <div className="lower__part__name">{e.description}</div>
                     <div className="lower__part__price__quantity">
                       <div className="lower__part__price">
-                        Price : {e.price}
+                        Price : $ {e.price}
                       </div>
                       <div className="lower__part__price">
                         In stock : {e.quantity}
