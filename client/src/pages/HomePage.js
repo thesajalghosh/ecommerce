@@ -11,12 +11,32 @@ const HomePage = () => {
   const [categoryies, setCategories] = useState([]);
   const [checked, setChecked] = useState([]);
   const [radio, setRadio] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+
+  //getTotal Count
+  const getTotal = async () => {
+    try {
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API}/api/v1/product/product-count`
+      );
+
+      if (data.success) {
+        setTotal(data?.total);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const getAllProduct = async () => {
     try {
+      setLoading(true);
       const product = await axios.get(
-        `${process.env.REACT_APP_API}/api/v1/product/get-product`
+        `${process.env.REACT_APP_API}/api/v1/product/product-list/${page}`
       );
+      setLoading(false);
 
       console.log(product.data);
       if (product.data.success) {
@@ -84,6 +104,7 @@ const HomePage = () => {
 
   useEffect(() => {
     getAllCategory();
+    getTotal();
     if (!checked.length && !radio.length) {
       getAllProduct();
     }
@@ -93,7 +114,32 @@ const HomePage = () => {
     if (checked.length > 0 || radio.length > 0) productFilter();
   }, [checked, radio]);
 
-  console.log(checked, radio);
+  const loadMoreHandel = (e) => {
+    e.preventDefault();
+    setPage(page + 1);
+    loadMore(page + 1);
+  };
+
+  const loadMore = async (page) => {
+    try {
+      setLoading(true);
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API}/api/v1/product/product-list/${page}`
+      );
+      setLoading(false);
+      console.log(data.products);
+      setProducts([...products, ...data?.products]);
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
+  };
+
+  // useEffect(() => {
+  //   loadMore();
+  // }, [page]);
+
+  console.log(products);
 
   return (
     <Layout title={"All Products - Best Offers"}>
@@ -132,6 +178,14 @@ const HomePage = () => {
                 </>
               ))}
             </div>
+          </div>
+          <div className="filter__by__category__container">
+            <button
+              className="btn btn-danger"
+              onClick={() => window.location.reload()}
+            >
+              RESET FILTER
+            </button>
           </div>
         </div>
         <div className="col-md-9">
@@ -173,6 +227,13 @@ const HomePage = () => {
                 </div>
               </>
             ))}
+          </div>
+          <div>
+            {products && products.length < total && (
+              <button className="btn btn-primary" onClick={loadMoreHandel}>
+                {loading ? "Loading ..." : "Loading More"}
+              </button>
+            )}
           </div>
         </div>
       </div>
