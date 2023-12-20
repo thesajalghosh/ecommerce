@@ -14,3 +14,11 @@
   display: flex;
   gap: 10px;
 }
+.search__bar {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.search__bar input {
+  width: 70vw;
+  padding: 5px;
+}

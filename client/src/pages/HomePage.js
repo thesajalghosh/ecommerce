@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import "./index.css";
 import { Prices } from "../components/Prices";
+import { useNavigate } from "react-router-dom";
 const HomePage = () => {
   const user = useSelector((state) => state.auth.user);
   const [products, setProducts] = useState([]);
@@ -14,6 +15,7 @@ const HomePage = () => {
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   //getTotal Count
   const getTotal = async () => {
@@ -217,7 +219,10 @@ const HomePage = () => {
                         In stock : {e.quantity}
                       </div>
                       <div className="d-flex card__buttons">
-                        <button className="btn btn-primary">
+                        <button
+                          className="btn btn-primary"
+                          onClick={() => navigate(`/product/${e._id}`)}
+                        >
                           More Details
                         </button>
                         <button className="btn btn-primary">Add to cart</button>

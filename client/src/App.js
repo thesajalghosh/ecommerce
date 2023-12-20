@@ -22,6 +22,8 @@ import Order from "./pages/user/Order";
 import Profile from "./pages/user/Profile";
 import Products from "./pages/Admin/Product";
 import UpdateProduct from "./pages/Admin/UpdateProduct";
+import SearchPage from "./pages/SearchPage";
+import ProductDetails from "./pages/ProductDetails";
 
 function App() {
   // const user = useSelector((state) => state.auth.token);
@@ -30,6 +32,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/about" element={<About />} />
         <Route path="/dashboard" element={<Private />}>
           <Route path="user" element={<Dashboard />} />
@@ -49,6 +52,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/search" element={<SearchPage />} />
         <Route path="*" element={<PageNotFount />} />
       </Routes>
     </>

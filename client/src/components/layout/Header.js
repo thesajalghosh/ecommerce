@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../redux/authSlice";
 import { toast } from "react-toastify";
 import { AiFillCaretDown } from "react-icons/ai";
+import { FaSearch } from "react-icons/fa";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -68,6 +69,9 @@ const Header = () => {
 
           <NavLink to="/cart" activeClassName="active">
             Cart (0)
+          </NavLink>
+          <NavLink to="/search">
+            <FaSearch />
           </NavLink>
         </div>
       </div>
