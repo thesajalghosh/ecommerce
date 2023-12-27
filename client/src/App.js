@@ -24,6 +24,7 @@ import Products from "./pages/Admin/Product";
 import UpdateProduct from "./pages/Admin/UpdateProduct";
 import SearchPage from "./pages/SearchPage";
 import ProductDetails from "./pages/ProductDetails";
+import Categories from "./pages/Categories";
 
 function App() {
   // const user = useSelector((state) => state.auth.token);
@@ -34,6 +35,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/about" element={<About />} />
+        <Route path="/all-categories" element={<Categories />} />
         <Route path="/dashboard" element={<Private />}>
           <Route path="user" element={<Dashboard />} />
           <Route path="user/orders" element={<Order />} />
@@ -48,6 +50,7 @@ function App() {
           <Route path="admin/users" element={<Users />} />
         </Route>
         <Route path="/contact" element={<Contact />} />
+
         <Route path="/policy" element={<Policy />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />

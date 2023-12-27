@@ -280,6 +280,32 @@ const searchProductController = async (req, res) => {
   }
 };
 
+const reletedProduct = async (req, res) => {
+  try {
+    const { pid, cid } = req.params;
+    const products = await productModel
+      .find({
+        category: cid,
+        _id: { $ne: pid },
+      })
+      .select("-photo")
+      .limit(3)
+      .populate("category");
+    res.status(200).send({
+      success: true,
+      message: "similar product get successfully",
+      products,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({
+      success: false,
+      message: "error while getting releted product",
+      error,
+    });
+  }
+};
+
 module.exports = {
   createProductController,
   getProductController,
@@ -291,4 +317,5 @@ module.exports = {
   productCountController,
   productListController,
   searchProductController,
+  reletedProduct,
 };

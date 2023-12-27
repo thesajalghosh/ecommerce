@@ -1,15 +1,17 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "../../redux/authSlice";
 import { toast } from "react-toastify";
 import { AiFillCaretDown } from "react-icons/ai";
 import { FaSearch } from "react-icons/fa";
+import useCategory from "../../hooks/useCategory";
 
 const Header = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [iscategoryOpen, setiscategoryOpen] = useState(false);
   const handleLogout = () => {
     dispatch(logout());
     localStorage.removeItem("user");
@@ -19,6 +21,11 @@ const Header = () => {
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
+
+  const categoryDropdown = () => {
+    setiscategoryOpen(!iscategoryOpen);
+  };
+  const category = useCategory();
   // console.log(user);
   return (
     <>
@@ -28,9 +35,30 @@ const Header = () => {
           <NavLink to="/" activeClassName="active">
             Home
           </NavLink>
-          <NavLink to="/category" activeClassName="active">
-            Categories
-          </NavLink>
+          <div className="custom-dropdown">
+            <button className="btn" onClick={categoryDropdown}>
+              Categories <AiFillCaretDown />
+            </button>
+
+            {iscategoryOpen && (
+              <div className="dropdown-menus" to="">
+                <Link className="dropdown-items" to="/all-categories">
+                  {" "}
+                  All Categories
+                </Link>
+                {category.map((e) => (
+                  <Link
+                    className="dropdown-items"
+                    to={`/category/${e._id}`}
+                    key={e._id}
+                  >
+                    {e.name}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+
           {!user ? (
             <>
               <NavLink to="/register" activeClassName="active">

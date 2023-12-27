@@ -22,3 +22,15 @@
   width: 70vw;
   padding: 5px;
 }
+.similar__product__container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+.similar__product__every__product {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.categories__element {
+  padding: 10px;
+}
