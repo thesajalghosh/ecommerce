@@ -1,0 +1,20 @@
+.whole__navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 100vw;
+  justify-content: space-between;
+  padding: 10px 30px;
+  align-items: center;
+  flex-direction: row;
+  background-color: aqua;
+}
+.navbar__left__part {
+  display: flex;
+  gap: 10px;
+}
+.navbar__right__part {
+  display: flex;
+  gap: 25px;
+}

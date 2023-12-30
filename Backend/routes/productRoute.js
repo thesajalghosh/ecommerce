@@ -61,4 +61,7 @@ router.get("/search/:keyword", searchProductController);
 //similar product
 router.get("/related-product/:pid/:cid", reletedProduct);
 
+// category wise product
+router.get("/product-catagory/:id");
+
 module.exports = router;

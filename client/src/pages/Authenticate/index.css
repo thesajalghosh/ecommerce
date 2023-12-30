@@ -1,0 +1,14 @@
+.auth__page__tab__change {
+  display: flex;
+  width: 100vw;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 20px;
+}
+.auth__page__tab__change button {
+  border: none;
+}
+.auth__page__tab__change button:focus {
+  border: none;
+  outline: none;
+}

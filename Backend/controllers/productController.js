@@ -1,6 +1,8 @@
 const slugify = require("slugify");
 const productModel = require("../models/productModel");
 const fs = require("fs");
+const { categoryController } = require("./CategoryController");
+const categoryModel = require("../models/categoryModel");
 
 const createProductController = async (req, res) => {
   try {
@@ -306,6 +308,28 @@ const reletedProduct = async (req, res) => {
   }
 };
 
+// category wise product
+const CategoryWiseProduct = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const category = await categoryModel.findOne({ _id: id });
+    const products = await productModel.find(category).populate("category");
+
+    res.status(200).send({
+      success: false,
+      message: "successfully getting category wise product",
+      products,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(400).send({
+      success: false,
+      message: "error in category wise product",
+      error,
+    });
+  }
+};
+
 module.exports = {
   createProductController,
   getProductController,
@@ -318,4 +342,5 @@ module.exports = {
   productListController,
   searchProductController,
   reletedProduct,
+  CategoryWiseProduct,
 };

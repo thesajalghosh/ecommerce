@@ -1,12 +1,8 @@
-.whole__navbar {
-  display: flex;
-  width: 100vw;
-  justify-content: space-between;
-  padding: 10px 30px;
-
-  align-items: center;
-  flex-direction: row;
-  background-color: aqua;
+.main__layout__inner__content {
+  background-color: black;
+  min-height: 90vh;
+  position: relative;
+  top: 48px;
 }
 .navbar__links {
   display: flex;
