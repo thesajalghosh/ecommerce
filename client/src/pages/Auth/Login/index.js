@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import Layout from "../../components/layout/Layout";
+import "./index.css";
+
+import Layout from "../../../components/layout/Layout";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { loginSuccess } from "../../redux/authSlice";
+import { loginSuccess } from "../../../redux/authSlice";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -44,45 +46,43 @@ const Login = () => {
   };
 
   return (
-    <Layout title="Login - Ecommer App">
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="exampleInputEmail1">Email address</label>
-          <input
-            type="email"
-            className="form-control"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
-            placeholder="Enter email"
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="exampleInputPassword1">Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="form-control"
-            id="exampleInputPassword1"
-            placeholder="Password"
-          />
-        </div>
-        <button
-          type="submit"
-          className="btn btn-primary"
-          onClick={() => {
-            navigate("/forgot-password");
-          }}
-        >
-          Forgot Password
-        </button>
-        <button type="submit" className="btn btn-primary">
-          Login
-        </button>
-      </form>
-    </Layout>
+    <form onSubmit={handleSubmit}>
+      <div className="form-group">
+        <label htmlFor="exampleInputEmail1">Email address</label>
+        <input
+          type="email"
+          className="form-control"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          placeholder="Enter email"
+        />
+      </div>
+      <div className="form-group">
+        <label htmlFor="exampleInputPassword1">Password</label>
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="form-control"
+          id="exampleInputPassword1"
+          placeholder="Password"
+        />
+      </div>
+      <button
+        type="submit"
+        className="btn btn-primary"
+        onClick={() => {
+          navigate("/forgot-password");
+        }}
+      >
+        Forgot Password
+      </button>
+      <button type="submit" className="btn btn-primary">
+        Login
+      </button>
+    </form>
   );
 };
 

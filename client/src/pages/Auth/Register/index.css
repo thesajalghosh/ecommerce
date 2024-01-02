@@ -1,0 +1,18 @@
+.whole__form__container {
+  margin-top: 30px;
+  padding: 0 15px;
+}
+
+.whole__form__container label {
+  color: var(--srtong__font__color);
+  font-size: 1.2rem;
+  font-family: "Nunito Sans", sans-serif;
+}
+.whole__form__container input {
+  background-color: rgba(196, 196, 196, 0.183);
+  border: none;
+}
+.whole__form__container input:focus {
+  outline: none;
+  background-color: rgba(196, 196, 196, 0.183);
+}

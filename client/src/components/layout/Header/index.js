@@ -53,9 +53,6 @@ const Header = () => {
           <div className="navbar__left__search" onClick={profilehandeler}>
             <CgProfile size={25} />
           </div>
-          <div className="navbar__left__search">
-            <IoBagCheckOutline size={25} />
-          </div>
         </div>
       </div>
     </>

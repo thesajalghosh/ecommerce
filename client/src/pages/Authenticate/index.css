@@ -12,3 +12,14 @@
   border: none;
   outline: none;
 }
+
+.active__tab {
+  color: var(--srtong__font__color);
+  background-color: var(--background__color__tab);
+}
+
+.inactive__tab {
+  background-color: transparent;
+  color: var(--light__font__color);
+  font-family: "Nunito Sans", sans-serif;
+}

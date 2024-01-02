@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito&family=Nunito+Sans:opsz@6..12&display=swap");
 
 :root {
-  --srtong__font__color: black;
-  --light__font__color: rgb(70, 70, 70);
+  --srtong__font__color: rgb(249, 247, 247);
+  --light__font__color: rgb(159, 158, 158);
   --very__light__border: rgb(130, 128, 128);
+  --background__color__tab: rgba(87, 86, 86, 0.717);
 }

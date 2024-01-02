@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import Layout from "../../components/layout/Layout";
+import Layout from "../../../components/layout/Layout";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import { toast } from "react-toastify";
+import "./index.css";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");

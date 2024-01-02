@@ -12,7 +12,8 @@ import "react-toastify/dist/ReactToastify.css";
 import Login from "./pages/Auth/Login";
 import Dashboard from "./pages/user/Dashboard";
 import Private from "./components/Routes/Private";
-import ForgotPassword from "./pages/Auth/ForgotPassword";
+
+import ForgotPassword from "./pages/Auth/ForgetPassword";
 import AdminRoute from "./components/Routes/AdminRoutes";
 import AdminDasboard from "./pages/Admin/AdminDasboard";
 import CreateCategory from "./pages/Admin/CreateCategory";

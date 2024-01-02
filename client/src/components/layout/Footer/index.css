@@ -1,0 +1,16 @@
+.whole__page__footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1000000;
+  background-color: black;
+  border-top: 0.5px solid gray;
+}
+
+.whole__page__footer__icon {
+  display: flex;
+  color: white;
+  justify-content: space-around;
+  width: 100vw;
+  padding: 15px 5px;
+}

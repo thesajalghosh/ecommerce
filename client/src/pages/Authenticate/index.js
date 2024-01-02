@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Layout from "../../components/layout/Layout";
 import "./index.css";
+import Login from "../Auth/Login";
+import Register from "../Auth/Register";
 
 const Authenticate = () => {
   const [activePage, setActivePage] = useState("Login");
@@ -22,6 +24,11 @@ const Authenticate = () => {
           >
             Register
           </button>
+        </div>
+
+        <div className="auth__page__whole__container">
+          {activePage === "Login" && <Login />}
+          {activePage === "Register" && <Register />}
         </div>
       </Layout>
     </>
