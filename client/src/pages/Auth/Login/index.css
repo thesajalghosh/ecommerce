@@ -1,0 +1,49 @@
+.whole__form__container {
+  margin-top: 30px;
+  padding: 0 15px;
+}
+
+.whole__form__container label {
+  color: var(--srtong__font__color);
+  font-size: 1.2rem;
+  font-family: "Nunito Sans", sans-serif;
+}
+.whole__form__container input {
+  background-color: rgba(196, 196, 196, 0.183);
+  border: none;
+  outline: none;
+}
+.whole__form__container input:focus {
+  outline: none;
+  background-color: rgba(196, 196, 196, 0.183);
+  border: none;
+}
+.exampleInputName:focus {
+  outline: none;
+  border: none;
+}
+.button__contianer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+}
+.forgot__password {
+  font-size: 1rem;
+  color: var(--srtong__font__color);
+  width: 100%;
+  text-align: end;
+  text-decoration: underline;
+}
+.ecommerce__but__design {
+  height: 5vh;
+  margin-top: 10px;
+  width: 80vw;
+  background-color: #a881af;
+  font-size: 1.2rem;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+}

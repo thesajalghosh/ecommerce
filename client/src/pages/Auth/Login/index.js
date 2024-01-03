@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./index.css";
-
 import Layout from "../../../components/layout/Layout";
 import { toast } from "react-toastify";
 import axios from "axios";
@@ -46,42 +45,46 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="form-group">
-        <label htmlFor="exampleInputEmail1">Email address</label>
-        <input
-          type="email"
-          className="form-control"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-          placeholder="Enter email"
-        />
+    <form className="whole__form__container" onSubmit={handleSubmit}>
+      <div className="whole__form">
+        <div className="form-group">
+          <label htmlFor="exampleInputEmail1">Email address</label>
+          <input
+            type="email"
+            className="form-control"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Enter email"
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="exampleInputPassword1">Password</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="form-control"
+            id="exampleInputPassword1"
+            placeholder="Password"
+          />
+        </div>
+        <div
+          className="forgot__password"
+          onClick={() => {
+            navigate("/forgot-password");
+          }}
+        >
+          {" "}
+          Forgot Password
+        </div>
+        <div className="button__contianer">
+          <button type="submit" className="ecommerce__but__design">
+            Login
+          </button>
+        </div>
       </div>
-      <div className="form-group">
-        <label htmlFor="exampleInputPassword1">Password</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="form-control"
-          id="exampleInputPassword1"
-          placeholder="Password"
-        />
-      </div>
-      <button
-        type="submit"
-        className="btn btn-primary"
-        onClick={() => {
-          navigate("/forgot-password");
-        }}
-      >
-        Forgot Password
-      </button>
-      <button type="submit" className="btn btn-primary">
-        Login
-      </button>
     </form>
   );
 };

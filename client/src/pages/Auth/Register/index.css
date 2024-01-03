@@ -11,8 +11,14 @@
 .whole__form__container input {
   background-color: rgba(196, 196, 196, 0.183);
   border: none;
+  outline: none;
 }
 .whole__form__container input:focus {
   outline: none;
   background-color: rgba(196, 196, 196, 0.183);
+  border: none;
+}
+.exampleInputName:focus {
+  outline: none;
+  border: none;
 }
