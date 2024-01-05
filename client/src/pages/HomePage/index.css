@@ -1,0 +1,86 @@
+.card__buttons button {
+  font-size: 0.6rem;
+}
+.card__buttons {
+  gap: 5px;
+}
+.filter__by__category__container {
+  display: flex;
+  font-size: 1.2rem;
+  flex-direction: column;
+  margin-left: 30px;
+}
+.filter__every__input {
+  display: flex;
+  gap: 10px;
+}
+.search__bar {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.search__bar input {
+  width: 70vw;
+  padding: 5px;
+}
+.similar__product__container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+.similar__product__every__product {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.categories__element {
+  padding: 10px;
+}
+.home__page__whole__container {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.sort__filter__container {
+  position: fixed;
+  z-index: 15;
+  bottom: 55px;
+  width: 100%;
+  background-color: black;
+  padding: 15px 10px;
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid gray;
+}
+.sort__filter__container button {
+  border: none;
+  background-color: transparent;
+  color: var(--srtong__font__color);
+  font-family: "Nunito Sans", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sort__filter__container button:focus {
+  border: none;
+  outline: none;
+}
+.sort__component__whole__container {
+  position: fixed;
+  z-index: 15;
+  bottom: 110px;
+  background-color: black;
+  width: 100vw;
+  padding: 15px 15px;
+  display: flex;
+  flex-direction: column;
+}
+.sort__component__whole__container button {
+  background-color: transparent;
+  border: none;
+  text-align: left;
+}
+.sort__element {
+  padding: 6px;
+  color: var(--srtong__font__color);
+  font-family: "Nunito Sans", sans-serif;
+}

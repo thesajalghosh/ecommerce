@@ -3,6 +3,7 @@
   min-height: 90vh;
   position: relative;
   top: 48px;
+  overflow: scroll;
 }
 .navbar__links {
   display: flex;
@@ -14,7 +15,7 @@
 }
 .dropdown-menus {
   background-color: rgb(196, 196, 196);
-  position: absolute;
+  position: fixed;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -22,4 +23,35 @@
   width: 20vw;
   padding: 5px 8px;
   z-index: 10;
+}
+
+.sidebar__whole__container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background-color: var(--backdrop__color);
+  height: 100vh;
+  width: 100vw;
+}
+.sidebar__main__content {
+  width: 80vw;
+  height: 100vh;
+  background-color: white;
+  padding: 10px 10px;
+}
+.main__content__close__button {
+  width: 100%;
+  text-align: end;
+  margin-bottom: 20px;
+}
+.main__element__container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 5px;
+}
+.main__element__name {
+  font-size: 1.1rem;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 600;
 }

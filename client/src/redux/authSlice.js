@@ -7,6 +7,7 @@ console.log(userData);
 const initialState = {
   user: userData || null,
   token: token || "",
+  sideBar: false,
 };
 console.log(initialState);
 
@@ -22,10 +23,13 @@ export const authSlice = createSlice({
       state.user = null;
       state.token = null;
     },
+    setSideBar: (state, { payload }) => {
+      state.sideBar = payload;
+    },
   },
 });
 
-export const { loginSuccess, logout } = authSlice.actions;
+export const { loginSuccess, logout, setSideBar } = authSlice.actions;
 
 export default authSlice.reducer;
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { logout } from "../../../redux/authSlice";
+import { logout, setSideBar } from "../../../redux/authSlice";
 import { toast } from "react-toastify";
 import { AiFillCaretDown } from "react-icons/ai";
 import { FaSearch } from "react-icons/fa";
@@ -17,6 +17,7 @@ const Header = () => {
   const user = useSelector((state) => state.auth.user);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [iscategoryOpen, setiscategoryOpen] = useState(false);
+
   const navigate = useNavigate();
   const handleLogout = () => {
     dispatch(logout());
@@ -37,12 +38,16 @@ const Header = () => {
   const profilehandeler = () => {
     navigate("/auth-page");
   };
+
+  const handelSideBar = () => {
+    dispatch(setSideBar(true));
+  };
   return (
     <>
       <div className="whole__navbar">
         <div className="navbar__left__part">
           <div className="navbar__left__menu">
-            <IoMenu size={25} />
+            <IoMenu size={25} onClick={handelSideBar} />
           </div>
           <div className="navbar__left__company__name">Acom</div>
         </div>

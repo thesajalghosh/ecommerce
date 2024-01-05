@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import Layout from "../components/layout/Layout";
+import Layout from "../../components/layout/Layout";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import axios from "axios";
 import "./index.css";
-import { Prices } from "../components/Prices";
+import { Prices } from "../../components/Prices";
 import { useNavigate } from "react-router-dom";
+import { BiSort } from "react-icons/bi";
+import { MdFilterAlt } from "react-icons/md";
 const HomePage = () => {
   const user = useSelector((state) => state.auth.user);
   const [products, setProducts] = useState([]);
@@ -15,6 +17,8 @@ const HomePage = () => {
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [sortPage, setSortPage] = useState(false);
+  const [filterPage, setFilterPage] = useState(false);
   const navigate = useNavigate();
 
   //getTotal Count
@@ -43,13 +47,14 @@ const HomePage = () => {
       console.log(product.data);
       if (product.data.success) {
         setProducts(product?.data?.products);
-        toast.success("product get successfully");
+        // toast.success("product get successfully");
       } else {
-        toast.error("something wrong in succesfull try section");
+        // toast.error("someth?ing wrong in succesfull try section");
+        console.log("something wrong in succesfull try section");
       }
     } catch (error) {
       console.log(error);
-      toast.error("something went wrong");
+      // toast.error("something went wrong");
     }
   };
 
@@ -136,6 +141,12 @@ const HomePage = () => {
       setLoading(false);
     }
   };
+  const handlepriceHighLow = () => {
+    setSortPage(false);
+  };
+  const handlePopularityHighLow = () => {
+    setSortPage(false);
+  };
 
   // useEffect(() => {
   //   loadMore();
@@ -145,7 +156,7 @@ const HomePage = () => {
 
   return (
     <Layout title={"All Products - Best Offers"}>
-      <div className="row">
+      <div className="row home__page__whole__container">
         <div className="col-md-3">
           <div className="filter__category__container">
             <h5 className="text-center">Filter by category</h5>
@@ -240,6 +251,48 @@ const HomePage = () => {
               </button>
             )}
           </div>
+        </div>
+        {sortPage && (
+          <>
+            <div className="sort__component__whole__container">
+              <button
+                className="sort__element"
+                value={"phl"}
+                onClick={handlepriceHighLow}
+              >
+                Price - high to low
+              </button>
+              <button
+                className="sort__element"
+                value={"plh"}
+                onClick={handlepriceHighLow}
+              >
+                Price - low to high
+              </button>
+              <button
+                className="sort__element"
+                value={"ph"}
+                onClick={handlePopularityHighLow}
+              >
+                Popularity - High
+              </button>
+              <button
+                className="sort__element"
+                value={"pl"}
+                onClick={handlePopularityHighLow}
+              >
+                Popularity - Low
+              </button>
+            </div>
+          </>
+        )}
+        <div className="sort__filter__container">
+          <button onClick={() => setSortPage(true)}>
+            <BiSort size={25} /> SORT
+          </button>
+          <button>
+            <MdFilterAlt size={25} /> FILTER
+          </button>
         </div>
       </div>
     </Layout>
