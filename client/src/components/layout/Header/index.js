@@ -17,6 +17,7 @@ const Header = () => {
   const user = useSelector((state) => state.auth.user);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [iscategoryOpen, setiscategoryOpen] = useState(false);
+  const token = localStorage.getItem("token");
 
   const navigate = useNavigate();
   const handleLogout = () => {
@@ -36,7 +37,11 @@ const Header = () => {
   // console.log(user);
 
   const profilehandeler = () => {
-    navigate("/auth-page");
+    if (token) {
+      navigate("/profile");
+    } else {
+      navigate("/auth-page");
+    }
   };
 
   const handelSideBar = () => {

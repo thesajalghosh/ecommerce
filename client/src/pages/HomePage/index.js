@@ -8,6 +8,7 @@ import { Prices } from "../../components/Prices";
 import { useNavigate } from "react-router-dom";
 import { BiSort } from "react-icons/bi";
 import { MdFilterAlt } from "react-icons/md";
+import Filter from "../../components/Filter";
 const HomePage = () => {
   const user = useSelector((state) => state.auth.user);
   const [products, setProducts] = useState([]);
@@ -148,60 +149,10 @@ const HomePage = () => {
     setSortPage(false);
   };
 
-  // useEffect(() => {
-  //   loadMore();
-  // }, [page]);
-
-  console.log(products);
-
   return (
     <Layout title={"All Products - Best Offers"}>
       <div className="row home__page__whole__container">
-        <div className="col-md-3">
-          <div className="filter__category__container">
-            <h5 className="text-center">Filter by category</h5>
-            <div className="filter__by__category__container">
-              {categoryies.map((ele) => (
-                <>
-                  <div className="filter__every__input">
-                    <input
-                      type="checkbox"
-                      name={ele.name}
-                      onChange={(e) => handelFilter(e.target.checked, ele._id)}
-                    />
-                    <label>{ele.name}</label>
-                  </div>
-                </>
-              ))}
-            </div>
-          </div>
-          <div className="filter__category__container">
-            <h5 className="text-center">Filter by Price</h5>
-            <div className="filter__by__category__container">
-              {Prices.map((ele) => (
-                <>
-                  <div
-                    className="filter__every__input"
-                    key={ele._id}
-                    onChange={handlePrice}
-                  >
-                    <input type="radio" name="price__radio" value={ele.array} />
-                    <label>{ele.name}</label>
-                  </div>
-                </>
-              ))}
-            </div>
-          </div>
-          <div className="filter__by__category__container">
-            <button
-              className="btn btn-danger"
-              onClick={() => window.location.reload()}
-            >
-              RESET FILTER
-            </button>
-          </div>
-        </div>
-        <div className="col-md-9">
+        <div className="all__product__container">
           <h1 className="text-center">All Product</h1>
           <div className="d-flex flex-wrap"></div>
           <h1>Products</h1>
@@ -286,12 +237,21 @@ const HomePage = () => {
             </div>
           </>
         )}
+        {filterPage && (
+          <Filter
+            setFilterPage={setFilterPage}
+            checked={checked}
+            setChecked={setChecked}
+            setRadio={setRadio}
+          />
+        )}
+
         <div className="sort__filter__container">
           <button onClick={() => setSortPage(true)}>
             <BiSort size={25} /> SORT
           </button>
           <button>
-            <MdFilterAlt size={25} /> FILTER
+            <MdFilterAlt size={25} onClick={() => setFilterPage(true)} /> FILTER
           </button>
         </div>
       </div>

@@ -29,6 +29,7 @@ import ProductDetails from "./pages/ProductDetails";
 import Categories from "./pages/Categories";
 import CategoryProduct from "./pages/CategoryProduct";
 import Authenticate from "./pages/Authenticate";
+import ProfilePage from "./pages/ProfilePage";
 
 function App() {
   // const user = useSelector((state) => state.auth.token);
@@ -57,6 +58,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
 
         <Route path="/policy" element={<Policy />} />
+        <Route path="profile" element={<ProfilePage />} />
         <Route path="/auth-page" element={<Authenticate />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />

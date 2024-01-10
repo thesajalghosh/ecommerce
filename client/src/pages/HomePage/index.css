@@ -1,14 +1,11 @@
 .card__buttons button {
   font-size: 0.6rem;
 }
+.all__product__container {
+  margin-bottom: 120px;
+}
 .card__buttons {
   gap: 5px;
-}
-.filter__by__category__container {
-  display: flex;
-  font-size: 1.2rem;
-  flex-direction: column;
-  margin-left: 30px;
 }
 .filter__every__input {
   display: flex;

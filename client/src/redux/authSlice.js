@@ -9,7 +9,7 @@ const initialState = {
   token: token || "",
   sideBar: false,
 };
-console.log(initialState);
+// console.log(initialState);
 
 export const authSlice = createSlice({
   name: "auth",
