@@ -1,13 +1,64 @@
 import React from "react";
 import "./index.css";
-import { useSelector } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../redux/authSlice";
+import Layout from "../../components/layout/Layout";
+import { MdOutlineKeyboardBackspace } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+import { IoPersonCircleOutline } from "react-icons/io5";
+import { FiLogOut } from "react-icons/fi";
 const ProfilePage = () => {
   const user = useSelector((state) => state.auth.user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   console.log(user);
 
-  return <div>Profile</div>;
+  const logoutHandeler = () => {
+    dispatch(logout());
+    navigate("/logout");
+  };
+
+  return (
+    <>
+      <Layout>
+        <div className="profile__whole__container">
+          <div className="profile__account__back__button">
+            <span>
+              <MdOutlineKeyboardBackspace
+                size={28}
+                onClick={() => navigate(-1)}
+              />
+            </span>
+            <span className="page__name__my__account">My Account</span>
+          </div>
+
+          <div className="profile__account__details__container">
+            <div className="profile__account__details__container__upperPart">
+              <div className="upper__part__icon">
+                <IoPersonCircleOutline size={80} />
+              </div>
+              <div className="upper__part__user__details">
+                <div className="upper__part__user__name">{user.name}</div>
+                <span>{user.email}</span>
+                <span>+91 {user.phone}</span>
+              </div>
+            </div>
+            <div className="profile__account__details__container__lowerPart">
+              <div className="lower__part__left">Address</div>
+              <div className="lower__part__right">{user.address}</div>
+            </div>
+          </div>
+          <div className="profile__logout__container" onClick={logoutHandeler}>
+            <span>
+              <FiLogOut size={25} />
+            </span>
+            <div> Logout</div>
+          </div>
+        </div>
+      </Layout>
+    </>
+  );
 };
 
 export default ProfilePage;

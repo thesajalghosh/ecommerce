@@ -1,0 +1,77 @@
+.profile__account__back__button {
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+  font-size: 1.4rem;
+  font-family: "Nunito Sans", sans-serif;
+  color: var(--srtong__font__color);
+  font-weight: 600;
+}
+.profile__account__details__container {
+  display: flex;
+  flex-direction: column;
+  border: 0.5px solid var(--very__light__border);
+  margin: 15px;
+  border-radius: 10px;
+}
+.profile__account__details__container__upperPart {
+  display: flex;
+  width: 100%;
+  padding: 10px 15px;
+  border-bottom: 0.5px dotted var(--very__light__border);
+}
+.upper__part__icon {
+  flex-basis: 25%;
+  text-align: center;
+}
+.upper__part__user__details {
+  padding: 5px 10px;
+  display: flex;
+  flex-direction: column;
+}
+.upper__part__user__details span {
+  color: var(--light__font__color);
+  font-size: 1rem;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 600;
+}
+.upper__part__user__name {
+  color: var(--srtong__font__color);
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.4rem;
+}
+.profile__account__details__container__lowerPart {
+  display: flex;
+  width: 100%;
+  padding: 10px 15px;
+  gap: 25px;
+}
+.lower__part__left {
+  flex-basis: 20%;
+  text-align: center;
+  background-color: #353434bf;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 600;
+  color: var(--srtong__font__color);
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+.lower__part__right {
+  font-family: "Nunito Sans", sans-serif;
+  color: var(--light__font__color);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.profile__logout__container {
+  display: flex;
+  padding: 10px 15px;
+  margin: 15px;
+  gap: 10px;
+  border: 0.5px solid var(--very__light__border);
+  border-radius: 10px;
+  color: red;
+  font-weight: 600;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.1rem;
+}

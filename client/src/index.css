@@ -4,7 +4,7 @@
 :root {
   --srtong__font__color: rgb(249, 247, 247);
   --light__font__color: rgb(159, 158, 158);
-  --very__light__border: rgb(130, 128, 128);
+  --very__light__border: rgb(63 62 62 / 79%);
   --background__color__tab: rgba(87, 86, 86, 0.717);
   --backdrop__color: rgba(0, 0, 0, 0.498);
 }
