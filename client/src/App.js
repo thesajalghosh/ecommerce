@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages/user/HomePage";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Policy from "./pages/Policy";
@@ -29,7 +29,7 @@ import ProductDetails from "./pages/ProductDetails";
 import Categories from "./pages/Categories";
 import CategoryProduct from "./pages/CategoryProduct";
 import Authenticate from "./pages/Authenticate";
-import ProfilePage from "./pages/ProfilePage";
+import ProfilePage from "./pages/user/ProfilePage";
 
 function App() {
   // const user = useSelector((state) => state.auth.token);
@@ -45,7 +45,8 @@ function App() {
         <Route path="/dashboard" element={<Private />}>
           <Route path="user" element={<Dashboard />} />
           <Route path="user/orders" element={<Order />} />
-          <Route path="user/profile" element={<Profile />} />
+          {/* <Route path="user/profile" element={<Profile />} /> */}
+          <Route path="user/profile" element={<ProfilePage />} />
         </Route>
         <Route path="/dashboard" element={<AdminRoute />}>
           <Route path="admin" element={<AdminDasboard />} />
@@ -58,7 +59,6 @@ function App() {
         <Route path="/contact" element={<Contact />} />
 
         <Route path="/policy" element={<Policy />} />
-        <Route path="profile" element={<ProfilePage />} />
         <Route path="/auth-page" element={<Authenticate />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />

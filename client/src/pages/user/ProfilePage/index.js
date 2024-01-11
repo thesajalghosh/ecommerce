@@ -1,8 +1,8 @@
 import React from "react";
 import "./index.css";
 import { useDispatch, useSelector } from "react-redux";
-import { logout } from "../../redux/authSlice";
-import Layout from "../../components/layout/Layout";
+import { logout } from "../../../redux/authSlice";
+import Layout from "../../../components/layout/Layout";
 import { MdOutlineKeyboardBackspace } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { IoPersonCircleOutline } from "react-icons/io5";

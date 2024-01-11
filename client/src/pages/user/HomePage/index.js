@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import Layout from "../../components/layout/Layout";
+import Layout from "../../../components/layout/Layout";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import axios from "axios";
 import "./index.css";
-import { Prices } from "../../components/Prices";
+import { Prices } from "../../../components/Prices";
 import { useNavigate } from "react-router-dom";
 import { BiSort } from "react-icons/bi";
 import { MdFilterAlt } from "react-icons/md";
-import Filter from "../../components/Filter";
+import Filter from "../../../components/Filter";
 const HomePage = () => {
   const user = useSelector((state) => state.auth.user);
   const [products, setProducts] = useState([]);

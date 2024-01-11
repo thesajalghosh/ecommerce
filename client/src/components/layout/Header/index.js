@@ -10,6 +10,7 @@ import { IoMenu } from "react-icons/io5";
 import { IoIosSearch } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import { IoBagCheckOutline } from "react-icons/io5";
+import { IoArrowBack } from "react-icons/io5";
 import "./index.css";
 
 const Header = () => {
@@ -38,7 +39,7 @@ const Header = () => {
 
   const profilehandeler = () => {
     if (token) {
-      navigate("/profile");
+      navigate("/dashboard/user/profile");
     } else {
       navigate("/auth-page");
     }
@@ -47,15 +48,32 @@ const Header = () => {
   const handelSideBar = () => {
     dispatch(setSideBar(true));
   };
+
+  const handelBackbutton = () => {
+    navigate(-1);
+  };
+
   return (
     <>
       <div className="whole__navbar">
-        <div className="navbar__left__part">
-          <div className="navbar__left__menu">
-            <IoMenu size={25} onClick={handelSideBar} />
-          </div>
-          <div className="navbar__left__company__name">Acom</div>
-        </div>
+        {window.location.pathname === "/" ? (
+          <>
+            {" "}
+            <div className="navbar__left__part">
+              <div className="navbar__left__menu">
+                <IoMenu size={25} onClick={handelSideBar} />
+              </div>
+              <div className="navbar__left__company__name">Acom</div>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="back__button__container">
+              <IoArrowBack onClick={handelBackbutton} size={25} />
+            </div>
+          </>
+        )}
+
         <div className="navbar__right__part">
           <div className="navbar__left__search">
             <IoIosSearch size={25} />
