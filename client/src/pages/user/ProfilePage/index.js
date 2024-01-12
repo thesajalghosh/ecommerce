@@ -16,7 +16,9 @@ const ProfilePage = () => {
 
   const logoutHandeler = () => {
     dispatch(logout());
-    navigate("/logout");
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    navigate("/auth-page");
   };
 
   return (
