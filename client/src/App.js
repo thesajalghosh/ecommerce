@@ -30,6 +30,7 @@ import Categories from "./pages/Categories";
 import CategoryProduct from "./pages/CategoryProduct";
 import Authenticate from "./pages/Authenticate";
 import ProfilePage from "./pages/user/ProfilePage";
+import Cart from "./pages/user/Cart";
 
 function App() {
   // const user = useSelector((state) => state.auth.token);
@@ -60,6 +61,7 @@ function App() {
 
         <Route path="/policy" element={<Policy />} />
         <Route path="/auth-page" element={<Authenticate />} />
+        <Route path="cart" element={<Cart />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/login" element={<Login />} />

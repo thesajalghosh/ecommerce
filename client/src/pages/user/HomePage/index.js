@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../../../components/layout/Layout";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import axios from "axios";
 import "./index.css";
@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { BiSort } from "react-icons/bi";
 import { MdFilterAlt } from "react-icons/md";
 import Filter from "../../../components/Filter";
+import { setStoreCart } from "../../../redux/cartSlice";
 const HomePage = () => {
   const user = useSelector((state) => state.auth.user);
   const [products, setProducts] = useState([]);
@@ -20,6 +21,8 @@ const HomePage = () => {
   const [loading, setLoading] = useState(false);
   const [sortPage, setSortPage] = useState(false);
   const [filterPage, setFilterPage] = useState(false);
+  const [cart, setCart] = useState([]);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   //getTotal Count
@@ -148,6 +151,13 @@ const HomePage = () => {
   const handlePopularityHighLow = () => {
     setSortPage(false);
   };
+  const AddToCartHandeler = (e) => {
+    setCart([...cart, e]);
+  };
+
+  useEffect(() => {
+    dispatch(setStoreCart(cart));
+  }, [cart]);
 
   return (
     <Layout title={"All Products - Best Offers"}>
@@ -187,7 +197,12 @@ const HomePage = () => {
                         >
                           More Details
                         </button>
-                        <button className="btn btn-primary">Add to cart</button>
+                        <button
+                          className="btn btn-primary"
+                          onClick={() => AddToCartHandeler(e)}
+                        >
+                          Add to cart
+                        </button>
                       </div>
                     </div>
                   </div>

@@ -1,0 +1,99 @@
+.cart__with__no__element {
+  color: var(--srtong__font__color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 93vh;
+  gap: 20px;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.3rem;
+}
+.cart__with__no__element button {
+  background-color: var(--button__color);
+  border: none;
+  outline: none;
+  padding: 5px 10px;
+  border-radius: 7px;
+}
+.cart__with__no__element button:focus {
+  outline: none;
+  border: none;
+}
+
+.user__not__login {
+  color: var(--light__font__color);
+  font-family: "Nunito Sans", sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 10px;
+  padding: 15px 10px;
+  font-size: 1rem;
+  background-color: var(--background__color__tab);
+  border-radius: 10px;
+}
+.user__not__login div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.user__not__login div button {
+  padding: 3px 10px;
+  background-color: var(--button__color);
+  font-family: "Nunito Sans", sans-serif;
+  border: none;
+  outline: none;
+}
+
+.user__not__login div button :focus {
+  border: none;
+  outline: none;
+}
+
+.user__header__name {
+  font-size: 1.5rem;
+  padding: 20px;
+  color: var(--srtong__font__color);
+}
+
+.cart__container__whole__container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  margin: 15px;
+}
+.cart__element__left__part {
+  flex-basis: 20%;
+}
+.cart__element__left__part img {
+  height: 80px;
+  width: 80px;
+  border-radius: 10px;
+}
+
+.cart__element__container {
+  display: flex;
+  border: 0.5px solid var(--very__light__border);
+  padding: 10px;
+  border-radius: 10px;
+  gap: 20px;
+}
+
+.cart__element__right__part {
+  display: flex;
+  flex-direction: column;
+}
+.product__price {
+  color: var(--srtong__font__color);
+  font-size: 1.1rem;
+}
+
+.product__name__remove {
+  display: flex;
+  justify-content: space-between;
+  width: 25vh;
+  color: var(--srtong__font__color);
+}
