@@ -97,3 +97,7 @@
   width: 25vh;
   color: var(--srtong__font__color);
 }
+
+.price__part__element {
+  color: var(--srtong__font__color);
+}

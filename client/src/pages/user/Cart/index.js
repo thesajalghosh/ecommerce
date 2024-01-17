@@ -1,26 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./index.css";
 import Layout from "../../../components/layout/Layout.js";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { MdOutlineDelete } from "react-icons/md";
 import { FaIndianRupeeSign } from "react-icons/fa6";
-import { setStoreCart } from "../../../redux/cartSlice.js";
+import { setRemoveCart, setStoreCart } from "../../../redux/cartSlice.js";
 
 const Cart = () => {
   const cartData = useSelector((state) => state.cart.storeCart);
   const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [price, setPrice] = useState(0);
 
-  console.log(cartData);
+  // console.log(cartData);
 
   const handelProductRemove = (id) => {
+    const removePrduct = cartData.filter(function (data) {
+      return data._id === id;
+    });
+    setPrice(price - removePrduct[0].price);
+    console.log(removePrduct[0]);
     const updatedProducts = cartData.filter(function (data) {
       return data._id !== id;
     });
-    dispatch(setStoreCart(updatedProducts));
+    console.log("updatedProducts", updatedProducts);
+    dispatch(setRemoveCart(updatedProducts));
   };
+
+  useEffect(() => {
+    let temp = 0;
+    for (var i = 0; i < cartData.length; i++) {
+      console.log(cartData[i]);
+      temp = temp + cartData[i].price;
+      setPrice(temp);
+    }
+  }, []);
+
+  console.log(price);
+
   return (
     <>
       <Layout>
@@ -56,37 +75,48 @@ const Cart = () => {
                       <div className="user__header__name">
                         Hi, {user.name.split(" ")[0]}
                       </div>
-                      <div className="cart__container__whole__container">
-                        {cartData.map((e) => (
-                          <>
-                            <div className="cart__element__container">
-                              <div className="cart__element__left__part">
-                                <img
-                                  src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${e._id}`}
-                                />
-                              </div>
-                              <div className="cart__element__right__part">
-                                <div className="product__name__remove">
-                                  <span>{e.name}</span>
-                                  <span>
-                                    <MdOutlineDelete
-                                      size={25}
-                                      onClick={() => handelProductRemove(e._id)}
-                                    />
-                                  </span>
-                                </div>
-                                <div className="product__price">
-                                  <FaIndianRupeeSign />
-                                  {e.price}
-                                </div>
-                              </div>
-                            </div>
-                          </>
-                        ))}
-                      </div>
                     </div>
                   </>
                 )}
+                <div className="cart__container__whole__container">
+                  {cartData.map((e) => (
+                    <>
+                      <div className="cart__element__container">
+                        <div className="cart__element__left__part">
+                          <img
+                            src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${e._id}`}
+                          />
+                        </div>
+                        <div className="cart__element__right__part">
+                          <div className="product__name__remove">
+                            <span>{e.name}</span>
+                            <span>
+                              <MdOutlineDelete
+                                size={25}
+                                onClick={() => handelProductRemove(e._id)}
+                              />
+                            </span>
+                          </div>
+                          <div className="product__price">
+                            <FaIndianRupeeSign />
+                            {e.price}
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  ))}
+                </div>
+                <div className="cart__page__price__details">
+                  <div className="price__details__heading">
+                    PRICE DETAILS ({cartData.length})
+                  </div>
+                  <div className="price__details__price__part">
+                    <div className="price__part__element">
+                      <span>Total MRP</span>
+                      <span>{price}</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </>
           )}

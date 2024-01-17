@@ -21,7 +21,7 @@ const Footer = () => {
         </div>
         <div className="footer__page__tab" onClick={() => navigate("/cart")}>
           <IoBagCheckOutline size={25} />
-          {cartProduct?.length}
+          {cartProduct.length}
         </div>
       </div>
     </div>

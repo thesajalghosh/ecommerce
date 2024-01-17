@@ -145,19 +145,20 @@ const HomePage = () => {
       setLoading(false);
     }
   };
+
   const handlepriceHighLow = () => {
     setSortPage(false);
   };
+
   const handlePopularityHighLow = () => {
     setSortPage(false);
   };
-  const AddToCartHandeler = (e) => {
-    setCart([...cart, e]);
-  };
 
-  useEffect(() => {
-    dispatch(setStoreCart(cart));
-  }, [cart]);
+  const AddToCartHandeler = (cartProduct) => {
+    let cartVal = [...cart, cartProduct];
+    setCart(cartVal);
+    dispatch(setStoreCart(cartProduct));
+  };
 
   return (
     <Layout title={"All Products - Best Offers"}>
