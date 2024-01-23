@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { MdOutlineDelete } from "react-icons/md";
 import { FaIndianRupeeSign } from "react-icons/fa6";
+import { FaRupeeSign } from "react-icons/fa";
 import { setRemoveCart, setStoreCart } from "../../../redux/cartSlice.js";
 
 const Cart = () => {
@@ -113,9 +114,26 @@ const Cart = () => {
                   <div className="price__details__price__part">
                     <div className="price__part__element">
                       <span>Total MRP</span>
-                      <span>{price}</span>
+                      <span>
+                        <FaRupeeSign size={16} />
+                        {price}
+                      </span>
+                    </div>
+                    <div className="price__part__element">
+                      <span>Platform Fee</span>
+                      <span>
+                        <FaRupeeSign size={16} />
+                        20
+                      </span>
+                    </div>
+                    <div className="price__part__element">
+                      <span>Shipping Fee</span>
+                      <span>FREE</span>
                     </div>
                   </div>
+                </div>
+                <div className="Place__order__button__container">
+                  <button>Place Order</button>
                 </div>
               </div>
             </>

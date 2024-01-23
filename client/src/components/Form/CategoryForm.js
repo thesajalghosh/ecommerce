@@ -1,6 +1,6 @@
 import React from "react";
 
-const CategoryForm = ({ handleSubmit, setValue, value }) => {
+const CategoryForm = ({ handleSubmit, setValue, value, setPhoto, photo }) => {
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -12,6 +12,18 @@ const CategoryForm = ({ handleSubmit, setValue, value }) => {
             value={value}
             onChange={(e) => setValue(e.target.value)}
           />
+        </div>
+        <div className="mb-3">
+          <label>
+            {photo ? photo.name : "Upload Photo"}
+
+            <input
+              type="file"
+              name="photo"
+              accept="image/*"
+              onChange={(e) => setPhoto(e.target.files[0])}
+            />
+          </label>
         </div>
 
         <button type="submit" className="btn btn-primary">

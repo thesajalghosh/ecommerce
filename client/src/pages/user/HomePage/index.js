@@ -10,6 +10,7 @@ import { BiSort } from "react-icons/bi";
 import { MdFilterAlt } from "react-icons/md";
 import Filter from "../../../components/Filter";
 import { setStoreCart } from "../../../redux/cartSlice";
+import ProductCart from "../../../components/ProductCard";
 const HomePage = () => {
   const user = useSelector((state) => state.auth.user);
   const [products, setProducts] = useState([]);
@@ -160,9 +161,40 @@ const HomePage = () => {
     dispatch(setStoreCart(cartProduct));
   };
 
+  function arrayBufferToBase64(buffer) {
+    let binary = "";
+    const bytes = new Uint8Array(buffer);
+    for (let i = 0; i < bytes.length; i++) {
+      binary += String.fromCharCode(bytes[i]);
+    }
+    return btoa(binary);
+  }
+
+  console.log(categoryies);
+
   return (
     <Layout title={"All Products - Best Offers"}>
       <div className="row home__page__whole__container">
+        <div className="explore__best__seller__component">
+          <div className="best__seller__header">Best Seller</div>
+          <div className="best__seller__category">
+            {categoryies.map((ele) => (
+              <div className="category-container" key={ele._id}>
+                <div className="best__seller__comp">
+                  <div className="best__seller__image">
+                    <img
+                      src={`data:${
+                        ele.photo.contentType
+                      };base64,${arrayBufferToBase64(ele.photo.data)}`}
+                      alt={ele._id}
+                    />
+                  </div>
+                </div>
+                <div>{ele.name}</div>
+              </div>
+            ))}
+          </div>
+        </div>
         <div className="all__product__container">
           <h1 className="text-center">All Product</h1>
           <div className="d-flex flex-wrap"></div>
@@ -171,43 +203,10 @@ const HomePage = () => {
           <div className="all__products__admin__panal">
             {products?.map((e) => (
               <>
-                <div
-                  className="product__card"
-                  // onClick={() => navigate(`/product/${e._id}`)}
-                >
-                  <div className="product__card__image">
-                    <img
-                      src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${e._id}`}
-                      alt={e.slug}
-                    />
-                  </div>
-                  <div className="lower__part__product__card">
-                    <div className="lower__part__name">{e.name}</div>
-                    <div className="lower__part__name">{e.description}</div>
-                    <div className="lower__part__price__quantity">
-                      <div className="lower__part__price">
-                        Price : $ {e.price}
-                      </div>
-                      <div className="lower__part__price">
-                        In stock : {e.quantity}
-                      </div>
-                      <div className="d-flex card__buttons">
-                        <button
-                          className="btn btn-primary"
-                          onClick={() => navigate(`/product/${e._id}`)}
-                        >
-                          More Details
-                        </button>
-                        <button
-                          className="btn btn-primary"
-                          onClick={() => AddToCartHandeler(e)}
-                        >
-                          Add to cart
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <ProductCart
+                  element={e}
+                  AddToCartHandeler={AddToCartHandeler}
+                />
               </>
             ))}
           </div>

@@ -10,6 +10,10 @@ const categorySchema = new mongoose.Schema({
     type: String,
     lowercase: true,
   },
+  photo: {
+    data: Buffer,
+    contentType: String,
+  },
 });
 
 module.exports = mongoose.model("category", categorySchema);

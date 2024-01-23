@@ -7,6 +7,7 @@ import { MdOutlineKeyboardBackspace } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { IoPersonCircleOutline } from "react-icons/io5";
 import { FiLogOut } from "react-icons/fi";
+import { MdUpdate } from "react-icons/md";
 const ProfilePage = () => {
   const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
@@ -19,6 +20,9 @@ const ProfilePage = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     navigate("/auth-page");
+  };
+  const AdminHandeler = () => {
+    navigate("/dashboard/admin");
   };
 
   return (
@@ -51,12 +55,26 @@ const ProfilePage = () => {
               <div className="lower__part__right">{user.address}</div>
             </div>
           </div>
+          <div className="profile__update__container" onClick={logoutHandeler}>
+            <span>
+              <MdUpdate size={25} />
+            </span>
+            <div> Update Profile</div>
+          </div>
           <div className="profile__logout__container" onClick={logoutHandeler}>
             <span>
               <FiLogOut size={25} />
             </span>
             <div> Logout</div>
           </div>
+          {user.role === 1 && (
+            <div className="profile__logout__container" onClick={AdminHandeler}>
+              <span>
+                <FiLogOut size={25} />
+              </span>
+              <div> Go TO Admin Dashboard</div>
+            </div>
+          )}
         </div>
       </Layout>
     </>

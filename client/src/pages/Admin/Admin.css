@@ -4,3 +4,7 @@
   justify-content: space-around;
   align-items: center;
 }
+.create__product__container__whole {
+  margin-bottom: 100px;
+  padding: 10px 20px;
+}

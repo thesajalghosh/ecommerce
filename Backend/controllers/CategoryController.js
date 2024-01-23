@@ -1,13 +1,19 @@
 const categoryModel = require("../models/categoryModel");
 const slagify = require("slugify");
+const fs = require("fs");
 
 const createCategoryController = async (req, res) => {
   try {
-    const { name } = req.body;
+    const { name } = req.fields;
+    const { photo } = req.files;
 
     if (!name) {
       return res.status(401).send({ message: "name is requires" });
     }
+    if (!photo) {
+      return res.status(401).send({ message: "photo is required" });
+    }
+
     const existingCategory = await categoryModel.findOne({ name });
     if (existingCategory) {
       return res.status(200).send({
@@ -18,8 +24,15 @@ const createCategoryController = async (req, res) => {
 
     const category = await new categoryModel({
       name,
+
       slug: slagify(name),
-    }).save();
+    });
+    if (photo) {
+      category.photo.data = fs.readFileSync(photo.path);
+      category.photo.contentType = photo.type;
+    }
+    await category.save();
+
     res.status(201).send({
       success: true,
       message: "category is created",

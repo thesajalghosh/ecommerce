@@ -16,7 +16,7 @@ const CreateCategory = () => {
   const [updatedName, setUpdatedName] = useState("");
   const [selected, setSeleted] = useState(null);
   const [deleteModal, setDeleteModal] = useState(false);
-  // console.log(token);
+  const [photo, setPhoto] = useState("");
 
   //get all category
   const getAllCategory = async () => {
@@ -38,11 +38,14 @@ const CreateCategory = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const productData = new FormData();
+
+      productData.append("name", name);
+      productData.append("photo", photo);
+
       const { data } = await axios.post(
         `${process.env.REACT_APP_API}/api/v1/category/create-category`,
-        {
-          name,
-        },
+        productData,
         {
           headers: {
             authorization: token,
@@ -129,6 +132,7 @@ const CreateCategory = () => {
       toast.error("something went wrong");
     }
   };
+  console.log(categories);
 
   return (
     <>
@@ -142,6 +146,8 @@ const CreateCategory = () => {
                 value={updatedName}
                 setValue={setUpdatedName}
                 handleSubmit={handleUpdate}
+                setPhoto={setPhoto}
+                photo={photo}
               />
             </>
           }
@@ -186,11 +192,13 @@ const CreateCategory = () => {
                 name={name}
                 setValue={setName}
                 handleSubmit={handleSubmit}
+                setPhoto={setPhoto}
+                photo={photo}
               />
             </div>
             <h2>Manage Category</h2>
             <div>
-              <table className="table">
+              <table className="table mb-4">
                 <thead>
                   <tr>
                     <th scope="col">Name</th>

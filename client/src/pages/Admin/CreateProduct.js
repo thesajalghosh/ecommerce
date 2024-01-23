@@ -84,7 +84,7 @@ const CreateProduct = () => {
           <div className="col-md-9">
             {" "}
             <h1>Create product</h1>
-            <div className="m-1">
+            <div className="create__product__container__whole">
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}

@@ -1,3 +1,10 @@
+.cart__page__whole__container {
+  overflow-y: scroll;
+}
+.cart__with__element {
+  overflow-y: scroll;
+  height: 100vh;
+}
 .cart__with__no__element {
   color: var(--srtong__font__color);
   display: flex;
@@ -100,4 +107,43 @@
 
 .price__part__element {
   color: var(--srtong__font__color);
+}
+.price__details__price__part {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.cart__page__price__details {
+  border-top: 10px solid var(--very__light__border);
+}
+.price__details__heading {
+  padding: 5px 10px;
+  color: var(--light__font__color);
+}
+.price__part__element {
+  display: flex;
+  justify-content: space-between;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.1rem;
+  align-items: center;
+}
+.Place__order__button__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 30px;
+}
+.Place__order__button__container button {
+  padding: 10px 50px;
+  width: 90vw;
+  background-color: var(--button__color);
+  border: none;
+  color: var(--srtong__font__color);
+  border-radius: 7px;
+  font-size: 1.1rem;
+}
+.Place__order__button__container button:focus {
+  outline: none;
 }
