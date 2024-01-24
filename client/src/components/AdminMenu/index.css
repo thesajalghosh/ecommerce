@@ -1,0 +1,20 @@
+.admin__panel__heading {
+  font-size: 1.4rem;
+  text-align: center;
+  color: var(--srtong__font__color);
+  font-family: "Nunito Sans", sans-serif;
+  padding: 10px;
+}
+.admin__panel__all__button {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.button__link {
+  background-color: var(--background__color__tab);
+  padding: 10px;
+  text-align: center;
+  color: var(--srtong__font__color);
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.3rem;
+}

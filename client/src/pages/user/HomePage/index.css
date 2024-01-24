@@ -81,3 +81,33 @@
   color: var(--srtong__font__color);
   font-family: "Nunito Sans", sans-serif;
 }
+.best__seller__header {
+  font-size: 1.4rem;
+  padding: 5px 10px;
+  font-family: "Nunito Sans", sans-serif;
+  color: var(--less__strong__font__color);
+}
+.best__seller__header span {
+  color: var(--srtong__font__color);
+}
+
+.best__seller__image img {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+}
+.best__seller__category {
+  display: flex;
+  gap: 25px;
+  padding: 10px 20px;
+  color: var(--srtong__font__color);
+  font-family: "Nunito Sans", sans-serif;
+  overflow-y: hidden;
+}
+.best__seller__comp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}

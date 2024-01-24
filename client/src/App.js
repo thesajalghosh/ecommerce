@@ -16,7 +16,6 @@ import Private from "./components/Routes/Private";
 
 import ForgotPassword from "./pages/Auth/ForgetPassword";
 import AdminRoute from "./components/Routes/AdminRoutes";
-import AdminDasboard from "./pages/Admin/AdminDasboard";
 import CreateCategory from "./pages/Admin/CreateCategory";
 import CreateProduct from "./pages/Admin/CreateProduct";
 import Users from "./pages/Admin/Users";
@@ -31,6 +30,7 @@ import CategoryProduct from "./pages/CategoryProduct";
 import Authenticate from "./pages/Authenticate";
 import ProfilePage from "./pages/user/ProfilePage";
 import Cart from "./pages/user/Cart";
+import AdminDashboard from "./pages/Admin/AdminDashboard";
 
 function App() {
   // const user = useSelector((state) => state.auth.token);
@@ -53,7 +53,7 @@ function App() {
         // This route is only available in Admin Route anyone is login as a
         admin
         <Route path="/dashboard" element={<AdminRoute />}>
-          <Route path="admin" element={<AdminDasboard />} />
+          <Route path="admin" element={<AdminDashboard />} />
           <Route path="admin/create-category" element={<CreateCategory />} />
           <Route path="admin/create-product" element={<CreateProduct />} />
           <Route path="admin/product/:pid" element={<UpdateProduct />} />

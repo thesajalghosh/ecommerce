@@ -48,6 +48,25 @@ const createCategoryController = async (req, res) => {
   }
 };
 
+const getCategoryPhotoController = async (req, res) => {
+  try {
+    const category = await categoryModel
+      .findById(req.params.cid)
+      .select("photo");
+    if (category.photo.data) {
+      res.set("content-type", category.photo.contentType);
+      return res.status(200).send(category.photo.data);
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "error in get category photo controller",
+      error,
+    });
+  }
+};
+
 const updateCategoryController = async (req, res) => {
   try {
     const { name } = req.body;
@@ -137,4 +156,5 @@ module.exports = {
   categoryController,
   singleCategoryController,
   categoryDeleteController,
+  getCategoryPhotoController,
 };

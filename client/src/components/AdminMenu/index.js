@@ -1,30 +1,31 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import "./index.css";
 const AdminMenu = () => {
   return (
     <>
-      <div className="sidebar__admin__panal">
-        <ul className="list-group">
-          <h4>Admin Panel</h4>
+      <div className="admin__panal__whole__container">
+        <div className="admin__panel__heading">Admin Panel</div>
+        <div className="admin__panel__all__button">
           <NavLink
             to="/dashboard/admin/create-category"
-            className="list-group-item"
+            className="button__link"
           >
             Create Category
           </NavLink>
           <NavLink
             to="/dashboard/admin/create-product"
-            className="list-group-item"
+            className="button__link"
           >
             Create Product
           </NavLink>
-          <NavLink to="/dashboard/admin/product" className="list-group-item">
+          <NavLink to="/dashboard/admin/product" className="button__link">
             Products
           </NavLink>
-          <NavLink to="/dashboard/admin/users" className="list-group-item">
+          <NavLink to="/dashboard/admin/users" className="button__link">
             Users
           </NavLink>
-        </ul>
+        </div>
       </div>
     </>
   );

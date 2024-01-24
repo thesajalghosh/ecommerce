@@ -6,6 +6,7 @@ const {
   categoryController,
   singleCategoryController,
   categoryDeleteController,
+  getCategoryPhotoController,
 } = require("../controllers/CategoryController");
 const formidable = require("express-formidable");
 
@@ -29,6 +30,9 @@ router.put(
   isAdmin,
   updateCategoryController
 );
+
+//get category photo
+router.get("/get-category-photo/:cid", getCategoryPhotoController);
 
 //get all category
 router.get("/get-all-category", categoryController);

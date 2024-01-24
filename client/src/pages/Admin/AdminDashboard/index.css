@@ -1,0 +1,16 @@
+.admin__dashboard__container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin__menu__container {
+  width: 94vw;
+}
+
+@media screen and (min-width: 601px) and (max-width: 1900px) {
+  .admin__menu__container {
+    width: 40vw;
+  }
+}

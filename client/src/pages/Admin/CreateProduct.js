@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../../components/layout/Layout";
-import AdminMenu from "../../components/layout/AdminMenu";
+import AdminMenu from "../../components/AdminMenu";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
@@ -78,9 +78,6 @@ const CreateProduct = () => {
     <>
       <Layout title={"Dashboard - Create Product"}>
         <div className="row">
-          <div className="col-md-3">
-            <AdminMenu />
-          </div>
           <div className="col-md-9">
             {" "}
             <h1>Create product</h1>

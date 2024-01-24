@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../../components/layout/Layout";
-import AdminMenu from "../../components/layout/AdminMenu";
+import AdminMenu from "../../components/AdminMenu";
 import { toast } from "react-toastify";
 import axios from "axios";
 import CategoryForm from "../../components/Form/CategoryForm";
@@ -182,9 +182,6 @@ const CreateCategory = () => {
 
       <Layout title={"Dashboard - Create Category"}>
         <div className="row">
-          <div className="col-md-3">
-            <AdminMenu />
-          </div>
           <div className="col-md-9">
             {" "}
             <div className="p-3">
