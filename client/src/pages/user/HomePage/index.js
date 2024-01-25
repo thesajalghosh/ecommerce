@@ -11,6 +11,9 @@ import { MdFilterAlt } from "react-icons/md";
 import Filter from "../../../components/Filter";
 import { setStoreCart } from "../../../redux/cartSlice";
 import ProductCart from "../../../components/ProductCard";
+import OfferComp from "../../../components/OfferComp";
+import BestSeller from "../../../components/BestSeller";
+
 const HomePage = () => {
   const user = useSelector((state) => state.auth.user);
   const [products, setProducts] = useState([]);
@@ -176,25 +179,10 @@ const HomePage = () => {
     <Layout title={"All Products - Best Offers"}>
       <div className="home__page__whole__container">
         <div className="explore__best__seller__component">
-          <div className="best__seller__header">
-            {" "}
-            Explore <span>BestSeller</span>
-          </div>
-          <div className="best__seller__category">
-            {categoryies.map((ele) => (
-              <div className="category-container" key={ele._id}>
-                <div className="best__seller__comp">
-                  <div className="best__seller__image">
-                    <img
-                      src={`${process.env.REACT_APP_API}/api/v1/category/get-category-photo/${ele._id}`}
-                      alt={ele._id}
-                    />
-                  </div>
-                  <div className="best__seller__name">{ele.name}</div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <BestSeller categoryies={categoryies} />
+        </div>
+        <div className="today__offer__whole__container">
+          <OfferComp />
         </div>
         <div className="all__product__container">
           <h1 className="text-center">All Product</h1>

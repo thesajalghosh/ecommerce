@@ -1,0 +1,54 @@
+.today__offer__header__part {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  font-family: "Nunito Sans", sans-serif;
+}
+.today__offer__left__part {
+  color: var(--less__strong__font__color);
+  font-size: 1.4rem;
+}
+.today__offer__left__part span {
+  color: var(--srtong__font__color);
+}
+.today__offer__right__part {
+  color: var(--button__color);
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.1rem;
+}
+.count__down__time__comp {
+  background-color: var(--very__light__background__color);
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin: 10px;
+}
+.count__down__time__comp__left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.count__down__time__comp__left div {
+  color: var(--srtong__font__color);
+  font-size: 1.3rem;
+  font-family: "Nunito Sans", sans-serif;
+}
+.count__down__time__comp__left span {
+  background-color: rgb(254, 66, 66);
+  padding: 3px 10px;
+  border-radius: 10px;
+  color: var(--srtong__font__color);
+}
+.count__down__time__comp__right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0px 20px;
+  gap: 10px;
+  align-items: center;
+  color: var(--less__strong__font__color);
+}
+.count__down__time__comp__right p {
+  font-size: 1.5rem;
+  color: var(--srtong__font__color);
+}
