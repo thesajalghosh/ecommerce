@@ -31,6 +31,8 @@ import Authenticate from "./pages/Authenticate";
 import ProfilePage from "./pages/user/ProfilePage";
 import Cart from "./pages/user/Cart";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
+import OfferProductCreate from "./pages/Admin/OfferProductCreate";
+import OfferedProduct from "./pages/Admin/OfferedProduct";
 
 function App() {
   // const user = useSelector((state) => state.auth.token);
@@ -59,6 +61,8 @@ function App() {
           <Route path="admin/product/:pid" element={<UpdateProduct />} />
           <Route path="admin/product" element={<Products />} />
           <Route path="admin/users" element={<Users />} />
+          <Route path="admin/offer-create" element={<OfferProductCreate />} />
+          <Route path="admin/offered-product" element={<OfferedProduct />} />
         </Route>
         <Route path="/contact" element={<Contact />} />
         <Route path="/policy" element={<Policy />} />

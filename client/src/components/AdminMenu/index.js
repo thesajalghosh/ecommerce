@@ -25,6 +25,15 @@ const AdminMenu = () => {
           <NavLink to="/dashboard/admin/users" className="button__link">
             Users
           </NavLink>
+          <NavLink to="/dashboard/admin/offer-create" className="button__link">
+            Offfer Create
+          </NavLink>
+          <NavLink
+            to="/dashboard/admin/offered-product"
+            className="button__link"
+          >
+            Offfered Product
+          </NavLink>
         </div>
       </div>
     </>
