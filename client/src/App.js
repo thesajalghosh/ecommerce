@@ -33,6 +33,7 @@ import Cart from "./pages/user/Cart";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import OfferProductCreate from "./pages/Admin/OfferProductCreate";
 import OfferedProduct from "./pages/Admin/OfferedProduct";
+import OfferPage from "./pages/user/OfferPage";
 
 function App() {
   // const user = useSelector((state) => state.auth.token);
@@ -72,6 +73,7 @@ function App() {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/login" element={<Login />} />
         <Route path="/search" element={<SearchPage />} />
+        <Route path="/offer-page" element={<OfferPage />} />
         <Route path="*" element={<PageNotFount />} />
       </Routes>
     </>

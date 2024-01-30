@@ -1,0 +1,78 @@
+.offered__product__header {
+  width: 100%;
+  text-align: center;
+  font-size: 1.3rem;
+  color: var(--less__strong__font__color);
+  padding: 20px 0px;
+  font-family: "Nunito Sans", sans-serif;
+}
+.offered__product__element {
+  display: flex;
+  margin: 15px;
+  gap: 20px;
+  border: 1px solid var(--very__light__border);
+  padding: 10px;
+  border-radius: 10px;
+}
+.element__right__part {
+  width: 100%;
+}
+.right__product__name {
+  font-size: 1.3rem;
+  font-family: "Nunito Sans", sans-serif;
+  color: var(--srtong__font__color);
+}
+.right__product__price {
+  display: flex;
+  flex-direction: column;
+}
+.discount__price {
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  color: var(--srtong__font__color);
+  font-family: "Nunito Sans", sans-serif;
+}
+.element__left__part img {
+  height: 120px;
+  width: 120px;
+  border-radius: 5px;
+}
+.original__price {
+  display: flex;
+  font-size: 1.1rem;
+  color: var(--less__strong__font__color);
+  gap: 20px;
+}
+.original__price__left {
+  display: flex;
+  align-items: center;
+  text-decoration: line-through;
+  font-family: "Nunito Sans", sans-serif;
+}
+.discounted__percentage {
+  color: green;
+  font-family: "Nunito Sans", sans-serif;
+}
+.edit__delete__button {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 5px;
+}
+.edit__button {
+  padding: 2px 20px;
+  border: none;
+  background-color: var(--button__color);
+  font-family: "Nunito Sans", sans-serif;
+  color: white;
+  border-radius: 4px;
+}
+.delete__button {
+  padding: 2px 20px;
+  border: none;
+  background-color: var(--delete__button);
+  font-family: "Nunito Sans", sans-serif;
+  color: white;
+  border-radius: 4px;
+}

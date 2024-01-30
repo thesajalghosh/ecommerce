@@ -1,0 +1,32 @@
+.offer__page__header {
+  display: flex;
+  flex-direction: column;
+}
+.daily__deal__offer {
+  font-size: 1.3rem;
+  font-family: "Nunito Sans", sans-serif;
+  padding: 10px;
+  color: var(--srtong__font__color);
+}
+.countdown__timer {
+  display: flex;
+  width: 75vw;
+  justify-content: space-between;
+  margin: 0px 10px;
+  border: 1px solid var(--very__light__border);
+  align-items: center;
+  padding: 8px 15px;
+  border-radius: 8px;
+  color: var(--srtong__font__color);
+  font-family: "Nunito Sans", sans-serif;
+}
+.countdown__timer span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.countdown__timer p {
+  margin-bottom: 0px;
+  font-family: "Nunito Sans", sans-serif;
+}
