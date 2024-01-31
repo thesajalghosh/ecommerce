@@ -8,7 +8,7 @@ const {
   categoryDeleteController,
   getCategoryPhotoController,
 } = require("../controllers/CategoryController");
-const formidable = require("express-formidable");
+//
 
 const router = express.Router();
 
@@ -19,7 +19,6 @@ router.post(
   "/create-category",
   requireSignIn,
   isAdmin,
-  formidable(),
   createCategoryController
 );
 
