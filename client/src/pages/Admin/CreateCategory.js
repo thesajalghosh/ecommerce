@@ -38,14 +38,14 @@ const CreateCategory = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const productData = new FormData();
+      const categoryData = new FormData();
 
-      productData.append("name", name);
-      productData.append("photo", photo);
+      categoryData.append("name", name);
+      categoryData.append("photo", photo);
 
       const { data } = await axios.post(
         `${process.env.REACT_APP_API}/api/v1/category/create-category`,
-        productData,
+        categoryData,
         {
           headers: {
             authorization: token,
