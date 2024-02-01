@@ -9,7 +9,6 @@ const offerRoute = require("./routes/offerRoute");
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
 const cloudinary = require("cloudinary");
-const fileUpload = require("express-fileupload");
 
 const cors = require("cors");
 
@@ -31,7 +30,6 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
-app.use(fileUpload());
 
 //routes
 app.use("/api/v1/auth", router);

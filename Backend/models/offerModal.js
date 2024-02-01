@@ -1,28 +1,17 @@
 const mongoose = require("mongoose");
 
 const OfferSchema = new mongoose.Schema({
-  name: {
-    type: String,
+  productId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Product",
     required: true,
   },
-  des: {
-    type: String,
+  offer: {
+    type: Array,
     required: true,
   },
-  price: {
-    type: Number,
-    required: true,
-  },
-  quantity: {
-    type: Number,
-    required: true,
-  },
-  url: {
-    type: String,
-    required: true,
-  },
-  disp: {
-    type: Number,
+  extime: {
+    type: Date,
     required: true,
   },
 });

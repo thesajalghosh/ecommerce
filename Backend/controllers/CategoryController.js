@@ -5,13 +5,21 @@ const { uploadingImage } = require("../helpers/uploadingImage");
 const createCategoryController = async (req, res) => {
   try {
     const { name } = req.body;
-    const photo = req.files;
+    const photo = req.file;
     console.log(name);
     console.log(photo);
 
-    const uploadedFile = req.files.file;
+    const result = await uploadingImage(photo.path);
 
-    // console.log(uploadedFile);
+    console.log(result);
+
+    const categoryItem = new categoryModel({
+      ...req.body,
+      url: result.secure_url,
+    });
+    console.log(categoryItem);
+
+    await categoryItem.save();
 
     res.status(200).send({
       success: true,

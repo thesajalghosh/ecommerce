@@ -10,53 +10,8 @@
   padding: 10px;
   font-family: "Nunito Sans", sans-serif;
 }
-.product__create__form__container {
+.all__products__admin__panal {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-}
-.create__form__element {
-  display: flex;
-  flex-direction: column;
-  font-family: "Nunito Sans", sans-serif;
-}
-.create__form__element input {
-  background-color: rgba(196, 196, 196, 0.183);
-  border: none;
-  outline: none;
-  padding: 7px;
-  color: var(--srtong__font__color);
-  font-family: "Nunito Sans", sans-serif;
-}
-.file__upload__component {
-  color: var(--srtong__font__color);
-  width: 100%;
-}
-.create__form__element input:focus {
-  outline: none;
-  background-color: rgba(196, 196, 196, 0.183);
-  border: none;
-}
-.create__form__element label {
-  font-size: 1.1rem;
-  color: var(--light__font__color);
-  font-family: "Nunito Sans", sans-serif;
-}
-
-.create__form__element__button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-.create__form__element__button button {
-  height: 5vh;
-  margin-top: 10px;
-  width: 80vw;
-  background-color: #a881af;
-  font-size: 1.2rem;
-  font-family: "Nunito Sans", sans-serif;
-  font-weight: 600;
-  border: none;
-  border-radius: 6px;
+  gap: 60px;
 }

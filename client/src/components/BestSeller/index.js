@@ -16,10 +16,7 @@ const BestSeller = ({ categoryies }) => {
             <div className="category-container" key={ele._id}>
               <div className="best__seller__comp">
                 <div className="best__seller__image">
-                  <img
-                    src={`${process.env.REACT_APP_API}/api/v1/category/get-category-photo/${ele._id}`}
-                    alt={ele._id}
-                  />
+                  <img src={ele.url} alt={ele._id} />
                 </div>
                 <div className="best__seller__name">{ele.name}</div>
               </div>
