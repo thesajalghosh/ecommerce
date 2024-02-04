@@ -1,0 +1,30 @@
+.shop__by__category__header {
+  font-size: 1.4rem;
+  padding: 5px 10px;
+  font-family: "Nunito Sans", sans-serif;
+  color: var(--less__strong__font__color);
+}
+.shop__by__category__header span {
+  color: var(--srtong__font__color);
+}
+.shop__by__category__all__category {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+.category__element {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.category__element img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+.category__element div {
+  text-align: center;
+  color: var(--srtong__font__color);
+  font-family: "Nunito Sans", sans-serif;
+}

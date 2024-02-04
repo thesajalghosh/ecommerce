@@ -13,6 +13,7 @@ import { setStoreCart } from "../../../redux/cartSlice";
 import ProductCart from "../../../components/ProductCard";
 import OfferComp from "../../../components/OfferComp";
 import BestSeller from "../../../components/BestSeller";
+import ShopCategory from "../../../components/ShopCategory";
 
 const HomePage = () => {
   const user = useSelector((state) => state.auth.user);
@@ -183,6 +184,9 @@ const HomePage = () => {
         </div>
         <div className="today__offer__whole__container">
           <OfferComp />
+        </div>
+        <div className="shop__by__categories__whole__container">
+          <ShopCategory />
         </div>
         <div className="all__product__container">
           <h1 className="text-center">All Product</h1>
