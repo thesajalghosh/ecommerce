@@ -8,34 +8,10 @@
   grid-template-columns: 1fr 1fr;
   gap: 30px;
 }
-.product__card {
-  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
-    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
-    rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
-  height: 40vh;
-  width: 30vw;
-  border-radius: 10px;
-}
-.product__card__image {
-  padding: 8px;
-  border-bottom: 0.5px solid var(--very__light__border);
-}
-.product__card__image img {
-  height: 20vh;
-  width: 28vw;
-}
-.whole__product__list__container {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-.lower__part__product__card {
-  color: var(--srtong__font__color);
-  text-decoration: none;
-  font-family: "Roboto Condensed", sans-serif;
-  font-size: 1rem;
-  padding: 8px;
-}
+
 .all__products__admin__panal {
   margin-bottom: 10px;
+}
+.whole__product__list__container {
+  margin-bottom: 55px;
 }

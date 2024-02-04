@@ -1,7 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import "./index.css";
+import { FaIndianRupeeSign } from "react-icons/fa6";
 
-const ProductCart = ({ element, AddToCartHandeler }) => {
+const ProductCart = ({
+  element,
+  AddToCartHandeler,
+  offerCreateButton,
+  setOfferCreateModal,
+}) => {
   const navigate = useNavigate();
   return (
     <>
@@ -10,33 +17,55 @@ const ProductCart = ({ element, AddToCartHandeler }) => {
         // onClick={() => navigate(`/product/${e._id}`)}
       >
         <div className="product__card__image">
-          <img
-            src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${element._id}`}
-            alt={element.slug}
-          />
+          <img src={element.url} alt={element.slug} />
         </div>
         <div className="lower__part__product__card">
-          <div className="lower__part__name">{element.name}</div>
-          <div className="lower__part__name">{element.description}</div>
+          <div className="lower__part__upper__part__whole__content">
+            <div className="lower__part__left__side">
+              <div className="lower__part__name">{element.name}</div>
+              <div className="lower__part__price">
+                <FaIndianRupeeSign size={21} /> {element.price}
+              </div>
+            </div>
+            <div className="lower__part__right__side">
+              <div className="total__number__product__in__stock">
+                {element.quantity} only in Stock
+              </div>
+            </div>
+          </div>
+          <div className="lower__part__description">{element.description}</div>
           <div className="lower__part__price__quantity">
-            <div className="lower__part__price">Price : $ {element.price}</div>
-            <div className="lower__part__price">
-              In stock : {element.quantity}
-            </div>
-            <div className="d-flex card__buttons">
-              <button
-                className="btn btn-primary"
-                onClick={() => navigate(`/product/${element._id}`)}
-              >
-                More Details
-              </button>
-              <button
-                className="btn btn-primary"
-                onClick={() => AddToCartHandeler(element)}
-              >
-                Add to cart
-              </button>
-            </div>
+            {offerCreateButton === true ? (
+              <>
+                <div className="create__offer__button__container">
+                  <button
+                    className="create__offer__button"
+                    onClick={() =>
+                      navigate(`/dashboard/admin/create-offer/${element._id}`)
+                    }
+                  >
+                    Create Offer
+                  </button>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="d-flex card__buttons">
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => navigate(`/product/${element._id}`)}
+                  >
+                    More Details
+                  </button>
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => AddToCartHandeler(element)}
+                  >
+                    Add to cart
+                  </button>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>

@@ -5,14 +5,19 @@ import { FaRupeeSign } from "react-icons/fa";
 import "./index.css";
 
 const OfferedProduct = () => {
+  const [product, setProduct] = useState([]);
   const [offeredProduct, setOfferedProduct] = useState([]);
 
   const allOfferedProduct = async (req, res) => {
     try {
       const { data } = await axios.get(
-        `${process.env.REACT_APP_API}/api/v1/offer/get-all-offer-product`
+        `${process.env.REACT_APP_API}/api/v1/product/get-product`
       );
-      setOfferedProduct(data?.offeredProduct);
+      console.log(data);
+      setProduct(data?.products);
+      console.log(product);
+      let offeredProducts = data?.products?.filter((ele) => ele.desP > 0);
+      setOfferedProduct(offeredProducts);
     } catch (error) {
       console.log(error);
     }
@@ -39,7 +44,7 @@ const OfferedProduct = () => {
                   <div className="right__product__price">
                     <span className="discount__price">
                       <FaRupeeSign size={18} />{" "}
-                      {ele.price - ele.price * (ele.disp / 100)}
+                      {ele.price - ele.price * (ele.desP / 100)}
                     </span>
                     <span className="original__price">
                       {" "}
@@ -49,7 +54,7 @@ const OfferedProduct = () => {
                       </span>
                       <span className="discounted__percentage">
                         {" "}
-                        {ele.disp}%
+                        {ele.desP}%
                       </span>
                     </span>
                     <span className="edit__delete__button">

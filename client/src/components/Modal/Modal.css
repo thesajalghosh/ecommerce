@@ -1,12 +1,14 @@
 .modal__container__whole {
-  position: absolute;
-  z-index: 5;
+  position: fixed;
+  z-index: 1000000;
   background-color: rgba(80, 79, 79, 0.754);
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  top: 0;
+  left: 0;
 }
 .modal__container {
   background-color: white;

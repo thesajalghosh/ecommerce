@@ -5,6 +5,7 @@ import Layout from "../../../components/layout/Layout";
 import "./index.css";
 import { useNavigate } from "react-router-dom";
 import ProductCart from "../../../components/ProductCard";
+import Modal from "../../../components/Modal/Modal";
 
 const OfferProductCreate = () => {
   const [photo, setPhoto] = useState("");
@@ -13,6 +14,7 @@ const OfferProductCreate = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
   const [total, setTotal] = useState(0);
+  const [offerCreateModal, setOfferCreateModal] = useState(false);
 
   const navigate = useNavigate();
 
@@ -117,11 +119,15 @@ const OfferProductCreate = () => {
           <div className="all__products__admin__panal">
             {products?.map((e) => (
               <>
-                <ProductCart element={e} />
+                <ProductCart
+                  element={e}
+                  offerCreateButton={true}
+                  setOfferCreateModal={setOfferCreateModal}
+                />
               </>
             ))}
           </div>
-          <div>
+          <div className="loading__more__button">
             {products && (
               <button className="btn btn-primary" onClick={loadMoreHandel}>
                 {loading ? "Loading ..." : "Loading More"}

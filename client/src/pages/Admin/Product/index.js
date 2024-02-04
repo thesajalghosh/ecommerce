@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "./index.css";
+import ProductCart from "../../../components/ProductCard";
 
 const Products = () => {
   const [product, setProduct] = useState(null);
@@ -50,31 +51,7 @@ const Products = () => {
             <div className="all__products__admin__panal">
               {product?.map((e) => (
                 <>
-                  <Link to={`${e._id}`}>
-                    <div
-                      className="product__card"
-                      // onClick={() => navigate(`/product/${e._id}`)}
-                    >
-                      <div className="product__card__image">
-                        <img
-                          src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${e._id}`}
-                          alt={e.slug}
-                        />
-                      </div>
-                      <div className="lower__part__product__card">
-                        <div className="lower__part__name">{e.name}</div>
-                        <div className="lower__part__name">{e.description}</div>
-                        <div className="lower__part__price__quantity">
-                          <div className="lower__part__price">
-                            Price : {e.price}
-                          </div>
-                          <div className="lower__part__price">
-                            In stock : {e.quantity}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
+                  <ProductCart element={e} />
                 </>
               ))}
             </div>

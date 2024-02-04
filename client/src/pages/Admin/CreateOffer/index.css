@@ -1,0 +1,53 @@
+.heading__discount__making__page {
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 10px 10px;
+  color: var(--srtong__font__color);
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.body__discount__page {
+  padding: 10px 20px;
+  font-family: "Nunito Sans", sans-serif;
+}
+.body__discount__page label {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.2rem;
+  color: var(--less__strong__font__color);
+}
+.body__discount__page input {
+  width: 90vw;
+  color: var(--srtong__font__color);
+  background-color: var(--background__color__tab);
+  border: none;
+  height: 5vh;
+  padding: 6px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+.body__discount__page input:focus {
+  outline: none;
+}
+.discount__page__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.discount__page__button button {
+  padding: 5px 0px;
+  width: 75vw;
+  border: none;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.2rem;
+  background-color: var(--button__color);
+  color: var(--srtong__font__color);
+}
+.discount__page__button button:focus {
+  outline: none;
+}
+.discount__page__product__id {
+  font-size: 1.1rem;
+  color: var(--less__strong__font__color);
+  margin-bottom: 20px;
+  font-family: "Nunito Sans", sans-serif;
+}

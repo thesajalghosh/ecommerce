@@ -34,6 +34,7 @@ import AdminDashboard from "./pages/Admin/AdminDashboard";
 import OfferProductCreate from "./pages/Admin/OfferProductCreate";
 import OfferedProduct from "./pages/Admin/OfferedProduct";
 import OfferPage from "./pages/user/OfferPage";
+import CreateOffer from "./pages/Admin/CreateOffer";
 
 function App() {
   // const user = useSelector((state) => state.auth.token);
@@ -63,6 +64,7 @@ function App() {
           <Route path="admin/product" element={<Products />} />
           <Route path="admin/users" element={<Users />} />
           <Route path="admin/offer-create" element={<OfferProductCreate />} />
+          <Route path="admin/create-offer/:id" element={<CreateOffer />} />
           <Route path="admin/offered-product" element={<OfferedProduct />} />
         </Route>
         <Route path="/contact" element={<Contact />} />
