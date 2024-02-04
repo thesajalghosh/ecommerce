@@ -2,29 +2,33 @@ const fs = require("fs");
 const offerModal = require("../models/offerModal");
 const cloudinary = require("cloudinary");
 const { uploadingImage } = require("../helpers/uploadingImage");
+const productModel = require("../models/productModel");
 
 const createOfferController = async (req, res) => {
   try {
-    const result = await uploadingImage(req.file.path);
-
-    if (result && result.secure_url) {
-      const offerProduct = new offerModal({
-        ...req.body,
-        url: result.secure_url,
+    const { id, desp, reason } = req.body;
+    console.log(desp, id);
+    const product = await productModel
+      .findOneAndUpdate({ _id: id }, { $set: { desP: desp } }, { new: true })
+      .catch((error) => {
+        console.error("Update Error:", error);
+        throw error;
       });
 
-      await offerProduct.save();
-      return res.status(200).send({
-        success: true,
-        message: "Successfully file is uploaded",
-        offerProduct,
-      });
-    } else {
-      return res.status(500).send({
-        success: false,
-        message: "Error in uploading image",
-      });
-    }
+    console.log(product);
+    const offerProduct = new offerModal({
+      productId: id,
+      offer: reason,
+    });
+
+    await offerProduct.save();
+
+    return res.status(200).send({
+      success: true,
+      message: "successfully created offer",
+      product,
+      offerProduct,
+    });
   } catch (error) {
     console.log(error);
     return res.status(500).send({

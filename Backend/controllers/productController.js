@@ -3,15 +3,18 @@ const productModel = require("../models/productModel");
 const fs = require("fs");
 const { categoryController } = require("./CategoryController");
 const categoryModel = require("../models/categoryModel");
+const { uploadingImage } = require("../helpers/uploadingImage");
 
 const createProductController = async (req, res) => {
   try {
-    // console.log(req.fields,"fields");
-    const { name, description, price, category, quantity } = req.fields;
-    console.log(name, description, price, category, quantity, "field");
-    const { photo } = req.files;
+    const { name, description, price, category, quantity } = req.body;
+    const photo = req.file;
+    console.log(req.body);
+    console.log(photo);
 
+    const result = await uploadingImage(photo.path);
     //validation
+    console.log(result.secure_url);
     switch (true) {
       case !name:
         return res.status(500).send({ error: "Name is Required" });
@@ -23,19 +26,9 @@ const createProductController = async (req, res) => {
         return res.status(500).send({ error: "category is Required" });
       case !quantity:
         return res.status(500).send({ error: "quantity is Required" });
+    }
+    const products = new productModel({ ...req.body, url: result.secure_url });
 
-      // case !shipping:
-      //   return res.status(500).send({ error: "shipping is Required" });
-      case photo & (photo.size > 100000):
-        return res
-          .status(500)
-          .send({ error: "photo is Required should be 1 MB" });
-    }
-    const products = new productModel({ ...req.fields, slug: slugify(name) });
-    if (photo) {
-      products.photo.data = fs.readFileSync(photo.path);
-      products.photo.contentType = photo.type;
-    }
     await products.save();
     res.status(201).send({
       success: true,

@@ -13,16 +13,27 @@ const {
   searchProductController,
   reletedProduct,
 } = require("../controllers/productController");
-const formidable = require("express-formidable");
+const multer = require("multer");
 
 const router = express.Router();
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "uploads/"); // Specify the upload directory
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname); // Use the original filename
+  },
+});
+
+const upload = multer({ storage: storage });
 
 //routes
 router.post(
   "/create-product",
   requireSignIn,
   isAdmin,
-  formidable(),
+  upload.single("photo"),
   createProductController
 );
 //update product routes
@@ -30,7 +41,7 @@ router.put(
   "/update-product/:pid",
   requireSignIn,
   isAdmin,
-  formidable(),
+  upload.single("photo"),
   updateProductController
 );
 
@@ -39,9 +50,6 @@ router.get("/get-product", getProductController);
 
 //single product
 router.get("/get-product/:pid", getSingleProductController);
-
-//get photo
-router.get("/product-photo/:pid", getPhotoController);
 
 //delete product
 router.delete("/delete-product/:pid", deleteProductController);
