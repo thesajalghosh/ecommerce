@@ -27,6 +27,7 @@ const HomePage = () => {
   const [sortPage, setSortPage] = useState(false);
   const [filterPage, setFilterPage] = useState(false);
   const [cart, setCart] = useState([]);
+  const [maxProductDis, setMaxProductDis] = useState([]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -165,17 +166,6 @@ const HomePage = () => {
     dispatch(setStoreCart(cartProduct));
   };
 
-  function arrayBufferToBase64(buffer) {
-    let binary = "";
-    const bytes = new Uint8Array(buffer);
-    for (let i = 0; i < bytes.length; i++) {
-      binary += String.fromCharCode(bytes[i]);
-    }
-    return btoa(binary);
-  }
-
-  console.log(categoryies);
-
   return (
     <Layout title={"All Products - Best Offers"}>
       <div className="home__page__whole__container">
@@ -203,6 +193,7 @@ const HomePage = () => {
               </>
             ))}
           </div>
+
           <div>
             {products && products.length < total && (
               <button className="btn btn-primary" onClick={loadMoreHandel}>

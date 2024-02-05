@@ -14,7 +14,14 @@ const OfferComp = () => {
       const { data } = await axios.get(
         `${process.env.REACT_APP_API}/api/v1/offer/get-all-offer-product`
       );
-      setOfferedProduct(data?.offeredProduct[0]);
+      // setOfferedProduct(data?.offeredProduct[0]);
+      for (let i = 0; i < data?.offeredProduct.length; i++) {
+        let temp = 0;
+        if (data?.offeredProduct[i].desP > temp) {
+          setOfferedProduct(data?.offeredProduct[i]);
+        }
+      }
+      console.log(data?.offeredProduct);
     } catch (error) {
       console.log(error);
     }
@@ -58,7 +65,7 @@ const OfferComp = () => {
                 <span className="discount__price">
                   <FaRupeeSign size={18} />{" "}
                   {offeredProduct.price -
-                    offeredProduct.price * (offeredProduct.disp / 100)}
+                    offeredProduct.price * (offeredProduct.desP / 100)}
                 </span>
                 <span className="original__price">
                   {" "}
@@ -68,7 +75,7 @@ const OfferComp = () => {
                   </span>
                   <span className="discounted__percentage">
                     {" "}
-                    {offeredProduct.disp}%
+                    {offeredProduct.desP}%
                   </span>
                 </span>
                 <span className="edit__delete__button">

@@ -35,6 +35,7 @@ import OfferProductCreate from "./pages/Admin/OfferProductCreate";
 import OfferedProduct from "./pages/Admin/OfferedProduct";
 import OfferPage from "./pages/user/OfferPage";
 import CreateOffer from "./pages/Admin/CreateOffer";
+import CategoryProductPage from "./pages/CategoryProductPage";
 
 function App() {
   // const user = useSelector((state) => state.auth.token);
@@ -47,6 +48,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/all-categories" element={<Categories />} />
         <Route path="/category/:id" element={<CategoryProduct />} />
+        <Route path="/category-prodct/:cid" element={<CategoryProductPage />} />
         //This Route is only available in when anyone is login as a user
         <Route path="/dashboard" element={<Private />}>
           <Route path="user" element={<Dashboard />} />

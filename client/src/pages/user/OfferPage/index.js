@@ -22,6 +22,8 @@ const OfferPage = () => {
   useEffect(() => {
     allOfferedProduct();
   }, []);
+
+  console.log(offeredProduct);
   return (
     <>
       <Layout>
@@ -49,7 +51,7 @@ const OfferPage = () => {
                   <div className="right__product__price">
                     <span className="discount__price">
                       <FaRupeeSign size={18} />{" "}
-                      {ele.price - ele.price * (ele.disp / 100)}
+                      {ele.price - ele.price * (ele.desP / 100)}
                     </span>
                     <span className="original__price">
                       {" "}
@@ -59,7 +61,7 @@ const OfferPage = () => {
                       </span>
                       <span className="discounted__percentage">
                         {" "}
-                        {ele.disp}%
+                        {ele.desP}%
                       </span>
                     </span>
                     <span className="edit__delete__button">
