@@ -301,6 +301,32 @@ const reletedProduct = async (req, res) => {
   }
 };
 
+// same category product
+const categoryProduct = async (req, res) => {
+  try {
+    const cid = req.params.cid;
+    console.log(cid);
+    const products = await productModel
+      .find({
+        category: cid,
+      })
+      .populate("category");
+
+    res.status(200).send({
+      success: true,
+      message: "category product is getting successfully",
+      products,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "error in category container",
+      error,
+    });
+  }
+};
+
 // category wise product
 const CategoryWiseProduct = async (req, res) => {
   try {
@@ -336,4 +362,5 @@ module.exports = {
   searchProductController,
   reletedProduct,
   CategoryWiseProduct,
+  categoryProduct,
 };

@@ -41,7 +41,7 @@ const createOfferController = async (req, res) => {
 
 const getAllOfferedProduct = async (req, res) => {
   try {
-    const offeredProduct = await offerModal.find({});
+    const offeredProduct = await productModel.find({ desP: { $gt: 0 } });
 
     res.status(200).send({
       success: true,

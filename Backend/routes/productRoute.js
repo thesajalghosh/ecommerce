@@ -12,6 +12,7 @@ const {
   productListController,
   searchProductController,
   reletedProduct,
+  categoryProduct,
 } = require("../controllers/productController");
 const multer = require("multer");
 
@@ -68,6 +69,9 @@ router.get("/search/:keyword", searchProductController);
 
 //similar product
 router.get("/related-product/:pid/:cid", reletedProduct);
+
+//category product
+router.get("/category-product/:cid", categoryProduct);
 
 // category wise product
 router.get("/product-catagory/:id");
