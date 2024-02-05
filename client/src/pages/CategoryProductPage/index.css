@@ -1,0 +1,12 @@
+.category__product__page__header {
+  font-size: 1.4rem;
+  text-align: center;
+  padding: 10px;
+  color: var(--srtong__font__color);
+  font-family: "Nunito Sans", sans-serif;
+}
+.category__product__page__elements {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

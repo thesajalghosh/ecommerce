@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import "./index.css";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const ShopCategory = () => {
   const [categories, setCategories] = useState([]);
+  const navigate = useNavigate();
 
   const getAllCategory = async () => {
     try {
@@ -32,12 +34,13 @@ const ShopCategory = () => {
         </div>
         <div className="shop__by__category__all__category">
           {categories.map((ele) => (
-            <>
-              <div className="category__element">
-                <img src={ele.url} />
-                <div> {ele.name}</div>
-              </div>
-            </>
+            <div
+              className="category__element"
+              onClick={() => navigate(`/category-prodct/${ele._id}`)}
+            >
+              <img src={ele.url} />
+              <div> {ele.name}</div>
+            </div>
           ))}
         </div>
       </div>
