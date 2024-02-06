@@ -1,0 +1,72 @@
+.product__details__whole__container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px 20px;
+}
+.product__name__header {
+  font-size: 1.4rem;
+  font-family: "Nunito Sans", sans-serif;
+  color: var(--srtong__font__color);
+}
+.product__description__subheader {
+  font-size: 1.1rem;
+  color: var(--less__strong__font__color);
+  font-family: "Nunito Sans", sans-serif;
+  padding: 1px 2px 10px 0px;
+}
+.price__container__whole {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  align-items: flex-end;
+}
+.discounted__price {
+  font-size: 1.6rem;
+  font-family: "Nunito Sans", sans-serif;
+  color: var(--srtong__font__color);
+  display: flex;
+  align-items: center;
+}
+.orginal__price {
+  display: flex;
+  align-items: center;
+  text-decoration: line-through;
+  color: var(--less__strong__font__color);
+  font-size: 0.8rem;
+}
+.discounted__percentage {
+  font-size: 1.1rem;
+}
+.price__container__whole {
+  font-size: 1.6rem;
+  font-family: "Nunito Sans", sans-serif;
+  color: var(--srtong__font__color);
+  display: flex;
+  align-items: center;
+}
+.product__available__count {
+  font-size: 1rem;
+  font-family: "Nunito Sans", sans-serif;
+  color: var(--delete__button);
+  margin-bottom: 10px;
+}
+.buy__now__add__to__cart__button {
+  display: flex;
+  justify-content: space-around;
+}
+.buy__now__add__to__cart__button button {
+  padding: 5px 0px;
+  width: 40vw;
+  border: none;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.1rem;
+}
+.buy__now__add__to__cart__button .buy {
+  background-color: var(--buy__button);
+  font-weight: 600;
+}
+.buy__now__add__to__cart__button .cart {
+  background-color: var(--button__color);
+  font-weight: 600;
+}

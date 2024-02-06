@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./index.css";
 import { FaIndianRupeeSign } from "react-icons/fa6";
 
-const ProductCart = ({
+const ProductCard = ({
   element,
   AddToCartHandeler,
   offerCreateButton,
@@ -73,4 +73,4 @@ const ProductCart = ({
   );
 };
 
-export default ProductCart;
+export default ProductCard;
