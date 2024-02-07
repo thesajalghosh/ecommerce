@@ -39,7 +39,7 @@ const Cart = () => {
     }
   }, []);
 
-  console.log(price);
+  console.log(cartData);
 
   return (
     <>
@@ -82,11 +82,9 @@ const Cart = () => {
                 <div className="cart__container__whole__container">
                   {cartData.map((e) => (
                     <>
-                      <div className="cart__element__container">
+                      <div className="cart__element__container" key={e._id}>
                         <div className="cart__element__left__part">
-                          <img
-                            src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${e._id}`}
-                          />
+                          <img src={e.url} />
                         </div>
                         <div className="cart__element__right__part">
                           <div className="product__name__remove">

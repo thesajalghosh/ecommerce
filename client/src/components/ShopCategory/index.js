@@ -37,6 +37,7 @@ const ShopCategory = () => {
             <div
               className="category__element"
               onClick={() => navigate(`/category-prodct/${ele._id}`)}
+              key={ele._id}
             >
               <img src={ele.url} />
               <div> {ele.name}</div>

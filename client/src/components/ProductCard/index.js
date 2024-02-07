@@ -15,6 +15,7 @@ const ProductCard = ({
       <div
         className="product__card"
         // onClick={() => navigate(`/product/${e._id}`)}
+        key={element._id}
       >
         <div className="product__card__image">
           <img src={element.url} alt={element.slug} />

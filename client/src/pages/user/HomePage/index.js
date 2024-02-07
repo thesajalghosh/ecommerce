@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { BiSort } from "react-icons/bi";
 import { MdFilterAlt } from "react-icons/md";
 import Filter from "../../../components/Filter";
-import { setStoreCart } from "../../../redux/cartSlice";
+import { setStoreCart, updateStoreCart } from "../../../redux/cartSlice";
 import ProductCart from "../../../components/ProductCard";
 import OfferComp from "../../../components/OfferComp";
 import BestSeller from "../../../components/BestSeller";
@@ -30,6 +30,8 @@ const HomePage = () => {
   const [maxProductDis, setMaxProductDis] = useState([]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const storeCart = useSelector((state) => state.cart.storeCart);
+  console.log(storeCart);
 
   //getTotal Count
   const getTotal = async () => {
@@ -102,8 +104,6 @@ const HomePage = () => {
         `${process.env.REACT_APP_API}/api/v1/product/product-filter`,
         { checked, radio }
       );
-      console.log(data.products);
-      setProducts(data?.products);
     } catch (error) {
       console.log(error);
     }
@@ -115,7 +115,7 @@ const HomePage = () => {
     const setArr = [];
     setArr[0] = Number(arr[0]);
     setArr[1] = Number(arr[1]);
-    console.log(setArr);
+
     setRadio(setArr);
   };
 
@@ -144,7 +144,7 @@ const HomePage = () => {
         `${process.env.REACT_APP_API}/api/v1/product/product-list/${page}`
       );
       setLoading(false);
-      console.log(data.products);
+
       setProducts([...products, ...data?.products]);
     } catch (error) {
       console.log(error);
@@ -161,9 +161,31 @@ const HomePage = () => {
   };
 
   const AddToCartHandeler = (cartProduct) => {
-    let cartVal = [...cart, cartProduct];
-    setCart(cartVal);
-    dispatch(setStoreCart(cartProduct));
+    console.log(storeCart);
+    console.log(cartProduct);
+    let existingItem = storeCart?.find((ele) => ele._id === cartProduct._id);
+    // console.log("existingItem", existingItem);
+    if (existingItem) {
+      console.log("exist item");
+      let newExistItem = { ...existingItem, buyqun: existingItem.buyqun + 1 };
+      console.log("existingItem", newExistItem);
+      console.log(storeCart);
+      let newUpdatedExistingItem = storeCart.map((ele) => {
+        if (ele._id === newExistItem._id) {
+          return newExistItem;
+        }
+        return ele;
+      });
+      console.log("first", newUpdatedExistingItem);
+      dispatch(setStoreCart(newUpdatedExistingItem));
+    } else {
+      // console.log("not exist item");
+      let quantityAdd = { ...cartProduct, buyqun: 1 };
+      // console.log("quantityAdd", quantityAdd);
+      let newAddItemWithPrevious = [...storeCart, quantityAdd];
+      // console.log("newAddItemWithPevioue", newAddItemWithPrevious);
+      dispatch(setStoreCart(newAddItemWithPrevious));
+    }
   };
 
   return (
@@ -185,12 +207,12 @@ const HomePage = () => {
 
           <div className="all__products__admin__panal">
             {products?.map((e) => (
-              <>
+              <div className="product" key={e._id}>
                 <ProductCart
                   element={e}
                   AddToCartHandeler={AddToCartHandeler}
                 />
-              </>
+              </div>
             ))}
           </div>
 

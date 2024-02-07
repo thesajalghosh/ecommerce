@@ -21,7 +21,6 @@ const OfferComp = () => {
           setOfferedProduct(data?.offeredProduct[i]);
         }
       }
-      console.log(data?.offeredProduct);
     } catch (error) {
       console.log(error);
     }

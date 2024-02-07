@@ -11,8 +11,8 @@ export const cartSlice = createSlice({
   reducers: {
     setStoreCart: (state, { payload }) => {
       console.log("payload", payload);
-      let temp = [...state.storeCart, payload];
-      state.storeCart = temp;
+      state.storeCart = payload;
+      let temp = state.storeCart;
       localStorage.setItem("cart", JSON.stringify(temp));
     },
     setRemoveCart: (state, { payload }) => {
@@ -23,6 +23,7 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { setStoreCart, setRemoveCart } = cartSlice.actions;
+export const { setStoreCart, setRemoveCart, updateStoreCart } =
+  cartSlice.actions;
 
 export default cartSlice.reducer;
