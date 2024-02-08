@@ -7,6 +7,8 @@ import { MdOutlineDelete } from "react-icons/md";
 import { FaIndianRupeeSign } from "react-icons/fa6";
 import { FaRupeeSign } from "react-icons/fa";
 import { setRemoveCart, setStoreCart } from "../../../redux/cartSlice.js";
+import { FaPlus } from "react-icons/fa6";
+import { FaMinus } from "react-icons/fa";
 
 const Cart = () => {
   const cartData = useSelector((state) => state.cart.storeCart);
@@ -38,6 +40,31 @@ const Cart = () => {
       setPrice(temp);
     }
   }, []);
+
+  const minusHandeler = (ele) => {
+    console.log(ele);
+    let withMinus = { ...ele, buyqun: ele.buyqun - 1 };
+    console.log(withMinus);
+    let newUpdatedForMinus = cartData.map((ele) => {
+      if (ele._id === withMinus._id) {
+        return withMinus;
+      }
+      return ele;
+    });
+    dispatch(setStoreCart(newUpdatedForMinus));
+  };
+  const plusHandeler = (ele) => {
+    console.log(ele);
+    let withPlus = { ...ele, buyqun: ele.buyqun + 1 };
+    console.log(withPlus);
+    let newUpdatedForPlus = cartData.map((ele) => {
+      if (ele._id === withPlus._id) {
+        return withPlus;
+      }
+      return ele;
+    });
+    dispatch(setStoreCart(newUpdatedForPlus));
+  };
 
   console.log(cartData);
 
@@ -99,6 +126,17 @@ const Cart = () => {
                           <div className="product__price">
                             <FaIndianRupeeSign />
                             {e.price}
+                          </div>
+                          <div className="product__quantity__container">
+                            <div className="product__quantity__increment__button__container">
+                              <button onClick={() => minusHandeler(e)}>
+                                <FaMinus />
+                              </button>
+                              <span>{e.buyqun}</span>
+                              <button onClick={() => plusHandeler(e)}>
+                                <FaPlus />
+                              </button>
+                            </div>
                           </div>
                         </div>
                       </div>
