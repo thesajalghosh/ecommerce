@@ -6,6 +6,7 @@ const router = require("./routes/authRoute");
 const categoryroute = require("./routes/categoryRoutes");
 const productRoute = require("./routes/productRoute");
 const offerRoute = require("./routes/offerRoute");
+const orderRoute = require("./routes/orderRoute");
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
 const cloudinary = require("cloudinary");
@@ -36,6 +37,7 @@ app.use("/api/v1/auth", router);
 app.use("/api/v1/category", categoryroute);
 app.use("/api/v1/product", productRoute);
 app.use("/api/v1/offer", offerRoute);
+app.use("/api/v1/order", orderRoute);
 
 app.get("/", (req, res) => {
   res.send("<h1>Wellcome to the ecommerce app</h1>");

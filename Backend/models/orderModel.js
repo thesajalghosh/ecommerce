@@ -1,21 +1,32 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const OrderSchema = new mongoose.Schema({
-  customerId: {
+const OrderSchema = new Schema({
+  cid: {
+    // customer id
     type: mongoose.Schema.Types.ObjectId,
     ref: "users",
     required: true,
   },
-  orderItem: {
-    type: Array,
-    required: true,
-  },
-  shippingLocation: {
+  pid: [{ type: Schema.Types.ObjectId, ref: "product" }], // order item
+  sloc: {
+    // shipping location
     type: String,
     required: true,
   },
-  totalPrice: {
-    typeof: Number,
+  totp: {
+    // total price
+    type: Number,
     required: true,
   },
+  paymet: {
+    // payment method
+    type: Number,
+  },
+  paysat: {
+    // payment status
+    type: Boolean, // Changed from 'true' to 'Boolean' assuming it's meant to be a boolean type
+  },
 });
+
+module.exports = mongoose.model("order", OrderSchema);
