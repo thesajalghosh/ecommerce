@@ -9,6 +9,7 @@ import { FaRupeeSign } from "react-icons/fa";
 import { setRemoveCart, setStoreCart } from "../../../redux/cartSlice.js";
 import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa";
+import AddPayModal from "../../../components/AddPayModal/index.js";
 
 const Cart = () => {
   const cartData = useSelector((state) => state.cart.storeCart);
@@ -16,6 +17,9 @@ const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [price, setPrice] = useState(0);
+  const [addPayPage, setAddPaypage] = useState(false);
+  const [address, setAddress] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState(0);
 
   // console.log(cartData);
 
@@ -66,115 +70,123 @@ const Cart = () => {
     dispatch(setStoreCart(newUpdatedForPlus));
   };
 
-  console.log(cartData);
-
   return (
     <>
       <Layout>
-        <div className="cart__page__whole__container">
-          {cartData.length === 0 ? (
-            <>
-              <div className="cart__with__no__element">
-                <span>Your Cart Is Filling Lonely</span>
-                <button onClick={() => navigate("/")}>Start Shopping</button>
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="cart__with__element">
-                <div className="user__name__cart__owner"></div>
-                {!user ? (
-                  <>
-                    <div className="user__not__login">
-                      <span>You Are Not Login or Register Yet, please</span>
-                      <div>
-                        <button onClick={() => navigate("/auth-page")}>
-                          Login
-                        </button>
-                        <button onClick={() => navigate("/auth-page")}>
-                          Register
-                        </button>
-                      </div>
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <div className="user__login__whole__container">
-                      <div className="user__header__name">
-                        Hi, {user.name.split(" ")[0]}
-                      </div>
-                    </div>
-                  </>
-                )}
-                <div className="cart__container__whole__container">
-                  {cartData.map((e) => (
+        {addPayPage === true ? (
+          <AddPayModal
+            setAddPayModal={setAddPaypage}
+            setAddress={setAddress}
+            setPaymentMethod={setPaymentMethod}
+          />
+        ) : (
+          <div className="cart__page__whole__container">
+            {cartData.length === 0 ? (
+              <>
+                <div className="cart__with__no__element">
+                  <span>Your Cart Is Filling Lonely</span>
+                  <button onClick={() => navigate("/")}>Start Shopping</button>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="cart__with__element">
+                  <div className="user__name__cart__owner"></div>
+                  {!user ? (
                     <>
-                      <div className="cart__element__container" key={e._id}>
-                        <div className="cart__element__left__part">
-                          <img src={e.url} />
-                        </div>
-                        <div className="cart__element__right__part">
-                          <div className="product__name__remove">
-                            <span>{e.name}</span>
-                            <span>
-                              <MdOutlineDelete
-                                size={25}
-                                onClick={() => handelProductRemove(e._id)}
-                              />
-                            </span>
-                          </div>
-                          <div className="product__price">
-                            <FaIndianRupeeSign />
-                            {e.price}
-                          </div>
-                          <div className="product__quantity__container">
-                            <div className="product__quantity__increment__button__container">
-                              <button onClick={() => minusHandeler(e)}>
-                                <FaMinus />
-                              </button>
-                              <span>{e.buyqun}</span>
-                              <button onClick={() => plusHandeler(e)}>
-                                <FaPlus />
-                              </button>
-                            </div>
-                          </div>
+                      <div className="user__not__login">
+                        <span>You Are Not Login or Register Yet, please</span>
+                        <div>
+                          <button onClick={() => navigate("/auth-page")}>
+                            Login
+                          </button>
+                          <button onClick={() => navigate("/auth-page")}>
+                            Register
+                          </button>
                         </div>
                       </div>
                     </>
-                  ))}
-                </div>
-                <div className="cart__page__price__details">
-                  <div className="price__details__heading">
-                    PRICE DETAILS ({cartData.length})
+                  ) : (
+                    <>
+                      <div className="user__login__whole__container">
+                        <div className="user__header__name">
+                          Hi, {user.name.split(" ")[0]}
+                        </div>
+                      </div>
+                    </>
+                  )}
+                  <div className="cart__container__whole__container">
+                    {cartData.map((e) => (
+                      <>
+                        <div className="cart__element__container" key={e._id}>
+                          <div className="cart__element__left__part">
+                            <img src={e.url} />
+                          </div>
+                          <div className="cart__element__right__part">
+                            <div className="product__name__remove">
+                              <span>{e.name}</span>
+                              <span>
+                                <MdOutlineDelete
+                                  size={25}
+                                  onClick={() => handelProductRemove(e._id)}
+                                />
+                              </span>
+                            </div>
+                            <div className="product__price">
+                              <FaIndianRupeeSign />
+                              {e.price}
+                            </div>
+                            <div className="product__quantity__container">
+                              <div className="product__quantity__increment__button__container">
+                                <button onClick={() => minusHandeler(e)}>
+                                  <FaMinus />
+                                </button>
+                                <span>{e.buyqun}</span>
+                                <button onClick={() => plusHandeler(e)}>
+                                  <FaPlus />
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </>
+                    ))}
                   </div>
-                  <div className="price__details__price__part">
-                    <div className="price__part__element">
-                      <span>Total MRP</span>
-                      <span>
-                        <FaRupeeSign size={16} />
-                        {price}
-                      </span>
+                  <div className="cart__page__price__details">
+                    <div className="price__details__heading">
+                      PRICE DETAILS ({cartData.length})
                     </div>
-                    <div className="price__part__element">
-                      <span>Platform Fee</span>
-                      <span>
-                        <FaRupeeSign size={16} />
-                        20
-                      </span>
-                    </div>
-                    <div className="price__part__element">
-                      <span>Shipping Fee</span>
-                      <span>FREE</span>
+                    <div className="price__details__price__part">
+                      <div className="price__part__element">
+                        <span>Total MRP</span>
+                        <span>
+                          <FaRupeeSign size={16} />
+                          {price}
+                        </span>
+                      </div>
+                      <div className="price__part__element">
+                        <span>Platform Fee</span>
+                        <span>
+                          <FaRupeeSign size={16} />
+                          20
+                        </span>
+                      </div>
+                      <div className="price__part__element">
+                        <span>Shipping Fee</span>
+                        <span>FREE</span>
+                      </div>
                     </div>
                   </div>
+                  <div className="Place__order__button__container">
+                    <button onClick={() => setAddPaypage(true)}>
+                      Place Order
+                    </button>
+                  </div>
                 </div>
-                <div className="Place__order__button__container">
-                  <button>Place Order</button>
-                </div>
-              </div>
-            </>
-          )}
-        </div>
+              </>
+            )}
+          </div>
+        )}
       </Layout>
     </>
   );

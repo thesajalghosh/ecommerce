@@ -1,5 +1,6 @@
 .cart__page__whole__container {
   overflow-y: scroll;
+  position: relative;
 }
 .cart__with__element {
   overflow-y: scroll;

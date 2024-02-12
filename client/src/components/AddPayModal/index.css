@@ -1,0 +1,91 @@
+.address__payment__modal__whole__contianer {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.select__payment__method__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.payment__method__container {
+  width: 85vw;
+  height: 5vh;
+  border: none;
+  color: var(--srtong__font__color);
+  background-color: transparent;
+  background-color: var(--background__color__tab);
+  font-family: "Nunito Sans", sans-serif;
+  border-radius: 6px;
+}
+.payment__method__container__active {
+  width: 85vw;
+  height: 5vh;
+  border: none;
+  color: var(--srtong__font__color);
+  background-color: transparent;
+  background-color: var(--button__color);
+  font-family: "Nunito Sans", sans-serif;
+  border-radius: 6px;
+}
+.payment__method__container__active button:focus {
+  outline: none;
+  border: none;
+}
+.payment__Page__order__button {
+  border: none;
+  font-family: "Nunito Sans", sans-serif;
+  width: 60vw;
+  height: 5vh;
+  background-color: var(--button__color);
+  color: var(--srtong__font__color);
+  border-radius: 20px;
+}
+.payment__page__button__container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.select__address__payment__page {
+  color: var(--srtong__font__color);
+  font-size: 1.2rem;
+}
+.add__details__container {
+  color: var(--srtong__font__color);
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  gap: 10px;
+}
+.Add__address__header {
+  font-size: 1.3rem;
+  font-family: "Nunito Sans", sans-serif;
+}
+.add__input {
+  width: 100%;
+}
+.add__input input {
+  width: 93vw;
+  background-color: var(--background__color__tab);
+  border: none;
+  height: 6vh;
+  border-radius: 6px;
+  color: var(--srtong__font__color);
+  padding: 5px;
+}
+.add__input input:focus {
+  box-shadow: none;
+  border: none;
+  outline: none;
+}
