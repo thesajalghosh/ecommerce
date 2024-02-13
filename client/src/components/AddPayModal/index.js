@@ -2,19 +2,25 @@ import React, { useState } from "react";
 import Layout from "../layout/Layout";
 import "./index.css";
 
-const AddPayModal = ({ setAddPayModal }) => {
-  const [selectedOption, setSelectedOption] = useState(null);
-
-  const handleRadioButtonChange = (e) => {
-    setSelectedOption(e.target.value);
-  };
+const AddPayModal = ({
+  setAddPayModal,
+  handelfinalOrder,
+  handleRadioButtonChange,
+  selectedOption,
+  setAddress,
+  address,
+}) => {
   return (
     <Layout>
       <div className="address__payment__modal__whole__contianer">
         <div className="add__details__container">
           <div className="Add__address__header"> Add address</div>
           <div className="add__input">
-            <input />
+            <input
+              value={address}
+              placeholder="Enter Address"
+              onChange={(e) => setAddress(e.target.value)}
+            />
           </div>
         </div>
         <div className="select__payment__method__container">
@@ -59,7 +65,7 @@ const AddPayModal = ({ setAddPayModal }) => {
         <div className="payment__page__button__container">
           <button
             className="payment__Page__order__button"
-            onClick={() => setAddPayModal(false)}
+            onClick={handelfinalOrder}
           >
             Save And Order
           </button>

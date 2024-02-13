@@ -37,6 +37,7 @@ import OfferPage from "./pages/user/OfferPage";
 import CreateOffer from "./pages/Admin/CreateOffer";
 import CategoryProductPage from "./pages/CategoryProductPage";
 import ProductDetails from "./pages/ProductDetails";
+import OrderPage from "./pages/Order";
 
 function App() {
   // const user = useSelector((state) => state.auth.token);
@@ -79,6 +80,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/offer-page" element={<OfferPage />} />
+        <Route path="/order-page" element={<OrderPage />} />
         <Route path="*" element={<PageNotFount />} />
       </Routes>
     </>
