@@ -21,7 +21,7 @@ const OrderSchema = new Schema({
   },
   paymet: {
     // payment method
-    type: Number,
+    type: String,
   },
   paysat: {
     // payment status

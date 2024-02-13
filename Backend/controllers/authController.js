@@ -154,8 +154,28 @@ const forgotPasswordController = async (req, res) => {
   }
 };
 
+const userController = async (req, res) => {
+  try {
+    const user = await userModel.findOne(req.body);
+
+    return res.status(200).send({
+      success: true,
+      message: "successfully get user",
+      user,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).send({
+      success: false,
+      message: "something went wrong",
+      error,
+    });
+  }
+};
+
 module.exports = {
   registerController,
   loginController,
   forgotPasswordController,
+  userController,
 };
