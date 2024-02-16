@@ -35,8 +35,8 @@ const Login = () => {
         localStorage.setItem("user", JSON.stringify(res.data.user));
         localStorage.setItem("token", JSON.stringify(res.data.token));
         dispatch(loginSuccess(userData));
-        navigate(location.state || "/");
-        // navigate("/");
+        // navigate(location.state || "/");
+        navigate("/");
       }
     } catch (error) {
       console.log(error);

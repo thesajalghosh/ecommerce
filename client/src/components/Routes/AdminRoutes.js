@@ -21,6 +21,7 @@ const AdminRoute = () => {
             "Content-Type": "application/json",
           }
         );
+        console.log("this is on admin route", res.data);
         if (res.data.ok) {
           setOk(true);
         } else {
