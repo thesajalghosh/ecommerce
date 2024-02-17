@@ -5,7 +5,6 @@ import { BiCategoryAlt } from "react-icons/bi";
 import { IoBagCheckOutline } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { IoReorderFour } from "react-icons/io5";
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -23,12 +22,6 @@ const Footer = () => {
         <div className="footer__page__tab" onClick={() => navigate("/cart")}>
           <IoBagCheckOutline size={25} />
           {cartProduct.length}
-        </div>
-        <div
-          className="footer__page__tab"
-          onClick={() => navigate("/order-page")}
-        >
-          <IoReorderFour size={25} />
         </div>
       </div>
     </div>

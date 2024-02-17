@@ -1,0 +1,38 @@
+.order__page__whole__container {
+  padding: 10px 15px;
+}
+
+.order__page__header {
+  color: var(--srtong__font__color);
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 10px;
+}
+
+.order__data__heading {
+  color: var(--srtong__font__color);
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.2rem;
+  border-bottom: 1px solid var(--very__light__border);
+}
+.order__product__list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+.order__element {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  color: var(--srtong__font__color);
+  border: 1px solid var(--very__light__border);
+  border-radius: 10px;
+}
+.order__element__left__part img {
+  height: 40px;
+  width: 40px;
+}

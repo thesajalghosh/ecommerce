@@ -19,8 +19,6 @@ import AdminRoute from "./components/Routes/AdminRoutes";
 import CreateCategory from "./pages/Admin/CreateCategory";
 import CreateProduct from "./pages/Admin/CreateProduct";
 import Users from "./pages/Admin/Users";
-import Order from "./pages/user/Order";
-import Profile from "./pages/user/Profile";
 import Products from "./pages/Admin/Product";
 import UpdateProduct from "./pages/Admin/UpdateProduct";
 import SearchPage from "./pages/SearchPage";
@@ -54,9 +52,10 @@ function App() {
         //This Route is only available in when anyone is login as a user
         <Route path="/dashboard" element={<Private />}>
           <Route path="user" element={<Dashboard />} />
-          <Route path="user/orders" element={<Order />} />
+          {/* <Route path="user/orders" element={<Order />} /> */}
           {/* <Route path="user/profile" element={<Profile />} /> */}
           <Route path="user/profile" element={<ProfilePage />} />
+          <Route path="user/order-page" element={<OrderPage />} />
         </Route>
         // This route is only available in Admin Route anyone is login as a
         admin
@@ -80,7 +79,6 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/offer-page" element={<OfferPage />} />
-        <Route path="/order-page" element={<OrderPage />} />
         <Route path="*" element={<PageNotFount />} />
       </Routes>
     </>
