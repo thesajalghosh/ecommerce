@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { IoPersonCircleOutline } from "react-icons/io5";
 import { FiLogOut } from "react-icons/fi";
 import { MdUpdate } from "react-icons/md";
+import { MdOutlineBookmarkBorder } from "react-icons/md";
 const ProfilePage = () => {
   const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
@@ -61,6 +62,19 @@ const ProfilePage = () => {
             </span>
             <div> Update Profile</div>
           </div>
+          {user.role === 0 && (
+            <div
+              className="profile__update__container"
+              onClick={() => {
+                navigate("/dashboard/user/order-page");
+              }}
+            >
+              <span>
+                <MdOutlineBookmarkBorder size={25} />
+              </span>
+              <div> User Order</div>
+            </div>
+          )}
           <div className="profile__logout__container" onClick={logoutHandeler}>
             <span>
               <FiLogOut size={25} />

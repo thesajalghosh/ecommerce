@@ -75,3 +75,15 @@
   font-family: "Nunito Sans", sans-serif;
   font-size: 1.1rem;
 }
+.profile__update__container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 5px 10px;
+  gap: 10px;
+  border: 1px solid var(--very__light__border);
+  margin: 15px;
+  font-family: "Nunito Sans", sans-serif;
+  color: var(--srtong__font__color);
+  border-radius: 5px;
+}
