@@ -27,7 +27,8 @@ const OrderPlaceController = async (req, res) => {
 
 const getsingleCidOrder = async (req, res) => {
   try {
-    const orders = orderModel.findOne({ cid: req.body });
+    const { cid } = req.body;
+    const orders = await orderModel.find({ cid: cid }).populate("pid");
 
     res.status(200).send({
       success: true,

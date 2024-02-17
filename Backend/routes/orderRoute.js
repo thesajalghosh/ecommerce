@@ -8,6 +8,6 @@ const router = express.Router();
 
 router.post("/order-place", OrderPlaceController);
 
-router.get("/get-single-cid-order", getsingleCidOrder);
+router.post("/get-single-cid-order", getsingleCidOrder);
 
 module.exports = router;
