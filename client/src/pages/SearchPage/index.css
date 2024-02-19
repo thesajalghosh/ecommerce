@@ -1,0 +1,51 @@
+.search__bar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  /* justify-content: center; */
+  background-color: var(--input__background__color);
+  width: 95vw;
+  height: 5.5vh;
+  border-radius: 6px;
+  padding: 0px 10px;
+  font-family: "Nunito Sans", sans-serif;
+  color: var(--srtong__font__color);
+}
+
+.search__bar input {
+  background-color: transparent;
+  border: none;
+  width: 90vw;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.2rem;
+  color: var(--srtong__font__color);
+}
+.search__bar input:focus {
+  outline: none;
+  box-shadow: none;
+}
+.search__result__sub__heanding {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 10px;
+  color: var(--srtong__font__color);
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.3rem;
+}
+.search__result__sub__heanding button {
+  color: red;
+  background-color: transparent;
+  border: none;
+}
+.search__result__sub__heanding button:focus {
+  outline: none;
+}
+.no__product__found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 80vh;
+  color: var(--srtong__font__color);
+  font-family: "Nunito Sans", sans-serif;
+}

@@ -21,7 +21,6 @@ import CreateProduct from "./pages/Admin/CreateProduct";
 import Users from "./pages/Admin/Users";
 import Products from "./pages/Admin/Product";
 import UpdateProduct from "./pages/Admin/UpdateProduct";
-import SearchPage from "./pages/SearchPage";
 
 import Categories from "./pages/Categories";
 import CategoryProduct from "./pages/CategoryProduct";
@@ -36,6 +35,7 @@ import CreateOffer from "./pages/Admin/CreateOffer";
 import CategoryProductPage from "./pages/CategoryProductPage";
 import ProductDetails from "./pages/ProductDetails";
 import OrderPage from "./pages/Order";
+import SearchPage from "./pages/SearchPage";
 
 function App() {
   // const user = useSelector((state) => state.auth.token);

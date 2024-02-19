@@ -75,7 +75,10 @@ const Header = () => {
         )}
 
         <div className="navbar__right__part">
-          <div className="navbar__left__search">
+          <div
+            className="navbar__left__search"
+            onClick={() => navigate("/search")}
+          >
             <IoIosSearch size={25} />
           </div>
           <div className="navbar__left__search" onClick={profilehandeler}>
