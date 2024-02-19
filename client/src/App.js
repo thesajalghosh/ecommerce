@@ -49,12 +49,13 @@ function App() {
         <Route path="/all-categories" element={<Categories />} />
         <Route path="/category/:id" element={<CategoryProduct />} />
         <Route path="/category-prodct/:cid" element={<CategoryProductPage />} />
+        <Route path="user/profile" element={<ProfilePage />} />
         //This Route is only available in when anyone is login as a user
         <Route path="/dashboard" element={<Private />}>
           <Route path="user" element={<Dashboard />} />
           {/* <Route path="user/orders" element={<Order />} /> */}
           {/* <Route path="user/profile" element={<Profile />} /> */}
-          <Route path="user/profile" element={<ProfilePage />} />
+
           <Route path="user/order-page" element={<OrderPage />} />
         </Route>
         // This route is only available in Admin Route anyone is login as a
