@@ -40,7 +40,7 @@ const Header = () => {
 
   const profilehandeler = () => {
     if (token) {
-      navigate("user/profile");
+      navigate("/user/profile");
     } else {
       navigate("/auth-page");
     }
