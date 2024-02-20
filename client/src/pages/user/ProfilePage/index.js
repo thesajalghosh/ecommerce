@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./index.css";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../redux/authSlice";
@@ -9,10 +9,12 @@ import { IoPersonCircleOutline } from "react-icons/io5";
 import { FiLogOut } from "react-icons/fi";
 import { MdUpdate } from "react-icons/md";
 import { MdOutlineBookmarkBorder } from "react-icons/md";
+import Modal from "../../../components/Modal/Modal";
 const ProfilePage = () => {
   const user = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [logoutModal, setLogoutModal] = useState(false);
 
   console.log(user);
 
@@ -28,6 +30,31 @@ const ProfilePage = () => {
     <>
       <Layout>
         <div className="profile__whole__container">
+          {logoutModal && (
+            <Modal
+              heading={
+                <>
+                  <span>Logout</span>
+                </>
+              }
+              body={
+                <>
+                  <div>Are you Want to Sure Logout</div>
+                </>
+              }
+              footer={
+                <>
+                  <div className="logout__footer__two__button">
+                    <button onClick={() => setLogoutModal(false)}>
+                      Cancel
+                    </button>
+                    <button onClick={logoutHandeler}>Logout</button>
+                  </div>
+                </>
+              }
+              setClose={() => setLogoutModal(false)}
+            />
+          )}
           <div className="profile__account__back__button">
             <span>
               <MdOutlineKeyboardBackspace
@@ -73,7 +100,10 @@ const ProfilePage = () => {
               <div> User Order</div>
             </div>
           )}
-          <div className="profile__logout__container" onClick={logoutHandeler}>
+          <div
+            className="profile__logout__container"
+            onClick={() => setLogoutModal(true)}
+          >
             <span>
               <FiLogOut size={25} />
             </span>

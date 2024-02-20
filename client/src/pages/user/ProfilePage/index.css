@@ -87,3 +87,22 @@
   color: var(--srtong__font__color);
   border-radius: 5px;
 }
+.logout__footer__two__button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.logout__footer__two__button button {
+  height: 5vh;
+  width: 40vw;
+  border: none;
+  font-size: 1.2rem;
+  font-family: "Nunito Sans", sans-serif;
+  color: var(--srtong__font__color);
+  background-color: var(--button__color);
+}
+.logout__footer__two__button button:first-child {
+  background-color: var(--delete__button);
+}
