@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { loginSuccess } from "../../../redux/authSlice";
+import { loginSuccess, setIsAdmin } from "../../../redux/authSlice";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -34,6 +34,14 @@ const Login = () => {
         toast.success(res.data && res.data.message);
         localStorage.setItem("user", JSON.stringify(res.data.user));
         localStorage.setItem("token", JSON.stringify(res.data.token));
+
+        if (res.data.user.role === 1) {
+          localStorage.setItem("isAdmin", true);
+          dispatch(setIsAdmin(true));
+        } else {
+          localStorage.setItem("isAdmin", false);
+          dispatch(setIsAdmin(false));
+        }
         dispatch(loginSuccess(userData));
         // navigate(location.state || "/");
         navigate("/");

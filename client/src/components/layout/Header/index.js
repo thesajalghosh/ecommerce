@@ -16,10 +16,10 @@ import "./index.css";
 const Header = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
+  const isAdmin = useSelector((state) => state.auth.isAdmin);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [iscategoryOpen, setiscategoryOpen] = useState(false);
   const token = localStorage.getItem("token");
-  console.log(token);
 
   const navigate = useNavigate();
   const handleLogout = () => {
@@ -40,7 +40,9 @@ const Header = () => {
 
   const profilehandeler = () => {
     if (token) {
-      navigate("/user/profile");
+      isAdmin
+        ? navigate("/admin-dashboard/admin-profile")
+        : navigate("/user-dashboard/user-profile");
     } else {
       navigate("/auth-page");
     }

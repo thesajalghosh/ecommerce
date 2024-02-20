@@ -20,10 +20,8 @@ const ProfilePage = () => {
     dispatch(logout());
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+    localStorage.removeItem("isAdmin");
     navigate("/auth-page");
-  };
-  const AdminHandeler = () => {
-    navigate("/dashboard/admin");
   };
 
   return (
@@ -66,7 +64,7 @@ const ProfilePage = () => {
             <div
               className="profile__update__container"
               onClick={() => {
-                navigate("/dashboard/user/order-page");
+                navigate("/user-dashboard/user-order");
               }}
             >
               <span>
@@ -81,14 +79,6 @@ const ProfilePage = () => {
             </span>
             <div> Logout</div>
           </div>
-          {user.role === 1 && (
-            <div className="profile__logout__container" onClick={AdminHandeler}>
-              <span>
-                <FiLogOut size={25} />
-              </span>
-              <div> Go TO Admin Dashboard</div>
-            </div>
-          )}
         </div>
       </Layout>
     </>

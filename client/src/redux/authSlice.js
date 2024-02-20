@@ -2,11 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const userData = JSON.parse(localStorage.getItem("user"));
 const token = JSON.parse(localStorage.getItem("token"));
+const isAdmin = JSON.parse(localStorage.getItem("isAdmin"));
 console.log(userData);
 
 const initialState = {
   user: userData || null,
   token: token || "",
+  isAdmin: isAdmin || false,
   sideBar: false,
 };
 // console.log(initialState);
@@ -26,10 +28,14 @@ export const authSlice = createSlice({
     setSideBar: (state, { payload }) => {
       state.sideBar = payload;
     },
+    setIsAdmin: (state, { payload }) => {
+      state.isAdmin = payload;
+    },
   },
 });
 
-export const { loginSuccess, logout, setSideBar } = authSlice.actions;
+export const { loginSuccess, logout, setSideBar, setIsAdmin } =
+  authSlice.actions;
 
 export default authSlice.reducer;
 

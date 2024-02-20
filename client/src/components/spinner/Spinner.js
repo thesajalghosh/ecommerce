@@ -9,7 +9,7 @@ const Spinner = ({ path = "auth-page" }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCount((prevalue) => --prevalue);
-    }, 10);
+    }, 1000);
     count === 0 &&
       navigate(`/${path}`, {
         state: location.pathname,
