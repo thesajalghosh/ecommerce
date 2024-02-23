@@ -28,6 +28,14 @@ const OrderSchema = new Schema(
       // payment status
       type: Boolean, // Changed from 'true' to 'Boolean' assuming it's meant to be a boolean type
     },
+    orsat: {
+      // order Status
+      type: Number,
+      // 0 - order
+      // 1 - package
+      // 2 - shipping
+      // 3 - success
+    },
   },
   { timestamps: true }
 );

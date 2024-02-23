@@ -3,11 +3,7 @@ const OrderModel = require("../models/orderModel");
 
 const OrderPlaceController = async (req, res) => {
   try {
-    const { cid, pid, sloc, totp, paymet, paysat } = req.body;
-
-    console.log(req.body);
-
-    const orderProduct = new OrderModel(req.body);
+    const orderProduct = new OrderModel({ ...req.body, orsat: 1 });
 
     await orderProduct.save();
 
@@ -39,7 +35,27 @@ const getsingleCidOrder = async (req, res) => {
     console.log(error);
     res.status(500).send({
       success: true,
-      message: "error in geting single customer order details",
+      message: "error in getting single customer order details",
+      error,
+    });
+  }
+};
+
+const getallOrderOnOneStatus = async (req, res) => {
+  try {
+    const { orsat } = req.body;
+    console.log(orsat);
+    const orders = await orderModel.find({ orsat: orsat }).populate("pid");
+    res.status(200).send({
+      success: true,
+      message: "success fully getting the orders",
+      orders,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: true,
+      message: "error in getting one status order",
       error,
     });
   }
@@ -48,4 +64,5 @@ const getsingleCidOrder = async (req, res) => {
 module.exports = {
   OrderPlaceController,
   getsingleCidOrder,
+  getallOrderOnOneStatus,
 };
