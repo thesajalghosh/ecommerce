@@ -1,8 +1,8 @@
 .main__layout__inner__content {
   background-color: black;
-  min-height: 90vh;
+  min-height: 100vh;
   position: relative;
-  top: 48px;
+  top: 30px;
   overflow: scroll;
 }
 .navbar__links {

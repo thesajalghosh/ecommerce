@@ -38,6 +38,7 @@ import OrderPage from "./pages/Order";
 import SearchPage from "./pages/SearchPage";
 import UserRoutes from "./components/Routes/UserRoutes";
 import AdminProfile from "./pages/Admin/AdminProfile";
+import Orders from "./pages/Admin/Orders";
 
 function App() {
   // const user = useSelector((state) => state.auth.token);
@@ -108,6 +109,7 @@ function App() {
           <Route path="offer-create" element={<OfferProductCreate />} />
           <Route path="create-offer/:id" element={<CreateOffer />} />
           <Route path="offered-product" element={<OfferedProduct />} />
+          <Route path="orders-by-users" element={<Orders />} />
         </Route>
       </Routes>
     </>

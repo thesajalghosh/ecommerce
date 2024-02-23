@@ -13,7 +13,14 @@ import { MdKeyboardArrowRight } from "react-icons/md";
 import useCategory from "../../hooks/useCategory";
 import { useNavigate } from "react-router-dom";
 
-const Layout = ({ children, title, description, keywords, author }) => {
+const Layout = ({
+  children,
+  title,
+  description,
+  keywords,
+  author,
+  getBackfun,
+}) => {
   const sideBar = useSelector((state) => state.auth.sideBar);
   const dispatch = useDispatch();
   const [categoriesOpen, setCategoriesOpen] = useState(false);
@@ -35,7 +42,7 @@ const Layout = ({ children, title, description, keywords, author }) => {
         <meta name="keywords" content={keywords} />
         <meta name="author" content={author} />
       </Helmet>
-      <Header />
+      <Header getBackfun={getBackfun} />
       <main className="main__layout__inner__content">
         <ToastContainer />
         {children}

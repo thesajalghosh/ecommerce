@@ -135,6 +135,7 @@
   align-items: center;
   width: 100%;
   margin-top: 30px;
+  margin-bottom: 100px;
 }
 .Place__order__button__container button {
   padding: 10px 50px;
@@ -145,6 +146,7 @@
   border-radius: 7px;
   font-size: 1.1rem;
 }
+
 .Place__order__button__container button:focus {
   outline: none;
 }

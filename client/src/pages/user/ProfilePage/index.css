@@ -13,6 +13,7 @@
   border: 0.5px solid var(--very__light__border);
   margin: 15px;
   border-radius: 10px;
+  margin-top: 50px;
 }
 .profile__account__details__container__upperPart {
   display: flex;

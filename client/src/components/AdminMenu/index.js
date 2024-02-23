@@ -34,6 +34,12 @@ const AdminMenu = () => {
           >
             Offfered Product
           </NavLink>
+          <NavLink
+            to="/admin-dashboard/orders-by-users"
+            className="button__link"
+          >
+            Orders
+          </NavLink>
         </div>
       </div>
     </>

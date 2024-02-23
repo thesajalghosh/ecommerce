@@ -13,7 +13,7 @@ import { IoBagCheckOutline } from "react-icons/io5";
 import { IoArrowBack } from "react-icons/io5";
 import "./index.css";
 
-const Header = () => {
+const Header = ({ getBackfun }) => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
   const isAdmin = useSelector((state) => state.auth.isAdmin);
@@ -53,7 +53,11 @@ const Header = () => {
   };
 
   const handelBackbutton = () => {
-    navigate(-1);
+    if (getBackfun) {
+      getBackfun();
+    } else {
+      navigate(-1);
+    }
   };
 
   return (

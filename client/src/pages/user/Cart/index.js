@@ -115,7 +115,6 @@ const Cart = () => {
           cid: userData._id,
         }
       );
-      console.log(address, paymentMethod, price, paymentStatus);
       setCard(false);
     } else {
       setCard(true);
