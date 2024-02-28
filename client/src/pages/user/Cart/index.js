@@ -25,6 +25,7 @@ const Cart = () => {
   const [card, setCard] = useState(false);
   const [paymentStatus, setPaymentStatus] = useState(false);
   const [userData, setUserData] = useState([]);
+  const [orderLoading, setOrderLoading] = useState(false);
 
   useEffect(() => {
     const userGetFuntion = async () => {
@@ -101,20 +102,25 @@ const Cart = () => {
     return cartdate.map((item) => item._id);
   }
   const handelfinalOrder = () => {
-    let AllPides = getIdsFromCartdate(cartData);
+    console.log(cartData);
 
     if (selectedOption === "cash") {
-      const res = axios.post(
-        `${process.env.REACT_APP_API}/api/v1/order/order-place`,
-        {
-          sloc: address,
-          paymet: paymentMethod,
-          totp: price,
-          paysat: paymentStatus,
-          pid: cartData,
-          cid: userData._id,
-        }
-      );
+      setOrderLoading(true);
+      for (let i = 0; i < cartData.length; i++) {
+        const res = axios.post(
+          `${process.env.REACT_APP_API}/api/v1/order/order-place`,
+          {
+            sloc: address,
+            paymet: paymentMethod,
+            totp: price,
+            paysat: paymentStatus,
+            pid: cartData[i]._id,
+            cid: userData._id,
+            buyqun: cartData[i].buyqun,
+          }
+        );
+      }
+      setOrderLoading(false);
       setCard(false);
     } else {
       setCard(true);
@@ -248,6 +254,9 @@ const Cart = () => {
               </div>
             )}
           </>
+        )}
+        {orderLoading && (
+          <div className="place__order__loading">Loading....</div>
         )}
       </Layout>
     </>

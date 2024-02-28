@@ -1,0 +1,65 @@
+.admin__page__order__whole__container {
+  padding: 10px 15px;
+  margin-top: 5px;
+  margin-bottom: 100px;
+}
+.order__status__button__page {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.order__status__button__page button {
+  border: none;
+  padding: 15px 0px;
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 1.2rem;
+  background-color: var(--order__tab__color);
+  border-radius: 10px;
+  color: var(--srtong__font__color);
+}
+.new__order__whole__container {
+  color: var(--light__font__color);
+}
+.new__order__cid {
+  font-size: 1.1rem;
+  font-family: "Roboto", sans-serif;
+}
+.new__order__every__order {
+  margin-top: 15px;
+}
+.new__order__cid {
+  margin-bottom: 10px;
+}
+
+.new__order__orderd__product {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 15px;
+  padding: 10px;
+  border: 1px solid var(--very__light__border);
+  border-radius: 8px;
+}
+.new__order__order__upper__part {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+.new__order__left__part img {
+  height: 50px;
+  width: 50px;
+  border-radius: 10px;
+}
+.approve__button__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.approve__button__container button {
+  border: none;
+  padding: 5px 10px;
+  background-color: var(--button__color);
+  color: var(--srtong__font__color);
+  font-family: "Roboto", sans-serif;
+  border-radius: 6px;
+}

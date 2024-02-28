@@ -38,8 +38,23 @@ const OrderPage = () => {
 
     return exactDate;
   };
+  function getStyle(index) {
+    switch (index) {
+      case 1:
+        return "first-div";
+      case 2:
+        return "second-div";
+      case 3:
+        return "third-div";
+      case 4:
+        return "fourth-div";
+      // Add more cases as needed for additional divs
+      default:
+        return "";
+    }
+  }
 
-  console.log(orders[0]);
+  console.log(orders);
 
   return (
     <Layout>
@@ -52,27 +67,56 @@ const OrderPage = () => {
           </div>
 
           {orders &&
-            orders?.map((order) => (
+            orders?.map((ele) => (
               <>
-                <div className="order__data__heading">
-                  order on: {dateHandler(order.createdAt)}
+                <div className="order__data__heading" key={ele._id}>
+                  order on: {dateHandler(ele.createdAt)}
                 </div>
                 <div className="order__product__list">
-                  {order?.pid?.map((ele) => (
-                    <div className="order__element">
-                      <div className="order__element__left__part">
-                        <img src={ele.url} />
+                  <div className="order__element">
+                    <div className="order__element__left__part">
+                      <img src={ele.pid.url} />
+                    </div>
+                    <div className="order__element__right__part">
+                      <div className="order__element__right__name">
+                        {ele.pid.name}
                       </div>
-                      <div className="order__element__right__part">
-                        <div className="order__element__right__name">
-                          {ele.name}
-                        </div>
-                        <div className="order__element__right__quantity">
-                          {ele.buyqun}
-                        </div>
+                      <div className="order__element__right__quantity">
+                        {ele.buyqun} items
                       </div>
                     </div>
-                  ))}
+                  </div>
+                  <div className="details__order__element">
+                    <div className="details__order__ele">
+                      <span>Order Id</span>
+                      <span>{ele._id}</span>
+                    </div>
+                    <div className="details__order__ele">
+                      <span>Total Amount</span>
+
+                      <span>{ele.pid.price * ele.buyqun}</span>
+                    </div>
+                    <div className="details__order__ele">
+                      <span>Order Status</span>
+
+                      <span className="order__sat__color">
+                        {ele.orsat === 1 && (
+                          <div className={getStyle(ele.orsat)}>
+                            Order Success
+                          </div>
+                        )}
+                        {ele.orsat === 2 && (
+                          <div className={getStyle(ele.orsat)}>Package</div>
+                        )}
+                        {ele.orsat === 3 && (
+                          <div className={getStyle(ele.orsat)}>Shipped</div>
+                        )}
+                        {ele.orsat === 4 && (
+                          <div className={getStyle(ele.orsat)}>Delivered</div>
+                        )}
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </>
             ))}

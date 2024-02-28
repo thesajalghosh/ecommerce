@@ -6,6 +6,7 @@
   font-family: "Nunito Sans", sans-serif;
   color: var(--srtong__font__color);
   font-weight: 600;
+  margin-top: 30px;
 }
 .profile__account__details__container {
   display: flex;

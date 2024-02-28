@@ -22,6 +22,7 @@
   gap: 15px;
   margin-top: 10px;
   border-radius: 10px;
+  background-color: var(--very__dim__background__color);
 }
 .order__element {
   display: flex;
@@ -29,10 +30,46 @@
   align-items: center;
   padding: 10px;
   color: var(--srtong__font__color);
-  border: 1px solid var(--very__light__border);
-  border-radius: 10px;
 }
 .order__element__left__part img {
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
+  border-radius: 10px;
+}
+.details__order__element {
+  padding: 0px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-bottom: 15px;
+  color: var(--less__strong__font__color);
+  font-family: "Nunito Sans", sans-serif;
+}
+.details__order__ele {
+  display: flex;
+  justify-content: space-between;
+}
+
+.details__order__ele span {
+  text-align: end;
+}
+
+.first-div {
+  /* Styles for the first div */
+  color: green;
+}
+
+.second-div {
+  /* Styles for the second div */
+  color: orange;
+}
+
+.third-div {
+  /* Styles for the third div */
+  color: orangered;
+}
+
+.fourth-div {
+  /* Styles for the fourth div */
+  color: greenyellow;
 }
