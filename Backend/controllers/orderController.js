@@ -7,9 +7,10 @@ const OrderPlaceController = async (req, res) => {
 
     await orderProduct.save();
 
-    res.status(201).send({
+    res.status(200).send({
       success: true,
       message: "successfully order is placed",
+      orderProduct,
     });
   } catch (error) {
     console.log(error);
@@ -61,8 +62,33 @@ const getallOrderOnOneStatus = async (req, res) => {
   }
 };
 
+const orderStatusChange = async (req, res) => {
+  try {
+    const { id } = req.body;
+    const result = await orderModel.updateOne(
+      { _id: id },
+      { $inc: { orsat: 1 } },
+      { new: true }
+    );
+
+    res.status(200).send({
+      success: true,
+      message: "successfully update the stage",
+      result,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: true,
+      message: "error in status change",
+      error,
+    });
+  }
+};
+
 module.exports = {
   OrderPlaceController,
   getsingleCidOrder,
   getallOrderOnOneStatus,
+  orderStatusChange,
 };

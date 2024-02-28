@@ -9,7 +9,7 @@ const OrderSchema = new Schema(
       ref: "users",
       required: true,
     },
-    pid: [{ type: Schema.Types.ObjectId, ref: "Product" }], // order item
+    pid: { type: Schema.Types.ObjectId, ref: "Product" }, // order item
     sloc: {
       // shipping location
       type: String,
@@ -35,6 +35,9 @@ const OrderSchema = new Schema(
       // 1 - package
       // 2 - shipping
       // 3 - success
+    },
+    buyqun: {
+      type: Number,
     },
   },
   { timestamps: true }
