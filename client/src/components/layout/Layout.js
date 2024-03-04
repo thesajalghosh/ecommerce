@@ -36,7 +36,7 @@ const Layout = ({
     setCategoriesOpen(!categoriesOpen);
   };
 
-  useSocket(user.cid);
+  // useSocket(user.cid);
   // useEffect(() => {
   //   if (user.cid) {
   //     useSocket(user.cid);
