@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import "./Layout.css";
@@ -12,6 +12,7 @@ import { TiMinus } from "react-icons/ti";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import useCategory from "../../hooks/useCategory";
 import { useNavigate } from "react-router-dom";
+import { useSocket } from "../../socket";
 
 const Layout = ({
   children,
@@ -26,6 +27,7 @@ const Layout = ({
   const [categoriesOpen, setCategoriesOpen] = useState(false);
   const categories = useCategory();
   const navigate = useNavigate();
+  const user = useSelector((state) => state.auth.user);
 
   const closeButtonHandeler = () => {
     dispatch(setSideBar(false));
@@ -33,6 +35,13 @@ const Layout = ({
   const categoriesHandeler = () => {
     setCategoriesOpen(!categoriesOpen);
   };
+
+  useSocket(user.cid);
+  // useEffect(() => {
+  //   if (user.cid) {
+  //     useSocket(user.cid);
+  //   }
+  // }, [user]);
   return (
     <div>
       <Helmet>

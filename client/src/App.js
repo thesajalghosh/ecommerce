@@ -41,11 +41,11 @@ import AdminProfile from "./pages/Admin/AdminProfile";
 import AdminOrders from "./pages/Admin/AdminOrders";
 import { useSocket } from "./socket";
 import { Socket } from "socket.io-client";
+import { useEffect } from "react";
 
 function App() {
   const user = useSelector((state) => state.auth.user);
   console.log(user);
-  useSocket(user.cid);
 
   return (
     <>
