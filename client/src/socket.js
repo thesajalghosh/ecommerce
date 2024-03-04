@@ -9,12 +9,12 @@ const useSocket = (userId) => {
       transports: ["websocket"],
     });
     isSocketConnected = true;
-    if (isSocketConnected) {
+    if (isSocketConnected && userId) {
       socket.on("connected", () => {
         console.log("Socket connected with" + process.env.REACT_APP_API);
       });
 
-      socket.emit("setup", userId);
+      // socket.emit("setup", userId);
     }
   }, [socket, isSocketConnected]);
 };
