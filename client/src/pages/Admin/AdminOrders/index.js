@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Layout from "../../../components/layout/Layout";
 import "./index.css";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 const AdminOrders = () => {
   const [page, setPage] = useState("default");
@@ -9,12 +10,19 @@ const AdminOrders = () => {
   const [packageOrder, setPackageOrder] = useState([]);
   const [shippingOrder, setShippingOrder] = useState([]);
   const [successOrder, setSuccessOrder] = useState([]);
+  const token = useSelector((state) => state.auth.token);
 
   const getOneOrderStatusData = async (statusCode) => {
     try {
       const { data } = await axios.post(
         `${process.env.REACT_APP_API}/api/v1/order/get-one-status-order`,
-        { orsat: statusCode }
+        { orsat: statusCode },
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
       );
       return data.orders;
       // console.log(data.orders);
@@ -56,6 +64,11 @@ const AdminOrders = () => {
     // console.log(ele);
     const res = await axios.put(
       `${process.env.REACT_APP_API}/api/v1/order/change-order-status`,
+      {
+        headers: {
+          authorization: token,
+        },
+      },
       { id: ele._id }
     );
     console.log(res);

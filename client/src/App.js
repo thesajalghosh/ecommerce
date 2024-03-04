@@ -39,46 +39,15 @@ import SearchPage from "./pages/SearchPage";
 import UserRoutes from "./components/Routes/UserRoutes";
 import AdminProfile from "./pages/Admin/AdminProfile";
 import AdminOrders from "./pages/Admin/AdminOrders";
+import { useSocket } from "./socket";
+import { Socket } from "socket.io-client";
 
 function App() {
-  // const user = useSelector((state) => state.auth.token);
-  // console.log(user);
+  const user = useSelector((state) => state.auth.user);
+  console.log(user);
+  useSocket(user.cid);
+
   return (
-    // <>
-    //   <Routes>
-    //     <Route path="/" element={<HomePage />} />
-    //
-    //
-    //
-    //
-    //     <Route path="user/profile" element={<ProfilePage />} />
-    //     //This Route is only available in when anyone is login as a user
-    //     <Route path="/dashboard" element={<Private />}>
-    //       <Route path="user" element={<Dashboard />} />
-    //       {/* <Route path="user/orders" element={<Order />} /> */}
-    //       {/* <Route path="user/profile" element={<Profile />} /> */}
-
-    //       <Route path="user/order-page" element={<OrderPage />} />
-    //     </Route>
-    //     // This route is only available in Admin Route anyone is login as a
-    //     admin
-    //     <Route path="/dashboard" element={<AdminRoute />}>
-    //       <Route path="admin" element={<AdminDashboard />} />
-    //       <Route path="admin/create-category" element={<CreateCategory />} />
-    //       <Route path="admin/create-product" element={<CreateProduct />} />
-    //       <Route path="admin/product/:pid" element={<UpdateProduct />} />
-    //       <Route path="admin/product" element={<Products />} />
-    //       <Route path="admin/users" element={<Users />} />
-    //       <Route path="admin/offer-create" element={<OfferProductCreate />} />
-    //       <Route path="admin/create-offer/:id" element={<CreateOffer />} />
-    //       <Route path="admin/offered-product" element={<OfferedProduct />} />
-    //     </Route>
-    //
-    //
-    //
-    //   </Routes>
-    // </>
-
     <>
       <Routes>
         <Route path="/" element={<HomePage />} />

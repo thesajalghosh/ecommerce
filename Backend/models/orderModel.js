@@ -31,10 +31,11 @@ const OrderSchema = new Schema(
     orsat: {
       // order Status
       type: Number,
-      // 0 - order
-      // 1 - package
-      // 2 - shipping
-      // 3 - success
+      // 1 - order
+      // 2 - package
+      // 3 - shipping
+      // 4 - success
+      // 5 - cancel
     },
     buyqun: {
       type: Number,

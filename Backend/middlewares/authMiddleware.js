@@ -7,7 +7,7 @@ const dotenv = require("dotenv");
 const requireSignIn = async (req, res, next) => {
   try {
     const decode = jwt.verify(
-      req.headers.authorization,
+      req.headers.authorization.split(" ")[1],
       process.env.JWT_SECRET
     );
     req.user = decode;

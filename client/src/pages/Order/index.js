@@ -4,11 +4,14 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import "./index.css";
 import Loader from "../../components/Loader";
+import { socket } from "../../socket";
 
 const OrderPage = () => {
   const [orders, setOrders] = useState([]);
   const user = useSelector((state) => state.auth.user);
   const [loading, setLoading] = useState(false);
+  const [morePage, setMorePage] = useState(false);
+  const token = useSelector((state) => state.auth.token);
 
   const getAllOrders = async () => {
     setLoading(true);
@@ -17,7 +20,7 @@ const OrderPage = () => {
         `${process.env.REACT_APP_API}/api/v1/order/get-single-cid-order`,
         { cid: user.cid }
       );
-      console.log(data.orders);
+
       setOrders(data.orders);
     } catch (error) {
       console.error("Error fetching orders:", error);
@@ -26,11 +29,32 @@ const OrderPage = () => {
     }
   };
 
+  socket.on("cancel", (data) => {
+    console.log(data, "data");
+  });
+
+  const cancelOrderHandeler = async (ele) => {
+    try {
+      const res = await axios.put(
+        `${process.env.REACT_APP_API}/api/v1/order/cancel-status`,
+        { id: ele._id },
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log(res);
+    } catch (error) {
+      console.log("error in canceling order");
+    }
+  };
+
   useEffect(() => {
     getAllOrders();
   }, []);
   const dateHandler = (ts) => {
-    console.log(ts);
     let date = new Date(ts);
 
     let exactDate =
@@ -49,12 +73,15 @@ const OrderPage = () => {
       case 4:
         return "fourth-div";
       // Add more cases as needed for additional divs
+      case 5:
+        return "fifth-div";
       default:
         return "";
     }
   }
-
-  console.log(orders);
+  const moreDetailsHandeler = (ele) => {
+    setMorePage(true);
+  };
 
   return (
     <Layout>
@@ -65,6 +92,11 @@ const OrderPage = () => {
           <div className="order__page__header">
             {/* You Placed {orders?.pid?.length} orders */}
           </div>
+          {morePage && (
+            <div className="more__details__page__whole__contianer">
+              <Layout getBackfun={() => setMorePage(false)}></Layout>
+            </div>
+          )}
 
           {orders &&
             orders?.map((ele) => (
@@ -114,7 +146,27 @@ const OrderPage = () => {
                         {ele.orsat === 4 && (
                           <div className={getStyle(ele.orsat)}>Delivered</div>
                         )}
+                        {ele.orsat === 5 && (
+                          <div className={getStyle(ele.orsat)}>Canceled</div>
+                        )}
                       </span>
+                    </div>
+                    <div className="details__order__ele">
+                      <button onClick={() => moreDetailsHandeler(ele)}>
+                        More Details
+                      </button>
+                      {ele.orsat === 4 || ele.orsat === 5 ? (
+                        <button className="cancel__order__disable">
+                          Cancel Order
+                        </button>
+                      ) : (
+                        <button
+                          className="cancel__order"
+                          onClick={() => cancelOrderHandeler(ele)}
+                        >
+                          Cancel Order
+                        </button>
+                      )}
                     </div>
                   </div>
                 </div>

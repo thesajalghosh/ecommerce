@@ -12,6 +12,7 @@ const upload = multer({ dest: "uploads/" });
 const cloudinary = require("cloudinary");
 
 const cors = require("cors");
+const { connectSocket } = require("./socket");
 
 dotenv.config();
 cloudinary.v2.config({
@@ -30,7 +31,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(morgan("dev"));
+// app.use(morgan("dev"));
 
 //routes
 app.use("/api/v1/auth", router);
@@ -45,6 +46,18 @@ app.get("/", (req, res) => {
 
 const PORT = process.env.PORT || 4000;
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Server is running ${PORT}`);
+});
+
+const io = connectSocket(server);
+
+io.on("connection", (socket) => {
+  console.log("Socket connected .........");
+  socket.emit("connected", "hi");
+
+  socket.on("setup", (id) => {
+    console.log("id", id);
+    socket.join(id);
+  });
 });

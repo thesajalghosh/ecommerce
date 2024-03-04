@@ -26,6 +26,7 @@ const Cart = () => {
   const [paymentStatus, setPaymentStatus] = useState(false);
   const [userData, setUserData] = useState([]);
   const [orderLoading, setOrderLoading] = useState(false);
+  const token = useSelector((state) => state.auth.token);
 
   useEffect(() => {
     const userGetFuntion = async () => {
@@ -117,6 +118,12 @@ const Cart = () => {
             pid: cartData[i]._id,
             cid: userData._id,
             buyqun: cartData[i].buyqun,
+          },
+          {
+            headers: {
+              authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
           }
         );
       }

@@ -1,5 +1,7 @@
 .order__page__whole__container {
   padding: 10px 15px;
+  margin-bottom: 40px;
+  padding-bottom: 40px;
 }
 
 .order__page__header {
@@ -72,4 +74,24 @@
 .fourth-div {
   /* Styles for the fourth div */
   color: greenyellow;
+}
+.fifth-div {
+  color: #ee4266;
+}
+.details__order__ele button {
+  border: none;
+  font-family: "Nunito Sans", sans-serif;
+  width: 40vw;
+  padding: 5px 0px;
+  margin-top: 10px;
+  background-color: var(--button__color);
+  color: var(--srtong__font__color);
+  border-radius: 5px;
+}
+.cancel__order {
+  background-color: var(--delete__button) !important;
+}
+.cancel__order__disable {
+  background-color: rgb(231, 143, 143) !important;
+  color: rgb(89, 89, 89) !important;
 }

@@ -1,8 +1,10 @@
 const orderModel = require("../models/orderModel");
 const OrderModel = require("../models/orderModel");
+const { connectSocket } = require("../socket.js");
 
-const OrderPlaceController = async (req, res) => {
+const orderPlaceController = async (req, res) => {
   try {
+    console.log(req.user);
     const orderProduct = new OrderModel({ ...req.body, orsat: 1 });
 
     await orderProduct.save();
@@ -79,16 +81,45 @@ const orderStatusChange = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).send({
-      success: true,
+      success: false,
       message: "error in status change",
       error,
     });
   }
 };
+const orderCancelStatusChange = async (req, res) => {
+  try {
+    let socket = connectSocket();
+
+    console.log(req.user, "recived");
+    const userId = req.user._id;
+
+    const { id } = req.body;
+
+    const result = await orderModel.findByIdAndUpdate(
+      { _id: id },
+      { $set: { orsat: 5 } },
+      { new: true }
+    );
+    socket.to(userId).emit("cancel", result);
+    res.status(200).send({
+      success: true,
+      message: "successfully cancel the order",
+      result,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "error in cancel product api",
+    });
+  }
+};
 
 module.exports = {
-  OrderPlaceController,
+  orderPlaceController,
   getsingleCidOrder,
   getallOrderOnOneStatus,
   orderStatusChange,
+  orderCancelStatusChange,
 };
