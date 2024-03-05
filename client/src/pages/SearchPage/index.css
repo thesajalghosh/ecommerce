@@ -1,3 +1,6 @@
+.search__container__whole {
+  padding-top: 30px;
+}
 .search__bar {
   display: flex;
   gap: 10px;

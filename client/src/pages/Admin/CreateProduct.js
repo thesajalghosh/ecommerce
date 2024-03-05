@@ -56,7 +56,7 @@ const CreateProduct = () => {
         productData,
         {
           headers: {
-            authorization: token,
+            authorization: `Bearer ${token}`,
           },
           "Content-Type": "application/json",
         }
@@ -64,7 +64,7 @@ const CreateProduct = () => {
       console.log(data);
       if (data.data.success) {
         toast.success("product create successfully");
-        navigate("/dashboard/admin/product");
+        navigate("/admin-dashboard/admin");
       } else {
         toast.error(data?.message);
       }

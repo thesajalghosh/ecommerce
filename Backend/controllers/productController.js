@@ -9,8 +9,9 @@ const createProductController = async (req, res) => {
   try {
     const { name, description, price, category, quantity } = req.body;
     const photo = req.file;
-    console.log(req.body);
-    console.log(photo);
+    // console.log(req.body);
+    // console.log(photo);
+    // console.log(req.user);
 
     const result = await uploadingImage(photo.path);
     //validation

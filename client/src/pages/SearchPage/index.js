@@ -7,12 +7,19 @@ import { useNavigate } from "react-router-dom";
 import "./index.css";
 import { FaTrashAlt } from "react-icons/fa";
 import Loader from "../../components/Loader";
+import { BiSort } from "react-icons/bi";
+import { MdFilterAlt } from "react-icons/md";
+import Filter from "../../components/Filter";
 const SearchPage = () => {
   const token = useSelector((state) => state.auth.token);
   const [search, setSearch] = useState("");
   const [result, setReasult] = useState([]);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const [sortPage, setSortPage] = useState(false);
+  const [filterPage, setFilterPage] = useState(false);
+  const [checked, setChecked] = useState([]);
+  const [radio, setRadio] = useState([]);
 
   const searchHandeler = async (e) => {
     setLoading(true);
@@ -30,6 +37,13 @@ const SearchPage = () => {
   console.log(result);
   const traceButtonHandeler = () => {
     setReasult([]);
+  };
+  const handlepriceHighLow = () => {
+    setSortPage(false);
+  };
+
+  const handlePopularityHighLow = () => {
+    setSortPage(false);
   };
 
   return (
@@ -105,6 +119,56 @@ const SearchPage = () => {
             </div>
           )}
         </div>
+        <div className="sort__filter__container">
+          <button onClick={() => setSortPage(true)}>
+            <BiSort size={25} /> SORT
+          </button>
+          <button>
+            <MdFilterAlt size={25} onClick={() => setFilterPage(true)} /> FILTER
+          </button>
+        </div>
+        {sortPage && (
+          <>
+            <div className="sort__component__whole__container">
+              <button
+                className="sort__element"
+                value={"phl"}
+                onClick={handlepriceHighLow}
+              >
+                Price - high to low
+              </button>
+              <button
+                className="sort__element"
+                value={"plh"}
+                onClick={handlepriceHighLow}
+              >
+                Price - low to high
+              </button>
+              <button
+                className="sort__element"
+                value={"ph"}
+                onClick={handlePopularityHighLow}
+              >
+                Popularity - High
+              </button>
+              <button
+                className="sort__element"
+                value={"pl"}
+                onClick={handlePopularityHighLow}
+              >
+                Popularity - Low
+              </button>
+            </div>
+          </>
+        )}
+        {filterPage && (
+          <Filter
+            setFilterPage={setFilterPage}
+            checked={checked}
+            setChecked={setChecked}
+            setRadio={setRadio}
+          />
+        )}
       </Layout>
     </>
   );

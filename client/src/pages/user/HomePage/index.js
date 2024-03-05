@@ -6,8 +6,7 @@ import axios from "axios";
 import "./index.css";
 import { Prices } from "../../../components/Prices";
 import { useNavigate } from "react-router-dom";
-import { BiSort } from "react-icons/bi";
-import { MdFilterAlt } from "react-icons/md";
+
 import Filter from "../../../components/Filter";
 import { setStoreCart, updateStoreCart } from "../../../redux/cartSlice";
 import ProductCart from "../../../components/ProductCard";
@@ -24,8 +23,6 @@ const HomePage = () => {
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
-  const [sortPage, setSortPage] = useState(false);
-  const [filterPage, setFilterPage] = useState(false);
   const [cart, setCart] = useState([]);
   const [maxProductDis, setMaxProductDis] = useState([]);
   const dispatch = useDispatch();
@@ -152,14 +149,6 @@ const HomePage = () => {
     }
   };
 
-  const handlepriceHighLow = () => {
-    setSortPage(false);
-  };
-
-  const handlePopularityHighLow = () => {
-    setSortPage(false);
-  };
-
   const AddToCartHandeler = (cartProduct) => {
     console.log(storeCart);
     console.log(cartProduct);
@@ -223,57 +212,6 @@ const HomePage = () => {
               </button>
             )}
           </div>
-        </div>
-        {sortPage && (
-          <>
-            <div className="sort__component__whole__container">
-              <button
-                className="sort__element"
-                value={"phl"}
-                onClick={handlepriceHighLow}
-              >
-                Price - high to low
-              </button>
-              <button
-                className="sort__element"
-                value={"plh"}
-                onClick={handlepriceHighLow}
-              >
-                Price - low to high
-              </button>
-              <button
-                className="sort__element"
-                value={"ph"}
-                onClick={handlePopularityHighLow}
-              >
-                Popularity - High
-              </button>
-              <button
-                className="sort__element"
-                value={"pl"}
-                onClick={handlePopularityHighLow}
-              >
-                Popularity - Low
-              </button>
-            </div>
-          </>
-        )}
-        {filterPage && (
-          <Filter
-            setFilterPage={setFilterPage}
-            checked={checked}
-            setChecked={setChecked}
-            setRadio={setRadio}
-          />
-        )}
-
-        <div className="sort__filter__container">
-          <button onClick={() => setSortPage(true)}>
-            <BiSort size={25} /> SORT
-          </button>
-          <button>
-            <MdFilterAlt size={25} onClick={() => setFilterPage(true)} /> FILTER
-          </button>
         </div>
       </div>
     </Layout>
