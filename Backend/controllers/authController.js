@@ -157,7 +157,7 @@ const forgotPasswordController = async (req, res) => {
 
 const userController = async (req, res) => {
   try {
-    const user = await userModel.findOne(req.body);
+    const user = await userModel.findOne(req.body).populate("lp");
 
     return res.status(200).send({
       success: true,
@@ -174,9 +174,50 @@ const userController = async (req, res) => {
   }
 };
 
+const addLikeProductController = async (req, res) => {
+  try {
+    console.log(req.body, req.user);
+
+    const result = await userModel.findByIdAndUpdate(
+      { _id: req.user._id },
+      { $push: { lp: req.body.lp } },
+      { new: true }
+    );
+
+    console.log(result);
+
+    res.status(200).send({
+      success: true,
+      message: "successfully added the like product in the user database",
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "something went wrong in like product contoller",
+      error,
+    });
+  }
+};
+
+const unLikeProductController = async (req, res) => {
+  try {
+    console.log(req.body, req.user);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      success: false,
+      message: "error in the unlike controller",
+      error,
+    });
+  }
+};
+
 module.exports = {
   registerController,
   loginController,
   forgotPasswordController,
   userController,
+  addLikeProductController,
+  unLikeProductController,
 };

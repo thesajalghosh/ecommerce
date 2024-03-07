@@ -32,6 +32,7 @@ const userSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
+    lp: [{ type: mongoose.Schema.Types.ObjectId, ref: "Product" }], //likeproduct
   },
   { timestamps: true }
 );

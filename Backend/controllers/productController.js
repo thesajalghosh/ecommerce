@@ -257,14 +257,16 @@ const searchProductController = async (req, res) => {
   try {
     const { keyword } = req.params;
     console.log(keyword);
-    const results = await productModel
-      .find({
-        $or: [
-          { name: { $regex: keyword, $options: "i" } },
-          // { description: { $regex: keyword, $options: "i" } },
-        ],
-      })
-      .select("-photo");
+    const query = {
+      $or: [{ name: "keyword" }, { description: "keyword" }],
+    };
+    const results = await productModel.find({
+      $or: [
+        { name: { $regex: keyword, $options: "i" } },
+        { description: { $regex: keyword, $options: "i" } },
+      ],
+    });
+    // const results = await productModel.find(query);
     res.json(results);
   } catch (error) {
     console.log(error);
