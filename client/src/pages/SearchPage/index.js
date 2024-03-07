@@ -10,6 +10,10 @@ import Loader from "../../components/Loader";
 import { BiSort } from "react-icons/bi";
 import { MdFilterAlt } from "react-icons/md";
 import Filter from "../../components/Filter";
+import { FaRupeeSign } from "react-icons/fa";
+import { SiExpressvpn } from "react-icons/si";
+import { TbMinusVertical } from "react-icons/tb";
+import { IoIosHeartEmpty } from "react-icons/io";
 const SearchPage = () => {
   const token = useSelector((state) => state.auth.token);
   const [search, setSearch] = useState("");
@@ -45,6 +49,25 @@ const SearchPage = () => {
   const handlePopularityHighLow = () => {
     setSortPage(false);
   };
+  const textTranked = (text) => {
+    console.log(text);
+    return text.subString(0, 30);
+  };
+
+  const likeProductHandeler = async (e) => {
+    console.log(e);
+    const res = await axios.put(
+      `${process.env.REACT_APP_API}/api/v1/auth/add-like-product`,
+      { lp: e._id },
+      {
+        headers: {
+          authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    console.log(res);
+  };
 
   return (
     <>
@@ -75,46 +98,49 @@ const SearchPage = () => {
                   <span>NO Product is found</span>
                 </div>
               ) : (
-                <>
+                <div className="all__result__whole__contianer">
                   {result?.map((e) => (
                     <>
                       <div
-                        className="product__card"
+                        className="search__product__card"
                         // onClick={() => navigate(`/product/${e._id}`)}
                         key={e._id}
                       >
-                        <div className="product__card__image">
+                        <div className="search__product__card__image">
                           <img src={e.url} alt={e.slug} />
                         </div>
-                        <div className="lower__part__product__card">
-                          <div className="lower__part__name">{e.name}</div>
-                          <div className="lower__part__name">
-                            {e.description}
+                        <div className="search__lower__part__product__card">
+                          <div className="search__lower__part__name">
+                            {e.name.slice(0, 15)}{" "}
+                            <IoIosHeartEmpty
+                              size={20}
+                              onClick={() => likeProductHandeler(e)}
+                            />
+                          </div>
+                          <div className="search__lower__part__des">
+                            {/* {textTranked(e.description)} */}
+                            {e.description.slice(0, 20)}...
                           </div>
                           <div className="lower__part__price__quantity">
-                            <div className="lower__part__price">
-                              Price : $ {e.price}
+                            <div className="search__lower__part__price">
+                              <FaRupeeSign />
+                              {e.price}
                             </div>
-                            <div className="lower__part__price">
-                              In stock : {e.quantity}
+                          </div>
+                          <div className="express__delivery__section">
+                            <div className="delivery__left">
+                              <SiExpressvpn /> EXPRESS
                             </div>
-                            <div className="d-flex card__buttons">
-                              <button
-                                className="btn btn-primary"
-                                onClick={() => navigate(`/product/${e._id}`)}
-                              >
-                                More Details
-                              </button>
-                              <button className="btn btn-primary">
-                                Add to cart
-                              </button>
+                            <TbMinusVertical />
+                            <div className="delivery__right">
+                              5 Day Delivery
                             </div>
                           </div>
                         </div>
                       </div>
                     </>
                   ))}
-                </>
+                </div>
               )}
             </div>
           )}

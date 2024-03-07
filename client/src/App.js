@@ -42,6 +42,7 @@ import AdminOrders from "./pages/Admin/AdminOrders";
 import { useSocket } from "./socket";
 import { Socket } from "socket.io-client";
 import { useEffect } from "react";
+import LikePage from "./pages/LikePage";
 
 function App() {
   const user = useSelector((state) => state.auth.user);
@@ -60,6 +61,7 @@ function App() {
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/all-categories" element={<Categories />} />
         <Route path="/category/:id" element={<CategoryProduct />} />
+        <Route path="/like-product" element={<LikePage />} />
         <Route path="*" element={<PageNotFount />} />
         //this Route only access by user
         <Route path="user-dashboard" element={<UserRoutes />}>

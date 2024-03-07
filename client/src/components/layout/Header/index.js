@@ -11,7 +11,9 @@ import { IoIosSearch } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import { IoBagCheckOutline } from "react-icons/io5";
 import { IoArrowBack } from "react-icons/io5";
+import { IoIosHeartEmpty } from "react-icons/io";
 import "./index.css";
+import { FaHeart } from "react-icons/fa6";
 
 const Header = ({ getBackfun }) => {
   const dispatch = useDispatch();
@@ -46,6 +48,9 @@ const Header = ({ getBackfun }) => {
     } else {
       navigate("/auth-page");
     }
+  };
+  const likeProductHandeler = () => {
+    navigate("/like-product");
   };
 
   const handelSideBar = () => {
@@ -87,6 +92,13 @@ const Header = ({ getBackfun }) => {
             onClick={() => navigate("/search")}
           >
             <IoIosSearch size={25} />
+          </div>
+          <div className="navbar__left__search" onClick={likeProductHandeler}>
+            {window.location.pathname === "/like-product" ? (
+              <FaHeart size={25} />
+            ) : (
+              <IoIosHeartEmpty size={25} />
+            )}
           </div>
           <div className="navbar__left__search" onClick={profilehandeler}>
             <CgProfile size={25} />

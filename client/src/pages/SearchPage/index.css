@@ -23,6 +23,13 @@
   font-size: 1.2rem;
   color: var(--srtong__font__color);
 }
+.all__result__whole__contianer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-row-gap: 15px;
+  margin-bottom: 150px;
+  grid-column-gap: 10px;
+}
 .search__bar input:focus {
   outline: none;
   box-shadow: none;
@@ -40,6 +47,43 @@
   background-color: transparent;
   border: none;
 }
+
+.search__lower__part__product__card {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding: 5px 10px;
+}
+.search__product__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.search__product__card__image img {
+  height: 150px;
+  width: 100px;
+  border-radius: 9px;
+}
+.search__lower__part__name {
+  font-size: 1rem;
+  color: var(--less__strong__font__color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.search__lower__part__des {
+  color: var(--light__font__color);
+  font-weight: 500;
+  font-size: 0.8rem;
+}
+.search__lower__part__price {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  font-family: "Roboto Condensed", sans-serif;
+  color: var(--srtong__font__color);
+}
 .search__result__sub__heanding button:focus {
   outline: none;
 }
@@ -51,4 +95,18 @@
   height: 80vh;
   color: var(--srtong__font__color);
   font-family: "Nunito Sans", sans-serif;
+}
+.express__delivery__section {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 0.7rem;
+  gap: 5px;
+  color: var(--light__font__color);
+}
+.delivery__left {
+  font-weight: 600;
+}
+.delivery__left svg {
+  color: rgba(248, 49, 49, 0.688);
 }
