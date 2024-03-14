@@ -112,3 +112,42 @@
   justify-content: center;
   gap: 10px;
 }
+
+.home__page__footer__part {
+  margin-top: 20px;
+  padding-bottom: 100px;
+  background-color: rgba(50, 49, 49, 0.338);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+.fooeter__part__social {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0px;
+  font-family: "Nunito Sans", sans-serif;
+  color: var(--less__strong__font__color);
+  font-size: 1.2rem;
+}
+.social__part__icon {
+  display: flex;
+  gap: 15px;
+}
+.footer__page__section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  color: var(--less__strong__font__color);
+}
+.some__footer__information {
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--less__strong__font__color);
+}

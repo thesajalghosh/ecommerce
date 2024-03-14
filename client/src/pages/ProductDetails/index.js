@@ -1,13 +1,17 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import Layout from "../../components/layout/Layout";
 import "./index.css";
 import { FaRupeeSign } from "react-icons/fa";
 import ProductCard from "../../components/ProductCard";
 import { FaElementor } from "react-icons/fa6";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setStoreCart } from "../../redux/cartSlice";
+import { SiExpressvpn } from "react-icons/si";
+import { TbMinusVertical } from "react-icons/tb";
+import { FaRegHeart } from "react-icons/fa";
+import { FcLike } from "react-icons/fc";
 
 const ProductDetails = () => {
   const [product, setProduct] = useState({});
@@ -16,6 +20,11 @@ const ProductDetails = () => {
   const navigate = useNavigate();
   const [cart, setCart] = useState([]);
   const dispatch = useDispatch();
+  const storeCart = useSelector((state) => state.cart.storeCart);
+  const token = useSelector((state) => state.auth.token);
+  const [Liked, setLiked] = useState(false);
+  const [likedProduct, setLikedProduct] = useState([]);
+  const user = useSelector((state) => state.auth.user);
 
   const getProduct = async () => {
     try {
@@ -30,10 +39,33 @@ const ProductDetails = () => {
       console.log(error);
     }
   };
+
   const AddToCartHandeler = (cartProduct) => {
-    let cartVal = [...cart, cartProduct];
-    setCart(cartVal);
-    dispatch(setStoreCart(cartProduct));
+    console.log(storeCart);
+    console.log(cartProduct);
+    let existingItem = storeCart?.find((ele) => ele._id === cartProduct._id);
+    // console.log("existingItem", existingItem);
+    if (existingItem) {
+      console.log("exist item");
+      let newExistItem = { ...existingItem, buyqun: existingItem.buyqun + 1 };
+      console.log("existingItem", newExistItem);
+      console.log(storeCart);
+      let newUpdatedExistingItem = storeCart.map((ele) => {
+        if (ele._id === newExistItem._id) {
+          return newExistItem;
+        }
+        return ele;
+      });
+      console.log("first", newUpdatedExistingItem);
+      dispatch(setStoreCart(newUpdatedExistingItem));
+    } else {
+      // console.log("not exist item");
+      let quantityAdd = { ...cartProduct, buyqun: 1 };
+      // console.log("quantityAdd", quantityAdd);
+      let newAddItemWithPrevious = [...storeCart, quantityAdd];
+      // console.log("newAddItemWithPevioue", newAddItemWithPrevious);
+      dispatch(setStoreCart(newAddItemWithPrevious));
+    }
   };
 
   const getSimilarProduct = async (pid, cid) => {
@@ -54,21 +86,62 @@ const ProductDetails = () => {
     if (params.id) getProduct();
   }, [params.id]);
 
-  console.log(product);
+  const likeProductHandeler = async (e) => {
+    setLiked(true);
+    console.log(e);
 
+    const res = await axios.put(
+      `${process.env.REACT_APP_API}/api/v1/auth/add-like-product`,
+      { lp: e._id },
+      {
+        headers: {
+          authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      }
+    );
+  };
+
+  const likeProductArray = async () => {
+    const { data } = await axios.post(
+      `${process.env.REACT_APP_API}/api/v1/auth/user-get`,
+
+      { _id: user.cid }
+    );
+
+    if (data.success) {
+      setLikedProduct(data.user.lp);
+    }
+  };
+
+  useEffect(() => {
+    likeProductArray();
+  }, []);
+  useEffect(() => {
+    console.log(likedProduct);
+    console.log(product._id);
+    let existOrNot = likedProduct.some((pro) => pro._id === product?._id);
+    console.log(existOrNot);
+    setLiked(existOrNot);
+  }, [likedProduct]);
+
+  console.log(Liked);
   return (
     <>
       <div>
         {product && (
           <Layout>
             <div className="product__details__whole__container">
-              <div className="product__name__header">{product?.name}</div>
-              <div className="product__description__subheader">
-                {product?.description}
+              <div className="product__detail__main__product">
+                <div className="product__details__image">
+                  <img src={product.url} alt={product.name} />
+                </div>
+                <div className="product__name__header">{product?.name}</div>
+                <div className="product__description__subheader">
+                  {product?.description?.slice(0, 120)}...
+                </div>
               </div>
-              <div className="product__details__image">
-                <img src={product.url} alt={product.name} />
-              </div>
+
               {product.desP > 0 ? (
                 <>
                   <div className="price__container__whole">
@@ -92,11 +165,22 @@ const ProductDetails = () => {
                   </div>
                 </>
               )}
-              <div className="product__available__count">
-                {product.quantity} only left
+              <div className="express__delivery__section">
+                <div className="delivery__left__part">
+                  <SiExpressvpn size={20} /> EXPRESS
+                </div>
+                <TbMinusVertical size={27} />
+                <div className="delivery__right__part">5 Day Delivery</div>
               </div>
               <div className="buy__now__add__to__cart__button">
-                <button className="buy">Buy Now</button>
+                <button
+                  className="buy"
+                  onClick={() => likeProductHandeler(product)}
+                >
+                  {" "}
+                  {Liked ? <FcLike size={25} /> : <FaRegHeart size={25} />}
+                  Watchlist
+                </button>
                 <button
                   className="cart"
                   onClick={() => AddToCartHandeler(product)}
@@ -112,7 +196,7 @@ const ProductDetails = () => {
               <div className="similar__product__every__product">
                 {relatedProduct?.map((ele) => (
                   <>
-                    <div className="oneof__the__top__product">
+                    <div className="oneof__the__top__product" key={ele._id}>
                       <div className="offered__product__element" key={ele._id}>
                         <div className="element__left__part">
                           <img src={ele.url} />

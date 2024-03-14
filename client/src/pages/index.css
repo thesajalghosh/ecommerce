@@ -23,8 +23,10 @@
   margin-left: 10px;
 }
 .similar__product__every__product {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  gap: 10px;
+  height: auto;
+  flex-direction: column;
 }
 .categories__element {
   padding: 10px;

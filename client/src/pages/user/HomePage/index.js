@@ -13,6 +13,11 @@ import ProductCart from "../../../components/ProductCard";
 import OfferComp from "../../../components/OfferComp";
 import BestSeller from "../../../components/BestSeller";
 import ShopCategory from "../../../components/ShopCategory";
+import { FaFacebookF } from "react-icons/fa";
+import { BsTwitterX } from "react-icons/bs";
+import { FaInstagramSquare } from "react-icons/fa";
+import { FaSquareGooglePlus } from "react-icons/fa6";
+import { FaLinkedin } from "react-icons/fa";
 
 const HomePage = () => {
   const user = useSelector((state) => state.auth.user);
@@ -189,7 +194,7 @@ const HomePage = () => {
         <div className="shop__by__categories__whole__container">
           <ShopCategory />
         </div>
-        <div className="all__product__container">
+        {/* <div className="all__product__container">
           <h1 className="text-center">All Product</h1>
           <div className="d-flex flex-wrap"></div>
           <h1>Products</h1>
@@ -211,6 +216,26 @@ const HomePage = () => {
                 {loading ? "Loading ..." : "Loading More"}
               </button>
             )}
+          </div>
+        </div> */}
+        <div className="home__page__footer__part">
+          <div className="fooeter__part__social">
+            <div className="social__heading">Let's get social</div>
+            <div className="social__part__icon">
+              <FaFacebookF size={25} />
+              <BsTwitterX size={25} />
+              <FaInstagramSquare size={25} />
+              <FaSquareGooglePlus size={25} />
+              <FaLinkedin size={25} />
+            </div>
+          </div>
+          <div className="footer__page__section">
+            <p>Privacy Policy</p>
+            <p>.</p>
+            <p>Terms & Conditions</p>
+          </div>
+          <div className="some__footer__information">
+            @2024 Acom Marketin Limited. All Right Reserved
           </div>
         </div>
       </div>

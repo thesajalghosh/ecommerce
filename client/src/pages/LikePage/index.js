@@ -8,6 +8,7 @@ import { SiExpressvpn } from "react-icons/si";
 import { TbMinusVertical } from "react-icons/tb";
 import { IoIosHeartEmpty } from "react-icons/io";
 import "./index.css";
+import { FcLike } from "react-icons/fc";
 
 const LikePage = () => {
   const [likeProduct, setLikeProduct] = useState([]);
@@ -33,6 +34,8 @@ const LikePage = () => {
   }, []);
 
   const unLikeHandeler = async (e) => {
+    const newArray = likeProduct.filter((ele) => ele._id !== e._id);
+    setLikeProduct(newArray);
     const res = await axios.put(
       `${process.env.REACT_APP_API}/api/v1/auth/unlike-product`,
       { lp: e._id },
@@ -68,7 +71,8 @@ const LikePage = () => {
                     </div>
                     <div className="search__lower__part__product__card">
                       <div className="search__lower__part__name">
-                        {e.name.slice(0, 15)} <IoIosHeartEmpty size={20} />
+                        {e.name.slice(0, 15)}{" "}
+                        <FcLike size={20} onClick={() => unLikeHandeler(e)} />
                       </div>
                       <div className="search__lower__part__des">
                         {/* {textTranked(e.description)} */}

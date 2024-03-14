@@ -103,7 +103,7 @@ const SearchPage = () => {
                     <>
                       <div
                         className="search__product__card"
-                        // onClick={() => navigate(`/product/${e._id}`)}
+                        onClick={() => navigate(`/product/${e._id}`)}
                         key={e._id}
                       >
                         <div className="search__product__card__image">
@@ -145,14 +145,17 @@ const SearchPage = () => {
             </div>
           )}
         </div>
-        <div className="sort__filter__container">
-          <button onClick={() => setSortPage(true)}>
-            <BiSort size={25} /> SORT
-          </button>
-          <button>
-            <MdFilterAlt size={25} onClick={() => setFilterPage(true)} /> FILTER
-          </button>
-        </div>
+        {result.length !== 0 && (
+          <div className="sort__filter__container">
+            <button onClick={() => setSortPage(true)}>
+              <BiSort size={25} /> SORT
+            </button>
+            <button>
+              <MdFilterAlt size={25} onClick={() => setFilterPage(true)} />{" "}
+              FILTER
+            </button>
+          </div>
+        )}
         {sortPage && (
           <>
             <div className="sort__component__whole__container">
