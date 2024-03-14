@@ -203,6 +203,17 @@ const addLikeProductController = async (req, res) => {
 const unLikeProductController = async (req, res) => {
   try {
     console.log(req.body, req.user);
+    const result = await userModel.updateOne(
+      { _id: req.user._id },
+      { $pull: { lp: req.body.lp } },
+      { new: true }
+    );
+
+    res.status(200).send({
+      message: "successfully dislike the element",
+      success: true,
+      result,
+    });
   } catch (error) {
     console.log(error);
     res.status(500).send({
