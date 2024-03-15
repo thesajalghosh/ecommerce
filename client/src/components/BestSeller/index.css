@@ -1,0 +1,28 @@
+.best__seller__skeleton__whole__container {
+  height: 10vh;
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+}
+.best__seller__element {
+  height: 100px;
+  width: 100px;
+  background-color: rgb(105, 105, 103);
+  border-radius: 50%;
+}
+
+@keyframes loadingAnimation {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+.skeleton-placeholder {
+  animation: loadingAnimation 1.5s infinite; /* Adjust duration as needed */
+}

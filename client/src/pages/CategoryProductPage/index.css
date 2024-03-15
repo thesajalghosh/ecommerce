@@ -1,12 +1,15 @@
 .category__product__page__header {
-  font-size: 1.4rem;
-  text-align: center;
-  padding: 10px;
-  color: var(--srtong__font__color);
+  font-size: 1.3rem;
+  text-align: left;
+  color: var(--less__strong__font__color);
   font-family: "Nunito Sans", sans-serif;
+  padding-top: 40px;
+  padding-left: 10px;
 }
 .category__product__page__elements {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-row-gap: 20px;
+  margin-top: 30px;
+  margin-bottom: 80px;
 }

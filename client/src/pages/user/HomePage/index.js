@@ -32,6 +32,7 @@ const HomePage = () => {
   const [maxProductDis, setMaxProductDis] = useState([]);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [bestLoading, setBestLoading] = useState(false);
   const storeCart = useSelector((state) => state.cart.storeCart);
   console.log(storeCart);
 
@@ -73,6 +74,7 @@ const HomePage = () => {
   };
 
   const getAllCategory = async () => {
+    setBestLoading(true);
     try {
       const { data } = await axios.get(
         `${process.env.REACT_APP_API}/api/v1/category/get-all-category`
@@ -82,6 +84,7 @@ const HomePage = () => {
         setCategories(data?.category);
       }
       // console.log(data.category);
+      setBestLoading(false);
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong");
@@ -186,7 +189,7 @@ const HomePage = () => {
     <Layout title={"All Products - Best Offers"}>
       <div className="home__page__whole__container">
         <div className="explore__best__seller__component">
-          <BestSeller categoryies={categoryies} />
+          <BestSeller categoryies={categoryies} bestLoading={bestLoading} />
         </div>
         <div className="today__offer__whole__container">
           <OfferComp />
@@ -194,30 +197,7 @@ const HomePage = () => {
         <div className="shop__by__categories__whole__container">
           <ShopCategory />
         </div>
-        {/* <div className="all__product__container">
-          <h1 className="text-center">All Product</h1>
-          <div className="d-flex flex-wrap"></div>
-          <h1>Products</h1>
 
-          <div className="all__products__admin__panal">
-            {products?.map((e) => (
-              <div className="product" key={e._id}>
-                <ProductCart
-                  element={e}
-                  AddToCartHandeler={AddToCartHandeler}
-                />
-              </div>
-            ))}
-          </div>
-
-          <div>
-            {products && products.length < total && (
-              <button className="btn btn-primary" onClick={loadMoreHandel}>
-                {loading ? "Loading ..." : "Loading More"}
-              </button>
-            )}
-          </div>
-        </div> */}
         <div className="home__page__footer__part">
           <div className="fooeter__part__social">
             <div className="social__heading">Let's get social</div>
