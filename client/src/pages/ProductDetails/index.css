@@ -95,6 +95,11 @@
   align-items: center;
   justify-content: center;
 }
+.buy__now__add__to__cart__button button:focus {
+  border: none;
+  box-shadow: none;
+}
+
 .buy__now__add__to__cart__button .buy {
   border: 1px solid rgb(187, 31, 31);
   font-weight: 600;

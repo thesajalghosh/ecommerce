@@ -29,15 +29,17 @@ const Cart = () => {
   const token = useSelector((state) => state.auth.token);
 
   useEffect(() => {
-    const userGetFuntion = async () => {
-      const { data } = await axios.post(
-        `${process.env.REACT_APP_API}/api/v1/auth/user-get`,
-        { email: user.email }
-      );
-      console.log(data.user._id);
-      setUserData(data.user);
-    };
-    userGetFuntion();
+    if (user) {
+      const userGetFuntion = async () => {
+        const { data } = await axios.post(
+          `${process.env.REACT_APP_API}/api/v1/auth/user-get`,
+          { email: user.email }
+        );
+        console.log(data.user._id);
+        setUserData(data.user);
+      };
+      userGetFuntion();
+    }
   }, []);
   // console.log(cartData);
   const [selectedOption, setSelectedOption] = useState(null);
@@ -252,7 +254,10 @@ const Cart = () => {
                       </div>
                     </div>
                     <div className="Place__order__button__container">
-                      <button onClick={() => setAddPaypage(true)}>
+                      <button
+                        onClick={() => setAddPaypage(true)}
+                        disabled={!user ? true : false}
+                      >
                         Place Order
                       </button>
                     </div>

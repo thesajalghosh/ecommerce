@@ -103,14 +103,16 @@ const ProductDetails = () => {
   };
 
   const likeProductArray = async () => {
-    const { data } = await axios.post(
-      `${process.env.REACT_APP_API}/api/v1/auth/user-get`,
+    if (user) {
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_API}/api/v1/auth/user-get`,
 
-      { _id: user.cid }
-    );
+        { _id: user.cid }
+      );
 
-    if (data.success) {
-      setLikedProduct(data.user.lp);
+      if (data.success) {
+        setLikedProduct(data.user.lp);
+      }
     }
   };
 
@@ -125,7 +127,6 @@ const ProductDetails = () => {
     setLiked(existOrNot);
   }, [likedProduct]);
 
-  console.log(Liked);
   return (
     <>
       <div>
