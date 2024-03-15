@@ -9,26 +9,32 @@ const Authenticate = () => {
   return (
     <>
       <Layout>
-        <div className="auth__page__tab__change">
-          <button
-            className={activePage === "Login" ? "active__tab" : "inactive__tab"}
-            onClick={() => setActivePage("Login")}
-          >
-            Login
-          </button>
-          <button
-            className={
-              activePage === "Register" ? "active__tab" : "inactive__tab"
-            }
-            onClick={() => setActivePage("Register")}
-          >
-            Register
-          </button>
-        </div>
+        <div className="login__register__whole__container">
+          <div className="login__register__page">
+            <div className="auth__page__tab__change">
+              <button
+                className={
+                  activePage === "Login" ? "active__tab" : "inactive__tab"
+                }
+                onClick={() => setActivePage("Login")}
+              >
+                Login
+              </button>
+              <button
+                className={
+                  activePage === "Register" ? "active__tab" : "inactive__tab"
+                }
+                onClick={() => setActivePage("Register")}
+              >
+                Register
+              </button>
+            </div>
 
-        <div className="auth__page__whole__container">
-          {activePage === "Login" && <Login />}
-          {activePage === "Register" && <Register />}
+            <div className="auth__page__whole__container">
+              {activePage === "Login" && <Login />}
+              {activePage === "Register" && <Register />}
+            </div>
+          </div>
         </div>
       </Layout>
     </>

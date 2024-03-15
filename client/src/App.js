@@ -43,6 +43,8 @@ import { useSocket } from "./socket";
 import { Socket } from "socket.io-client";
 import { useEffect } from "react";
 import LikePage from "./pages/LikePage";
+import BestSeller from "./components/BestSeller";
+import BestSellerPage from "./pages/BestSellerPage";
 
 function App() {
   const user = useSelector((state) => state.auth.user);
@@ -58,6 +60,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/category-prodct/:cid" element={<CategoryProductPage />} />
+        <Route path="/bestsellet-product/:cid" element={<BestSellerPage />} />
         <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/all-categories" element={<Categories />} />
         <Route path="/category/:id" element={<CategoryProduct />} />

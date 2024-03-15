@@ -118,9 +118,11 @@ const Register = () => {
           />
         </div>
 
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
+        <div className="button__contianer">
+          <button type="submit" className="ecommerce__but__design">
+            Register
+          </button>
+        </div>
       </div>
     </form>
   );

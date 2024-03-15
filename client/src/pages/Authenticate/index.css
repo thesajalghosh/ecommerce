@@ -1,12 +1,24 @@
+.login__register__whole__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
 .auth__page__tab__change {
   display: flex;
-  width: 100vw;
+
   justify-content: space-around;
   align-items: center;
   padding-top: 20px;
+  margin-top: 20px;
+  font-family: "Nunito Sans", sans-serif;
 }
 .auth__page__tab__change button {
   border: none;
+  background-color: var(--button__color);
+  padding: 6px 30px;
+  border-radius: 8px;
 }
 .auth__page__tab__change button:focus {
   border: none;
@@ -22,4 +34,10 @@
   background-color: transparent;
   color: var(--light__font__color);
   font-family: "Nunito Sans", sans-serif;
+}
+
+@media screen and (min-width: 600px) {
+  .login__register__page {
+    width: 30vw;
+  }
 }

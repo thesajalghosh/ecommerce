@@ -2,21 +2,36 @@
   margin-top: 30px;
   padding: 0 15px;
 }
-
+@-webkit-keyframes autofill {
+  0%,
+  100% {
+    color: #666;
+    background: transparent;
+  }
+}
+input:-webkit-autofill {
+  -webkit-animation-delay: 1s; /* Safari support - any positive time runs instantly */
+  -webkit-animation-name: autofill;
+  -webkit-animation-fill-mode: both;
+}
 .whole__form__container label {
   color: var(--srtong__font__color);
   font-size: 1.2rem;
   font-family: "Nunito Sans", sans-serif;
 }
 .whole__form__container input {
-  background-color: rgba(196, 196, 196, 0.183);
+  background-color: rgba(196, 196, 196, 0.183) !important;
   border: none;
   outline: none;
+}
+.whole__form__container input:-webkit-autofill {
+  background-color: rgba(196, 196, 196, 0.183) !important;
 }
 .whole__form__container input:focus {
   outline: none;
   background-color: rgba(196, 196, 196, 0.183);
   border: none;
+  box-shadow: none;
 }
 .exampleInputName:focus {
   outline: none;
@@ -35,16 +50,28 @@
   width: 100%;
   text-align: end;
   text-decoration: underline;
+  margin-top: 10px;
 }
-
+.form-group {
+  margin-bottom: 0px !important;
+  margin-top: 15px;
+}
 .ecommerce__but__design {
   height: 5vh;
   margin-top: 10px;
   width: 80vw;
-  background-color: #a881af;
+  background-color: var(--button__color);
+  color: var(--srtong__font__color);
   font-size: 1.2rem;
   font-family: "Nunito Sans", sans-serif;
   font-weight: 600;
   border: none;
   border-radius: 6px;
+}
+.login__error {
+  color: rgb(254, 63, 63);
+  font-size: 1rem;
+  width: 100%;
+  text-align: end;
+  font-family: "Nunito Sans", sans-serif;
 }

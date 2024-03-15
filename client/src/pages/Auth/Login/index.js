@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./index.css";
 import Layout from "../../../components/layout/Layout";
 import { toast } from "react-toastify";
@@ -10,6 +10,7 @@ import { loginSuccess, setIsAdmin } from "../../../redux/authSlice";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(false);
   const [auth, setAuth] = useState({
     user: null,
     token: "",
@@ -29,6 +30,10 @@ const Login = () => {
         user: res.data.user,
         token: res.data.token,
       };
+      console.log(res);
+      if (res.data.success === false) {
+        setError(true);
+      }
       // console.log(userData);
       if (res && res.data.success) {
         toast.success(res.data && res.data.message);
@@ -48,9 +53,11 @@ const Login = () => {
       }
     } catch (error) {
       console.log(error);
+
       toast.error("Something went wrong");
     }
   };
+  console.log(error);
 
   return (
     <form className="whole__form__container" onSubmit={handleSubmit}>
@@ -65,6 +72,7 @@ const Login = () => {
             id="exampleInputEmail1"
             aria-describedby="emailHelp"
             placeholder="Enter email"
+            required
           />
         </div>
         <div className="form-group">
@@ -76,8 +84,12 @@ const Login = () => {
             className="form-control"
             id="exampleInputPassword1"
             placeholder="Password"
+            required
           />
         </div>
+        {error && (
+          <div className="login__error">Error: Login or Password is wrong</div>
+        )}
         <div
           className="forgot__password"
           onClick={() => {
