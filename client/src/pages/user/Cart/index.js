@@ -131,6 +131,7 @@ const Cart = () => {
       }
       setOrderLoading(false);
       setCard(false);
+      dispatch(setStoreCart([]));
     } else {
       setCard(true);
       setAddPaypage(false);
