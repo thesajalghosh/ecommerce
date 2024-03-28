@@ -224,6 +224,10 @@ const unLikeProductController = async (req, res) => {
   }
 };
 
+const editUserDetailsController = async (req, res) => {
+  console.log(req.body, req.user);
+};
+
 module.exports = {
   registerController,
   loginController,
@@ -231,4 +235,5 @@ module.exports = {
   userController,
   addLikeProductController,
   unLikeProductController,
+  editUserDetailsController,
 };

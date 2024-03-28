@@ -20,7 +20,6 @@ const OrderPage = () => {
         `${process.env.REACT_APP_API}/api/v1/order/get-single-cid-order`,
         { cid: user.cid }
       );
-
       setOrders(data.orders);
     } catch (error) {
       console.error("Error fetching orders:", error);
@@ -29,9 +28,9 @@ const OrderPage = () => {
     }
   };
 
-  socket.on("cancel", (data) => {
-    console.log(data, "data");
-  });
+  // socket.on("cancel", (data) => {
+  //   console.log(data, "data");
+  // });
 
   const cancelOrderHandeler = async (ele) => {
     try {

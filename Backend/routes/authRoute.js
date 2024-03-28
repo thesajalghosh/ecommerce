@@ -6,6 +6,7 @@ const {
   userController,
   addLikeProductController,
   unLikeProductController,
+  editUserDetailsController,
 } = require("../controllers/authController");
 const { requireSignIn, isAdmin } = require("../middlewares/authMiddleware");
 
@@ -35,5 +36,6 @@ router.post("/user-get", userController);
 
 router.put("/add-like-product", requireSignIn, addLikeProductController);
 router.put("/unlike-product", requireSignIn, unLikeProductController);
+router.put("/user-update", requireSignIn, editUserDetailsController);
 
 module.exports = router;
